@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | Learning Hub</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-cyan: #06b6d4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(6, 182, 212, 0.15), transparent);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-btn {
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .main-container {
+            min-height: 100vh;
+            padding: 120px 20px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            line-height: 1.8;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--accent-cyan);
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .content li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .content strong {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 16px 20px;
+            }
+
+            .main-container {
+                padding: 100px 16px 40px;
+            }
+
+            .content {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <nav class="nav">
+        <div class="logo" onclick="window.location.href='index.html'">⚡ Learning Hub</div>
+        <a href="index.html" class="nav-btn">← Back to Home</a>
+    </nav>
+    <main class="main-container">
+        <div class="container">
+            <div class="page-header">
+                <h1>Terms & Conditions</h1>
+                <p class="last-updated">Last updated: January 19, 2026</p>
+            </div>
+            <div class="content">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing and using Learning Hub ("the Website"), you accept and agree to be bound by the terms
+                    and provision of this agreement. If you do not agree to these terms, please do not use our services.
+                </p>
+
+                <h2>2. Use License</h2>
+                <p>Permission is granted to temporarily access the materials (information or software) on Learning Hub
+                    for personal, non-commercial use only. This is the grant of a license, not a transfer of title, and
+                    under this license you may not:</p>
+                <ul>
+                    <li>Modify or copy the materials</li>
+                    <li>Use the materials for any commercial purpose or public display</li>
+                    <li>Attempt to decompile or reverse engineer any software contained on the Website</li>
+                    <li>Remove any copyright or proprietary notations from the materials</li>
+                    <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+                </ul>
+
+                <h2>3. Educational Content</h2>
+                <p>All learning materials, roadmaps, and resources provided on this website are for educational purposes
+                    only. We strive to provide accurate and up-to-date information, but we make no warranties about the
+                    completeness, reliability, or accuracy of this information.</p>
+
+                <h2>4. User Responsibilities</h2>
+                <p>You agree to:</p>
+                <ul>
+                    <li>Provide accurate information when using our services</li>
+                    <li>Not use the Website for any illegal or unauthorized purpose</li>
+                    <li>Not interfere with or disrupt the Website or servers</li>
+                    <li>Not attempt to gain unauthorized access to any portion of the Website</li>
+                    <li>Respect intellectual property rights of the content</li>
+                </ul>
+
+                <h2>5. External Links</h2>
+                <p>Learning Hub may contain links to third-party websites or services (such as YouTube tutorials,
+                    documentation sites, etc.) that are not owned or controlled by us. We have no control over, and
+                    assume no responsibility for, the content, privacy policies, or practices of any third-party
+                    websites or services.</p>
+
+                <h2>6. Disclaimer of Warranties</h2>
+                <p>The materials on Learning Hub are provided on an 'as is' basis. Learning Hub makes no warranties,
+                    expressed or implied, and hereby disclaims and negates all other warranties including, without
+                    limitation, implied warranties or conditions of merchantability, fitness for a particular purpose,
+                    or non-infringement of intellectual property or other violation of rights.</p>
+
+                <h2>7. Limitations</h2>
+                <p>In no event shall Learning Hub or its suppliers be liable for any damages (including, without
+                    limitation, damages for loss of data or profit, or due to business interruption) arising out of the
+                    use or inability to use the materials on Learning Hub.</p>
+
+                <h2>8. Intellectual Property</h2>
+                <p>The content, organization, graphics, design, compilation, and other matters related to the Website
+                    are protected under applicable copyrights and other proprietary laws. Copying, redistribution, or
+                    publication of any content is strictly prohibited without express written permission.</p>
+
+                <h2>9. User-Generated Content</h2>
+                <p>If we allow user submissions or comments in the future, you grant us a non-exclusive, royalty-free,
+                    perpetual, and worldwide license to use, modify, and display such content.</p>
+
+                <h2>10. Modifications to Service</h2>
+                <p>We reserve the right to modify or discontinue, temporarily or permanently, the service (or any part
+                    thereof) with or without notice. We shall not be liable to you or any third party for any
+                    modification, suspension, or discontinuance of the service.</p>
+
+                <h2>11. Governing Law</h2>
+                <p>These terms and conditions are governed by and construed in accordance with applicable laws, and you
+                    irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+
+                <h2>12. Changes to Terms</h2>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will
+                    provide notice of any changes by updating the "Last updated" date of these Terms.</p>
+
+                <h2>13. Contact Information</h2>
+                <p>If you have any questions about these Terms & Conditions, please contact us at:</p>
+                <p><strong>Email:</strong> samarth@skilledca.in</p>
+                <p><strong>Creator:</strong> Samarth HS</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Linux | Learning Hub</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-orange: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.15), transparent);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-orange), #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-btn {
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .main-container {
+            min-height: 100vh;
+            padding: 120px 20px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent-orange), rgba(245, 158, 11, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.4);
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .section {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent-orange), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .section ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .section li {
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .section li:hover {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .resource-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-orange), #d97706);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.5);
+        }
+
+        .resource-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .back-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 16px 20px;
+            }
+
+            .main-container {
+                padding: 100px 16px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <nav class="nav">
+        <div class="logo" onclick="goHome()">⚡ Learning Hub</div>
+        <button class="nav-btn" onclick="goHome()">← Back to Home</button>
+    </nav>
+    <main class="main-container">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-icon">🐧</div>
+                <h1>Linux Learning Roadmap</h1>
+                <p class="page-subtitle">CLI mastery, scripting & system fundamentals</p>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">1</span> Introduction to Linux</h2>
+                <ul>
+                    <li>What is Linux & how it works?</li>
+                    <li>Linux distributions overview</li>
+                    <li>Installing Linux (dual boot / VM)</li>
+                </ul>
+                <div class="resource-box"><a class="resource-btn"
+                        href="https://youtu.be/v392lEyM29A?si=jnIVoDYausvqzUFq" target="_blank">📺 Watch Linux
+                        Tutorial</a></div>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">2</span> Filesystem & Shell Basics</h2>
+                <ul>
+                    <li>Filesystem hierarchy</li>
+                    <li>Home, root, etc directories</li>
+                    <li>Basic bash commands</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">3</span> Navigation & File Manipulation</h2>
+                <ul>
+                    <li>cd, ls, pwd</li>
+                    <li>cp, mv, rm</li>
+                    <li>mkdir, rmdir</li>
+                    <li>cat, less, head, tail</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">4</span> Users & Permissions</h2>
+                <ul>
+                    <li>User accounts & Groups</li>
+                    <li>chmod, chown, chgrp</li>
+                    <li>sudo vs root</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">5</span> Package Management</h2>
+                <ul>
+                    <li>apt, yum, dnf basics</li>
+                    <li>Installing & removing packages</li>
+                    <li>Updating the system</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">6</span> Bash Scripting</h2>
+                <ul>
+                    <li>Writing shell scripts</li>
+                    <li>Variables & functions</li>
+                    <li>Loops & conditionals</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">7</span> Networking Basics</h2>
+                <ul>
+                    <li>ip, ifconfig</li>
+                    <li>ping, netstat, ss</li>
+                    <li>SSH basics</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2><span class="section-icon">🛠</span> Practice Projects</h2>
+                <ul>
+                    <li>Create a backup script</li>
+                    <li>Automate system updates</li>
+                    <li>Build a user management script</li>
+                </ul>
+            </div>
+            <div class="back-section"><button class="back-btn" onclick="goHome()">← Back to Home</button></div>
+        </div>
+    </main>
+    <script>function goHome() { window.location.href = "index.html"; }</script>
+</body>
+
+</html>

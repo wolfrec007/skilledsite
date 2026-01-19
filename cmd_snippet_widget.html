@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMD Command Snippets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #d4f1d4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2d5016;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #5a8f3a;
+            font-size: 1.1em;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .category {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .category h2 {
+            color: #2d5016;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-left: 5px solid #66bb6a;
+            padding-left: 15px;
+        }
+
+        .snippet {
+            background: #f8f8f8;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .snippet:hover {
+            border-color: #66bb6a;
+        }
+
+        .snippet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .snippet-desc {
+            color: #5a8f3a;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+        }
+
+        .code-block {
+            background: #2d3436;
+            color: #a8e6cf;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .comment {
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .category h2 {
+                font-size: 1.5em;
+            }
+
+            .snippet-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .copy-btn {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">← Back to Home</a>
+        
+        <div class="header">
+            <h1>CMD Command Snippets</h1>
+            <p>Useful Windows Command Line utilities for file management</p>
+        </div>
+
+        <div class="category">
+            <h2>📂 Finding Files</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Search for files recursively</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'find1')">Copy</button>
+                </div>
+                <div class="code-block" id="find1">dir /s /b *keyword*.*</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Find all PDFs in current dir and subdirs</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'find2')">Copy</button>
+                </div>
+                <div class="code-block" id="find2">dir /s /b *.pdf</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Locate all .txt files from current location</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'find3')">Copy</button>
+                </div>
+                <div class="code-block" id="find3">where /r . *.txt</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>📋 Copying Files</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Copy all JPGs to backup folder</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'copy1')">Copy</button>
+                </div>
+                <div class="code-block" id="copy1">for %F in (*.jpg) do copy "%F" backup\</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Copy folder with subdirectories</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'copy2')">Copy</button>
+                </div>
+                <div class="code-block" id="copy2">xcopy /s /e source_folder dest_folder\</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Fast copy (multithreaded)</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'copy3')">Copy</button>
+                </div>
+                <div class="code-block" id="copy3">robocopy source dest /E /MT:8</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>✏️ Renaming Files</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Change file extension</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'ren1')">Copy</button>
+                </div>
+                <div class="code-block" id="ren1">ren *.txt *.bak</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Add prefix to filenames</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'ren2')">Copy</button>
+                </div>
+                <div class="code-block" id="ren2">for %F in (*.pdf) do ren "%F" "prefix_%F"</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🗑️ Deleting Files</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Delete temp files quietly</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'del1')">Copy</button>
+                </div>
+                <div class="code-block" id="del1">del /q *.tmp</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Delete matching files</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'del2')">Copy</button>
+                </div>
+                <div class="code-block" id="del2">for %F in (*old*.pdf) do del "%F"</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Delete folder and contents</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'del3')">Copy</button>
+                </div>
+                <div class="code-block" id="del3">rmdir /s /q folder_name</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🗂️ Organizing Files</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Sort files by extension into folders</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'org1')">Copy</button>
+                </div>
+                <div class="code-block" id="org1">for %F in (*.*) do md "%~xF" 2>nul & move "%F" "%~xF\"</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Move PDFs with certain string to folder</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'org2')">Copy</button>
+                </div>
+                <div class="code-block" id="org2">for %F in (*keyword*.pdf) do move "%F" target_folder\</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>⚙️ Batch Operations</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">List files to text file</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'batch1')">Copy</button>
+                </div>
+                <div class="code-block" id="batch1">for %F in (*.pdf) do echo "%F" >> filelist.txt</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Delete .log files recursively</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'batch2')">Copy</button>
+                </div>
+                <div class="code-block" id="batch2">for /r %F in (*.log) do del "%F"</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Delete files smaller than 1KB</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'batch3')">Copy</button>
+                </div>
+                <div class="code-block" id="batch3">for %F in (*) do if %~zF LSS 1024 del "%F"</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2>🔧 Useful Combinations</h2>
+            
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Export PDF list to file</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'combo1')">Copy</button>
+                </div>
+                <div class="code-block" id="combo1">dir /b /s *.pdf > pdf_list.txt</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Hide all text files</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'combo2')">Copy</button>
+                </div>
+                <div class="code-block" id="combo2">attrib +h *.txt</div>
+            </div>
+
+            <div class="snippet">
+                <div class="snippet-header">
+                    <span class="snippet-desc">Unhide all text files</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'combo3')">Copy</button>
+                </div>
+                <div class="code-block" id="combo3">attrib -h *.txt</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyCode(button, elementId) {
+            const codeBlock = document.getElementById(elementId);
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = '✓ Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

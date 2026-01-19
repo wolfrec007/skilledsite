@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend from First Principles | Learning Hub</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Background */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(6, 182, 212, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 100%, rgba(139, 92, 246, 0.1), transparent);
+            z-index: -2;
+        }
+
+        .floating-orbs {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .orb:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
+            top: -15%;
+            right: -10%;
+        }
+
+        .orb:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--accent-purple), #7c3aed);
+            bottom: -10%;
+            left: -5%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-30px, 30px) scale(1.05);
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-btn {
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .main-container {
+            min-height: 100vh;
+            padding: 120px 20px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent-cyan), rgba(6, 182, 212, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.4);
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Sections */
+        .section {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent-cyan), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .section ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .section li {
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section li::before {
+            content: "→";
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .section li:hover {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        /* Resource Box */
+        .resource-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+
+        .resource-box p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.5);
+        }
+
+        .resource-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px -10px rgba(6, 182, 212, 0.6);
+        }
+
+        /* Practice Section */
+        .practice-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.05));
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .practice-section .section-icon {
+            background: linear-gradient(135deg, var(--accent-purple), transparent);
+        }
+
+        .practice-section li::before {
+            color: var(--accent-purple);
+        }
+
+        .practice-section li:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Back Button */
+        .back-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 16px 20px;
+            }
+
+            .main-container {
+                padding: 100px 16px 40px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav">
+        <div class="logo" onclick="goHome()">⚡ Learning Hub</div>
+        <button class="nav-btn" onclick="goHome()">← Back to Home</button>
+    </nav>
+
+    <main class="main-container">
+        <div class="container">
+
+            <div class="page-header">
+                <div class="page-icon">🔧</div>
+                <h1>Backend from First Principles</h1>
+                <p class="page-subtitle">Master servers, APIs, databases & system design</p>
+            </div>
+
+            <!-- Core Resource -->
+            <div class="section">
+                <h2><span class="section-icon">📺</span> Core Learning Resource</h2>
+                <div class="resource-box">
+                    <p>This playlist focuses on understanding backend systems from fundamentals — HTTP, routing,
+                        architecture, databases, authentication, and scalability.</p>
+                    <a class="resource-btn" href="https://youtube.com/playlist?list=PLui3EUkuMTPgZcV0QhQrOcwMPcBCcd_Q1"
+                        target="_blank">
+                        ▶ Watch Backend Playlist
+                    </a>
+                </div>
+            </div>
+
+            <!-- Backend Foundations -->
+            <div class="section">
+                <h2><span class="section-icon">1</span> Backend Foundations</h2>
+                <ul>
+                    <li>What is a backend system?</li>
+                    <li>Client–Server architecture</li>
+                    <li>HTTP methods, status codes</li>
+                    <li>REST principles</li>
+                </ul>
+            </div>
+
+            <!-- Application Architecture -->
+            <div class="section">
+                <h2><span class="section-icon">2</span> Application Architecture</h2>
+                <ul>
+                    <li>Controllers, services, repositories</li>
+                    <li>Business logic vs infrastructure</li>
+                    <li>Middleware & request lifecycle</li>
+                </ul>
+            </div>
+
+            <!-- Data & Persistence -->
+            <div class="section">
+                <h2><span class="section-icon">3</span> Data & Persistence</h2>
+                <ul>
+                    <li>Relational vs NoSQL databases</li>
+                    <li>Data modeling</li>
+                    <li>Transactions & indexing</li>
+                    <li>Basic caching concepts</li>
+                </ul>
+            </div>
+
+            <!-- Authentication & Security -->
+            <div class="section">
+                <h2><span class="section-icon">4</span> Authentication & Security</h2>
+                <ul>
+                    <li>Authentication vs authorization</li>
+                    <li>Sessions & tokens (JWT)</li>
+                    <li>Input validation & error handling</li>
+                </ul>
+            </div>
+
+            <!-- Scalability & Reliability -->
+            <div class="section">
+                <h2><span class="section-icon">5</span> Scalability & Reliability</h2>
+                <ul>
+                    <li>Logging & monitoring basics</li>
+                    <li>Handling failures</li>
+                    <li>Performance optimization</li>
+                </ul>
+            </div>
+
+            <!-- Practice Projects -->
+            <div class="section practice-section">
+                <h2><span class="section-icon">🛠</span> Practice Projects</h2>
+                <ul>
+                    <li>REST API for a blog</li>
+                    <li>User authentication system</li>
+                    <li>Task management backend</li>
+                    <li>Simple microservice setup</li>
+                </ul>
+            </div>
+
+            <div class="back-section">
+                <button class="back-btn" onclick="goHome()">
+                    ← Back to Home
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function goHome() {
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 300);
+        }
+    </script>
+
+</body>
+
+</html>
