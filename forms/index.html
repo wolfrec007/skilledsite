@@ -214,9 +214,100 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="feedback">Your Feedback</label>
+                    <label class="form-label">I am a...</label>
+                    <select name="role" class="form-input" required style="background-image: none;">
+                        <option value="" disabled selected style="background: #12121a;">Select your role</option>
+                        <option value="student" style="background: #12121a;">Student</option>
+                        <option value="ca_professional" style="background: #12121a;">CA Professional</option>
+                        <option value="developer" style="background: #12121a;">Developer</option>
+                        <option value="other" style="background: #12121a;">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">I'm mostly interested in...</label>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px;">
+                        <label
+                            style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--glass-border); text-align: center; font-size: 14px; transition: all 0.3s;"
+                            onmouseover="this.style.borderColor='var(--accent-cyan)'"
+                            onmouseout="this.style.borderColor='var(--glass-border)'">
+                            <input type="radio" name="interest" value="tech" required style="margin-right: 6px;"> Tech
+                        </label>
+                        <label
+                            style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--glass-border); text-align: center; font-size: 14px; transition: all 0.3s;"
+                            onmouseover="this.style.borderColor='var(--accent-cyan)'"
+                            onmouseout="this.style.borderColor='var(--glass-border)'">
+                            <input type="radio" name="interest" value="ca" required style="margin-right: 6px;"> CA
+                        </label>
+                        <label
+                            style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--glass-border); text-align: center; font-size: 14px; transition: all 0.3s;"
+                            onmouseover="this.style.borderColor='var(--accent-cyan)'"
+                            onmouseout="this.style.borderColor='var(--glass-border)'">
+                            <input type="radio" name="interest" value="both" required style="margin-right: 6px;"> Both
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How would you rate the design?</label>
+                    <div class="rating-group"
+                        style="display: flex; gap: 8px; flex-direction: row-reverse; justify-content: flex-end;">
+                        <input type="radio" name="rating" id="star5" value="5" style="display: none;"><label for="star5"
+                            style="font-size: 24px; cursor: pointer; color: var(--text-secondary); transition: color 0.2s;">★</label>
+                        <input type="radio" name="rating" id="star4" value="4" style="display: none;"><label for="star4"
+                            style="font-size: 24px; cursor: pointer; color: var(--text-secondary); transition: color 0.2s;">★</label>
+                        <input type="radio" name="rating" id="star3" value="3" style="display: none;"><label for="star3"
+                            style="font-size: 24px; cursor: pointer; color: var(--text-secondary); transition: color 0.2s;">★</label>
+                        <input type="radio" name="rating" id="star2" value="2" style="display: none;"><label for="star2"
+                            style="font-size: 24px; cursor: pointer; color: var(--text-secondary); transition: color 0.2s;">★</label>
+                        <input type="radio" name="rating" id="star1" value="1" style="display: none;"><label for="star1"
+                            style="font-size: 24px; cursor: pointer; color: var(--text-secondary); transition: color 0.2s;">★</label>
+                    </div>
+                    <style>
+                        .rating-group input:checked~label {
+                            color: var(--accent-orange);
+                        }
+
+                        .rating-group label:hover,
+                        .rating-group label:hover~label {
+                            color: var(--accent-orange) !important;
+                        }
+                    </style>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How did you find us?</label>
+                    <select name="source" class="form-input" style="background-image: none;">
+                        <option value="" disabled selected style="background: #12121a;">Select source</option>
+                        <option value="search" style="background: #12121a;">Search Engine</option>
+                        <option value="linkedin" style="background: #12121a;">LinkedIn</option>
+                        <option value="friend" style="background: #12121a;">Friend / Colleague</option>
+                        <option value="other" style="background: #12121a;">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Would you recommend us?</label>
+                    <div style="display: flex; gap: 16px;">
+                        <label
+                            style="flex: 1; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--glass-border); text-align: center; transition: all 0.3s;"
+                            onmouseover="this.style.borderColor='var(--accent-green)'; this.style.color='var(--accent-green)'"
+                            onmouseout="this.style.borderColor='var(--glass-border)'; this.style.color='var(--text-primary)'">
+                            <input type="radio" name="recommend" value="yes" required style="margin-right: 8px;"> Yes
+                        </label>
+                        <label
+                            style="flex: 1; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--glass-border); text-align: center; transition: all 0.3s;"
+                            onmouseover="this.style.borderColor='var(--accent-pink)'; this.style.color='var(--accent-pink)'"
+                            onmouseout="this.style.borderColor='var(--glass-border)'; this.style.color='var(--text-primary)'">
+                            <input type="radio" name="recommend" value="no" required style="margin-right: 8px;"> No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="feedback">How can we improve? / What topic is missing?</label>
                     <textarea id="feedback" name="feedback" class="form-textarea"
-                        placeholder="Tell us what you think..." required></textarea>
+                        placeholder="I'd love to see a tutorial on..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit" id="submitBtn">
@@ -236,7 +327,7 @@
 
     <script src="../scripts/main.js"></script>
     <script>
-        // Demo: Show success message on form submit
+        // Google Sheet Integration
         document.getElementById('feedbackForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -244,16 +335,40 @@
             const form = this;
             const successMessage = document.getElementById('successMessage');
 
+            // Your Google Apps Script URL will go here
+            // INSTRUCTIONS: Replace this URL with your deployed Web App URL
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmZ02qMuPDygaYupwV8NIyopLDzZLTYYhOvLiCh6o8FUOm1xfyXHXhe9GLRvvNE3-aGw/exec';
+
             // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            // Simulate API call (replace with actual Google Sheets submission)
-            setTimeout(() => {
-                form.style.display = 'none';
-                document.querySelector('.form-header').style.display = 'none';
-                successMessage.classList.add('show');
-            }, 1000);
+            const formData = new FormData(form);
+            // Add timestamp
+            formData.append('timestamp', new Date().toLocaleString());
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    // Success!
+                    form.style.display = 'none';
+                    document.querySelector('.form-header').style.display = 'none';
+                    successMessage.classList.add('show');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    submitBtn.textContent = 'Error! Try again.';
+                    submitBtn.disabled = false;
+                    // Fallback for visualization if no URL set yet
+                    if (SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                        alert('Please set up the Google Script (see instructions). Simulating success for now.');
+                        form.style.display = 'none';
+                        document.querySelector('.form-header').style.display = 'none';
+                        successMessage.classList.add('show');
+                    }
+                });
         });
     </script>
 
