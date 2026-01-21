@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Cybersecurity | Tech Hub</title>
+    <meta name="description"
+        content="Security fundamentals, threat analysis & protection strategies. Learn ethical hacking with practice platforms like TryHackMe and HackTheBox.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        /* Pink accent overrides for cybersecurity */
+        .page-icon {
+            background: linear-gradient(135deg, var(--accent-pink), rgba(236, 72, 153, 0.3));
+            box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.4);
+        }
+
+        .section-icon {
+            background: linear-gradient(135deg, var(--accent-pink), transparent);
+        }
+
+        .section li:hover {
+            background: rgba(236, 72, 153, 0.1);
+        }
+
+        .platform {
+            margin-top: 12px;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            border-radius: 12px;
+        }
+
+        .platform a {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .platform a:hover {
+            text-decoration: underline;
+        }
+
+        .platform p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">⚡ Tech Hub</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-icon">🛡️</div>
+                <h1>Cybersecurity Roadmap</h1>
+                <p class="page-subtitle">Security fundamentals, threat analysis & protection</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">1</span> Foundations</h2>
+                <ul>
+                    <li>What is cybersecurity?</li>
+                    <li>Types of hackers (White / Grey / Black)</li>
+                    <li>Attack surface & threat models</li>
+                    <li>Basic networking (IP, DNS, HTTP)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">2</span> Operating Systems & Linux</h2>
+                <ul>
+                    <li>Linux file system & permissions</li>
+                    <li>Processes & services</li>
+                    <li>Basic bash scripting</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">3</span> Networking for Security</h2>
+                <ul>
+                    <li>TCP/IP, UDP</li>
+                    <li>Firewalls & NAT</li>
+                    <li>Ports & services</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">4</span> Web Security Basics</h2>
+                <ul>
+                    <li>HTTP methods</li>
+                    <li>Cookies & sessions</li>
+                    <li>OWASP Top 10 vulnerabilities</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">🧪</span> Practice Platforms</h2>
+                <div class="platform">
+                    <a href="https://tryhackme.com" target="_blank">TryHackMe (THM)</a>
+                    <p>Beginner-friendly, guided learning paths</p>
+                </div>
+                <div class="platform">
+                    <a href="https://www.hackthebox.com" target="_blank">Hack The Box (HTB)</a>
+                    <p>Advanced labs for penetration testing</p>
+                </div>
+                <div class="platform">
+                    <a href="https://picoctf.org" target="_blank">picoCTF</a>
+                    <p>CTF-style challenges for beginners</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">🎯</span> Career Paths</h2>
+                <ul>
+                    <li>Penetration Tester</li>
+                    <li>Security Analyst</li>
+                    <li>Blue Team / SOC Analyst</li>
+                    <li>Red Team</li>
+                </ul>
+            </div>
+
+            <div class="back-section">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from Tech Hub">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend from First Principles | Tech Hub</title>
+    <meta name="description"
+        content="Master servers, APIs, databases & system design from first principles with our comprehensive backend development roadmap">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">⚡ Tech Hub</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a><a href="index.html">Tech Hub</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="container">
+
+            <div class="page-header">
+                <div class="page-icon">🔧</div>
+                <h1>Backend from First Principles</h1>
+                <p class="page-subtitle">Master servers, APIs, databases & system design</p>
+            </div>
+
+            <!-- Core Resource -->
+            <div class="section">
+                <h2><span class="section-icon">📺</span> Core Learning Resource</h2>
+                <div class="resource-box">
+                    <p>This playlist focuses on understanding backend systems from fundamentals — HTTP, routing,
+                        architecture, databases, authentication, and scalability.</p>
+                    <a class="resource-btn" href="https://youtube.com/playlist?list=PLui3EUkuMTPgZcV0QhQrOcwMPcBCcd_Q1"
+                        target="_blank">
+                        ▶ Watch Backend Playlist
+                    </a>
+                </div>
+            </div>
+
+            <!-- Backend Foundations -->
+            <div class="section">
+                <h2><span class="section-icon">1</span> Backend Foundations</h2>
+                <ul>
+                    <li>What is a backend system?</li>
+                    <li>Client–Server architecture</li>
+                    <li>HTTP methods, status codes</li>
+                    <li>REST principles</li>
+                </ul>
+            </div>
+
+            <!-- Application Architecture -->
+            <div class="section">
+                <h2><span class="section-icon">2</span> Application Architecture</h2>
+                <ul>
+                    <li>Controllers, services, repositories</li>
+                    <li>Business logic vs infrastructure</li>
+                    <li>Middleware & request lifecycle</li>
+                </ul>
+            </div>
+
+            <!-- Data & Persistence -->
+            <div class="section">
+                <h2><span class="section-icon">3</span> Data & Persistence</h2>
+                <ul>
+                    <li>Relational vs NoSQL databases</li>
+                    <li>Data modeling</li>
+                    <li>Transactions & indexing</li>
+                    <li>Basic caching concepts</li>
+                </ul>
+            </div>
+
+            <!-- Authentication & Security -->
+            <div class="section">
+                <h2><span class="section-icon">4</span> Authentication & Security</h2>
+                <ul>
+                    <li>Authentication vs authorization</li>
+                    <li>Sessions & tokens (JWT)</li>
+                    <li>Input validation & error handling</li>
+                </ul>
+            </div>
+
+            <!-- Scalability & Reliability -->
+            <div class="section">
+                <h2><span class="section-icon">5</span> Scalability & Reliability</h2>
+                <ul>
+                    <li>Logging & monitoring basics</li>
+                    <li>Handling failures</li>
+                    <li>Performance optimization</li>
+                </ul>
+            </div>
+
+            <!-- Practice Projects -->
+            <div class="section practice-section">
+                <h2><span class="section-icon">🛠</span> Practice Projects</h2>
+                <ul>
+                    <li>REST API for a blog</li>
+                    <li>User authentication system</li>
+                    <li>Task management backend</li>
+                    <li>Simple microservice setup</li>
+                </ul>
+            </div>
+
+            <div class="back-section">
+                <button class="back-btn" onclick="goHome()">
+                    ← Back to Home
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from Tech Hub">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+

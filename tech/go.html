@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Go Lang | Tech Hub</title>
+    <meta name="description"
+        content="Build high-performance, concurrent applications with Go. Learn from introduction to advanced concurrency patterns.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        /* Go-specific accent overrides */
+        .page-icon {
+            background: linear-gradient(135deg, var(--accent-blue), rgba(59, 130, 246, 0.3));
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.4);
+        }
+
+        .section-icon {
+            background: linear-gradient(135deg, var(--accent-blue), transparent);
+        }
+
+        .section li::before {
+            color: var(--accent-blue);
+        }
+
+        .section li:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .resource-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .resource-btn {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
+        }
+
+        .resource-btn:hover {
+            box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.6);
+        }
+
+        .practice-section {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.05));
+            border-color: rgba(6, 182, 212, 0.2);
+        }
+
+        .practice-section .section-icon {
+            background: linear-gradient(135deg, var(--accent-cyan), transparent);
+        }
+
+        .practice-section li::before {
+            color: var(--accent-cyan);
+        }
+
+        .practice-section li:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">⚡ Tech Hub</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="container">
+
+            <div class="page-header">
+                <div class="page-icon">🚀</div>
+                <h1>Go Lang Learning Roadmap</h1>
+                <p class="page-subtitle">Build high-performance, concurrent applications</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">1</span> Introduction to Go</h2>
+                <ul>
+                    <li>What is Go (Golang)? Why use it?</li>
+                    <li>Installing Go</li>
+                    <li>Hello World</li>
+                </ul>
+                <div class="resource-box">
+                    <a class="resource-btn" href="https://youtu.be/DCU9GkggAPg?si=fDRKu2MQI_Tctnb0" target="_blank">
+                        📺 Watch Go Tutorial
+                    </a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">2</span> Go Basics</h2>
+                <ul>
+                    <li>Variables & Data Types</li>
+                    <li>Constants</li>
+                    <li>Printing & Formatting</li>
+                    <li>Comments</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">3</span> Control Flow</h2>
+                <ul>
+                    <li>if / else</li>
+                    <li>switch statements</li>
+                    <li>Loops (for)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">4</span> Functions in Go</h2>
+                <ul>
+                    <li>Defining Functions</li>
+                    <li>Return Values</li>
+                    <li>Multiple Return Values</li>
+                    <li>Variadic Functions</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">5</span> Go Data Structures</h2>
+                <ul>
+                    <li>Slices</li>
+                    <li>Arrays</li>
+                    <li>Maps</li>
+                    <li>Structs</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">6</span> Pointers & Packages</h2>
+                <ul>
+                    <li>Pointers and Memory</li>
+                    <li>Packages & Modules</li>
+                    <li>Importing Libraries</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">⚡</span> Concurrency (Go's Superpower)</h2>
+                <ul>
+                    <li>Goroutines</li>
+                    <li>Channels</li>
+                    <li>Select statement</li>
+                </ul>
+            </div>
+
+            <div class="section practice-section">
+                <h2><span class="section-icon">🛠</span> Practice Projects</h2>
+                <ul>
+                    <li>CLI calculator</li>
+                    <li>Basic File Reader</li>
+                    <li>Goroutine Demo App</li>
+                </ul>
+            </div>
+
+            <div class="back-section">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from Tech Hub">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+

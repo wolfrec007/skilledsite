@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics of Web Development | Tech Hub</title>
+    <meta name="description"
+        content="HTML, CSS & JavaScript core concepts. Learn how the web works and build your first website.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        /* Purple accent overrides for Web Dev */
+        .page-icon {
+            background: linear-gradient(135deg, var(--accent-purple), rgba(139, 92, 246, 0.3));
+            box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.4);
+        }
+
+        .section-icon {
+            background: linear-gradient(135deg, var(--accent-purple), transparent);
+        }
+
+        .section li:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .resource {
+            margin-top: 12px;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+        }
+
+        .resource a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .resource a:hover {
+            text-decoration: underline;
+        }
+
+        .resource p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">⚡ Tech Hub</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-icon">🌐</div>
+                <h1>Web Development Basics</h1>
+                <p class="page-subtitle">HTML, CSS & JavaScript core concepts</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">1</span> How the Web Works</h2>
+                <ul>
+                    <li>Client vs Server</li>
+                    <li>What happens when you open a website?</li>
+                    <li>DNS, IP Address, HTTP/HTTPS</li>
+                    <li>Browsers & rendering engines</li>
+                </ul>
+                <div class="resource">
+                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web"
+                        target="_blank">MDN – How the Web Works</a>
+                    <p>Best beginner-friendly explanation</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">2</span> HTML – Structure</h2>
+                <ul>
+                    <li>HTML tags & elements</li>
+                    <li>Head vs Body</li>
+                    <li>Links, images, lists, tables</li>
+                    <li>Forms & inputs</li>
+                    <li>Semantic HTML</li>
+                </ul>
+                <div class="resource"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN
+                        HTML Guide</a></div>
+                <div class="resource"><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML</a></div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">3</span> CSS – Styling</h2>
+                <ul>
+                    <li>Selectors & properties</li>
+                    <li>Box model</li>
+                    <li>Flexbox & Grid</li>
+                    <li>Responsive design</li>
+                </ul>
+                <div class="resource"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN CSS
+                        Docs</a></div>
+                <div class="resource"><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">4</span> JavaScript – Interactivity</h2>
+                <ul>
+                    <li>Variables & data types</li>
+                    <li>Functions & events</li>
+                    <li>DOM manipulation</li>
+                    <li>Basic async (fetch)</li>
+                </ul>
+                <div class="resource"><a href="https://javascript.info/" target="_blank">JavaScript.info</a></div>
+                <div class="resource"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                        target="_blank">MDN JavaScript</a></div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">5</span> Developer Tools</h2>
+                <ul>
+                    <li>Browser DevTools</li>
+                    <li>VS Code & Live Server</li>
+                    <li>Basic Git & GitHub</li>
+                </ul>
+                <div class="resource"><a href="https://developer.chrome.com/docs/devtools/" target="_blank">Chrome
+                        DevTools Docs</a></div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">6</span> Practice Resources</h2>
+                <div class="resource">
+                    <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>
+                    <p>Learn by building real projects</p>
+                </div>
+                <div class="resource">
+                    <a href="https://frontendmentor.io" target="_blank">Frontend Mentor</a>
+                    <p>Real-world frontend challenges</p>
+                </div>
+                <div class="resource">
+                    <a href="https://codepen.io" target="_blank">CodePen</a>
+                    <p>Experiment with HTML, CSS, JS online</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">7</span> Beginner Projects</h2>
+                <ul>
+                    <li>Personal portfolio website</li>
+                    <li>Landing page</li>
+                    <li>To-do list (HTML + JS)</li>
+                    <li>Responsive blog page</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-icon">🚀</span> What's Next</h2>
+                <ul>
+                    <li>Backend fundamentals</li>
+                    <li>Frameworks (React, Vue)</li>
+                    <li>APIs & HTTP</li>
+                    <li>Deployment (Netlify / Cloudflare)</li>
+                </ul>
+            </div>
+
+            <div class="back-section">
+                <button class="back-btn" onclick="goHome()">← Back to Home</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from Tech Hub">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

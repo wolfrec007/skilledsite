@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Hub | SkilledCA</title>
+    <meta name="description"
+        content="Productivity tools and resources for Chartered Accountants. Excel shortcuts, GSTIN tools, automation tips, and career guidance.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        .coming-soon {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .coming-soon-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .coming-soon h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            margin-bottom: 16px;
+        }
+
+        .coming-soon p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .preview-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .preview-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .preview-card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .preview-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .preview-card-status {
+            font-size: 11px;
+            color: var(--accent-purple);
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="../index.html" class="logo">⚡ SkilledCA</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../tech/index.html">Tech Hub</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <section class="coming-soon">
+        <div class="coming-soon-icon">📊</div>
+        <h1>CA Hub</h1>
+        <p>Productivity tools and resources for Chartered Accountants. Coming soon with amazing features!</p>
+
+        <div class="preview-grid">
+            <div class="preview-card">
+                <div class="preview-card-icon">💻</div>
+                <div class="preview-card-title">CMD Shortcuts</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">📊</div>
+                <div class="preview-card-title">Excel Shortcuts</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">🗃️</div>
+                <div class="preview-card-title">Handle Big Data</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">⚙️</div>
+                <div class="preview-card-title">Learn to Automate</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">🟡</div>
+                <div class="preview-card-title">Learn SAP</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">🏢</div>
+                <div class="preview-card-title">Dream Firm Finder</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">🔍</div>
+                <div class="preview-card-title">GSTIN Lookup</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-card-icon">📋</div>
+                <div class="preview-card-title">TDS Rate Finder</div>
+                <div class="preview-card-status">Coming Soon</div>
+            </div>
+        </div>
+
+        <a href="../index.html" class="btn-secondary">← Back to Home</a>
+    </section>
+
+    <script src="../scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

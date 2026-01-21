@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Learning Hub</title>
+    <meta name="description"
+        content="Your premium learning hub for Backend, Go, Python, Cybersecurity, Linux, and Web Development">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        /* ================= HERO SECTION (Homepage Only) ================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-cyan);
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .typewriter {
+            display: inline-block;
+            border-right: 3px solid var(--accent-cyan);
+            animation: blink 0.7s step-end infinite;
+            min-height: 1.2em;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, 10px);
+            }
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 4px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            transform: translateX(-50%);
+            animation: scroll 1.5s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                opacity: 1;
+                top: 8px;
+            }
+
+            100% {
+                opacity: 0;
+                top: 20px;
+            }
+        }
+
+        /* ================= PATHS SECTION ================= */
+        .paths-section {
+            min-height: 100vh;
+            padding: 100px 20px;
+        }
+
+        .paths-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        /* ================= BANNER CARDS ================= */
+        .banner {
+            padding: 28px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    transparent 40%,
+                    rgba(255, 255, 255, 0.03) 50%,
+                    transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0.8s ease;
+        }
+
+        .banner:hover::before {
+            opacity: 1;
+        }
+
+        .banner:hover::after {
+            transform: translateX(100%);
+        }
+
+        .banner:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 25px 50px -15px rgba(0, 0, 0, 0.5),
+                0 0 40px -15px var(--card-accent);
+        }
+
+        .banner[data-accent="cyan"] {
+            --card-accent: var(--accent-cyan);
+        }
+
+        .banner[data-accent="purple"] {
+            --card-accent: var(--accent-purple);
+        }
+
+        .banner[data-accent="pink"] {
+            --card-accent: var(--accent-pink);
+        }
+
+        .banner[data-accent="blue"] {
+            --card-accent: var(--accent-blue);
+        }
+
+        .banner[data-accent="green"] {
+            --card-accent: var(--accent-green);
+        }
+
+        .banner[data-accent="orange"] {
+            --card-accent: var(--accent-orange);
+        }
+
+        .banner-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--card-accent), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 20px -8px var(--card-accent);
+        }
+
+        .banner-content {
+            flex: 1;
+        }
+
+        .banner h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .banner p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ================= QUIZ MODAL ================= */
+        .quiz-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quiz-modal.active {
+            display: flex;
+        }
+
+        .quiz-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .quiz-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .quiz-progress {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .quiz-question {
+            margin-bottom: 24px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .quiz-option.selected {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+            border-color: var(--accent-cyan);
+        }
+
+        .quiz-navigation {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .quiz-navigation button {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .quiz-nav-prev {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .quiz-nav-prev:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .quiz-nav-next {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+        }
+
+        .quiz-nav-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.5);
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .result-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .result-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .result-paths {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .result-path {
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .result-path:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+            transform: translateX(4px);
+        }
+
+        .result-path-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .result-path-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons button {
+                width: 100%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND ELEMENTS -->
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="navbar">
+        <a href="index.html" class="logo">⚡ Tech Hub</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../ca/index.html">CA Hub</a>
+            <a href="#paths">Explore Paths</a>
+            <a href="#" onclick="openQuiz(); return false;">Take Quiz</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Welcome to Your Learning Journey</div>
+            <h1 class="hero-title">
+                <span id="typewriter" class="typewriter"></span>
+            </h1>
+            <p class="hero-description">
+                Not sure where to start? Take our interactive quiz to discover personalized learning paths tailored to
+                your interests, goals, and experience level.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="openQuiz()">✨ Discover Your Path</button>
+                <button class="btn-secondary"
+                    onclick="document.getElementById('paths').scrollIntoView({behavior: 'smooth'})">Browse All
+                    Paths</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- PATHS SECTION -->
+    <section class="paths-section" id="paths">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your Learning Path</h2>
+            <p class="section-subtitle">Explore our curated roadmaps and start mastering new skills today</p>
+        </div>
+
+        <div class="paths-container">
+            <div class="grid">
+
+                <div class="banner" data-accent="cyan" onclick="redirect('backend.html')">
+                    <div class="banner-icon">🔧</div>
+                    <div class="banner-content">
+                        <h3>Backend Development</h3>
+                        <p>Master servers, APIs, databases & system design from first principles</p>
+                    </div>
+                </div>
+
+                <div class="banner" data-accent="blue" onclick="redirect('go.html')">
+                    <div class="banner-icon">🚀</div>
+                    <div class="banner-content">
+                        <h3>Go Programming</h3>
+                        <p>Build high-performance, concurrent applications with Go</p>
+                    </div>
+                </div>
+
+                <div class="banner" data-accent="green" onclick="redirect('python-gui-roadmap.html')">
+                    <div class="banner-icon">🐍</div>
+                    <div class="banner-content">
+                        <h3>Python Mastery</h3>
+                        <p>From basics to OOP and GUI development</p>
+                    </div>
+                </div>
+
+                <div class="banner" data-accent="pink" onclick="redirect('cybersecurity.html')">
+                    <div class="banner-icon">🛡️</div>
+                    <div class="banner-content">
+                        <h3>Cybersecurity</h3>
+                        <p>Security fundamentals, threat analysis & protection strategies</p>
+                    </div>
+                </div>
+
+                <div class="banner" data-accent="orange" onclick="redirect('linux.html')">
+                    <div class="banner-icon">🐧</div>
+                    <div class="banner-content">
+                        <h3>Linux & CLI</h3>
+                        <p>Command line mastery, scripting & system fundamentals</p>
+                    </div>
+                </div>
+
+                <div class="banner" data-accent="purple" onclick="redirect('web-basics.html')">
+                    <div class="banner-icon">🌐</div>
+                    <div class="banner-content">
+                        <h3>Web Fundamentals</h3>
+                        <p>HTML, CSS & JavaScript core concepts</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ MODAL -->
+    <div class="quiz-modal" id="quizModal">
+        <div class="quiz-container">
+            <button class="quiz-close" onclick="closeQuiz()">×</button>
+
+            <div class="quiz-content" id="quizContent">
+                <div class="quiz-header">
+                    <h2 class="quiz-title">Discover Your Path</h2>
+                    <p class="quiz-progress">Question <span id="currentQ">1</span> of <span id="totalQ">5</span></p>
+                </div>
+
+                <div class="quiz-question" id="questionContainer">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="quiz-nav-prev" id="prevBtn" onclick="previousQuestion()" style="display: none;">←
+                        Previous</button>
+                    <button class="quiz-nav-next" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                </div>
+            </div>
+
+            <div class="quiz-result" id="quizResult">
+                <div class="result-icon">🎯</div>
+                <h3 class="result-title">Your Recommended Paths</h3>
+                <p class="result-description">Based on your answers, here are the learning paths we recommend for you:
+                </p>
+                <div class="result-paths" id="resultPaths"></div>
+                <button class="btn-primary" onclick="closeQuiz()">Explore Paths</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>⚡ Learning Hub</h3>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-top: 12px; line-height: 1.6;">
+                    Your comprehensive platform for mastering in-demand tech skills through curated learning paths.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 13px; margin-top: 16px;">
+                    Created by <strong style="color: var(--accent-cyan);">Samarth HS</strong>
+                </p>
+                <div style="display: flex; gap: 16px; margin-top: 12px; align-items: center;">
+                    <a href="mailto:samarth@skilledca.in"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.color='var(--accent-cyan)'"
+                        onmouseout="this.style.color='var(--text-secondary)'">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Email
+                    </a>
+                    <span style="color: var(--glass-border);">•</span>
+                    <a href="https://www.linkedin.com/in/samarth-hs" target="_blank"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.color='var(--accent-cyan)'"
+                        onmouseout="this.style.color='var(--text-secondary)'">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Learning Paths</h3>
+                <div class="footer-links">
+                    <a href="backend.html">Backend Development</a>
+                    <a href="go.html">Go Programming</a>
+                    <a href="python-gui-roadmap.html">Python Mastery</a>
+                    <a href="cybersecurity.html">Cybersecurity</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <div class="footer-links">
+                    <a href="linux.html">Linux & CLI</a>
+                    <a href="web-basics.html">Web Fundamentals</a>
+                    <a href="cmd-snippets.html">CMD Snippets</a>
+                    <a href="#" onclick="openQuiz(); return false;">Take Quiz</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Learning Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        // ================= TYPEWRITER EFFECT =================
+        const phrases = [
+            "Discover Your Path",
+            "Master New Skills",
+            "Build Your Future",
+            "Start Learning Today"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typewriterElement = document.getElementById('typewriter');
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typewriter on load
+        document.addEventListener('DOMContentLoaded', typeWriter);
+
+        // ================= QUIZ FUNCTIONALITY =================
+        const questions = [
+            {
+                question: "What's your current programming experience?",
+                options: [
+                    { text: "Complete beginner", value: "beginner" },
+                    { text: "Some basics", value: "intermediate" },
+                    { text: "Experienced programmer", value: "advanced" }
+                ]
+            },
+            {
+                question: "What interests you most?",
+                options: [
+                    { text: "Building websites & web apps", value: "web" },
+                    { text: "Creating desktop applications", value: "desktop" },
+                    { text: "Server-side & databases", value: "backend" },
+                    { text: "Security & hacking", value: "security" },
+                    { text: "System administration", value: "sysadmin" }
+                ]
+            },
+            {
+                question: "What's your primary goal?",
+                options: [
+                    { text: "Get a job as a developer", value: "career" },
+                    { text: "Build my own projects", value: "projects" },
+                    { text: "Learn for fun", value: "hobby" },
+                    { text: "Switch careers", value: "switch" }
+                ]
+            },
+            {
+                question: "How do you prefer to learn?",
+                options: [
+                    { text: "Video tutorials", value: "video" },
+                    { text: "Reading documentation", value: "reading" },
+                    { text: "Hands-on projects", value: "practice" },
+                    { text: "Mix of everything", value: "mixed" }
+                ]
+            },
+            {
+                question: "What's your time commitment?",
+                options: [
+                    { text: "A few hours per week", value: "parttime" },
+                    { text: "Several hours daily", value: "regular" },
+                    { text: "Full-time learning", value: "fulltime" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+
+        function openQuiz() {
+            document.getElementById('quizModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetQuiz();
+            renderQuestion();
+        }
+
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            answers = {};
+            document.getElementById('quizContent').style.display = 'block';
+            document.getElementById('quizResult').style.display = 'none';
+        }
+
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            const container = document.getElementById('questionContainer');
+
+            document.getElementById('currentQ').textContent = currentQuestion + 1;
+            document.getElementById('totalQ').textContent = questions.length;
+
+            container.innerHTML = `
+        <div class="question-text">${question.question}</div>
+        <div class="quiz-options">
+            ${question.options.map((option, index) => `
+                <div class="quiz-option" data-value="${option.value}" onclick="selectOption(this)">
+                    ${option.text}
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+            // Show/hide navigation buttons
+            document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'block' : 'none';
+            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? 'See Results' : 'Next →';
+        }
+
+        function selectOption(element) {
+            // Remove previous selection
+            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+            // Mark new selection
+            element.classList.add('selected');
+            // Store answer
+            answers[currentQuestion] = element.getAttribute('data-value');
+        }
+
+        function nextQuestion() {
+            if (!answers[currentQuestion]) {
+                alert('Please select an option before continuing');
+                return;
+            }
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            const recommendations = getRecommendations(answers);
+            const resultContainer = document.getElementById('resultPaths');
+
+            resultContainer.innerHTML = recommendations.map(path => `
+        <a href="${path.url}" class="result-path">
+            <div class="result-path-title">${path.icon} ${path.title}</div>
+            <div class="result-path-desc">${path.description}</div>
+        </a>
+    `).join('');
+
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'block';
+        }
+
+        function getRecommendations(answers) {
+            const paths = [];
+            const experience = answers[0];
+            const interest = answers[1];
+
+            // Recommend based on interests
+            if (interest === 'web') {
+                paths.push({
+                    icon: '🌐',
+                    title: 'Web Fundamentals',
+                    description: 'Start with HTML, CSS & JavaScript basics',
+                    url: 'web-basics.html'
+                });
+                if (experience !== 'beginner') {
+                    paths.push({
+                        icon: '🔧',
+                        title: 'Backend Development',
+                        description: 'Learn server-side programming and APIs',
+                        url: 'backend.html'
+                    });
+                }
+            }
+
+            if (interest === 'desktop') {
+                paths.push({
+                    icon: '🐍',
+                    title: 'Python Mastery',
+                    description: 'Perfect for GUI applications',
+                    url: 'python-gui-roadmap.html'
+                });
+            }
+
+            if (interest === 'backend') {
+                paths.push({
+                    icon: '🔧',
+                    title: 'Backend Development',
+                    description: 'Master server-side architecture',
+                    url: 'backend.html'
+                });
+                paths.push({
+                    icon: '🚀',
+                    title: 'Go Programming',
+                    description: 'Build high-performance backend systems',
+                    url: 'go.html'
+                });
+            }
+
+            if (interest === 'security') {
+                paths.push({
+                    icon: '🛡️',
+                    title: 'Cybersecurity',
+                    description: 'Learn ethical hacking and security',
+                    url: 'cybersecurity.html'
+                });
+                paths.push({
+                    icon: '🐧',
+                    title: 'Linux & CLI',
+                    description: 'Essential for security professionals',
+                    url: 'linux.html'
+                });
+            }
+
+            if (interest === 'sysadmin') {
+                paths.push({
+                    icon: '🐧',
+                    title: 'Linux & CLI',
+                    description: 'Master system administration',
+                    url: 'linux.html'
+                });
+            }
+
+            // If beginner, always suggest fundamentals
+            if (experience === 'beginner' && !paths.some(p => p.url === 'web-basics.html')) {
+                paths.unshift({
+                    icon: '🌐',
+                    title: 'Web Fundamentals',
+                    description: 'Great starting point for beginners',
+                    url: 'web-basics.html'
+                });
+            }
+
+            // Ensure at least 2 recommendations
+            if (paths.length < 2) {
+                if (!paths.some(p => p.url === 'python-gui-roadmap.html')) {
+                    paths.push({
+                        icon: '🐍',
+                        title: 'Python Mastery',
+                        description: 'Versatile language for many applications',
+                        url: 'python-gui-roadmap.html'
+                    });
+                }
+            }
+
+            return paths.slice(0, 3); // Return top 3 recommendations
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('quizModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeQuiz();
+            }
+        });
+    </script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <!-- Web3Forms Access Key - Get yours free at https://web3forms.com -->
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from Learning Hub">
+                    <input type="hidden" name="from_name" value="Learning Hub Contact Form">
+
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
