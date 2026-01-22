@@ -69,4 +69,40 @@ git remote -v
 4. **`git remote set-url`** is the cleanest way to switch destinations.
 
 ---
+---
 *Created for SkilledCA Learning Hub*
+
+---
+
+# 📝 Part 2: Daily Workflow (Safe Practice)
+
+After the incident, we established this standard routine for saving work.
+
+## 1. Stage Changes
+We tell Git which files to track updates for.
+```bash
+git add .
+```
+*   **`.` (Dot)**: Means "everything in the current folder".
+
+## 2. Commit (Save Locally)
+We save a snapshot of the changes with a clear message.
+```bash
+git commit -m "Feat: Add Google Sheets backend to feedback form"
+```
+*   **`-m`**: Stands for "message". ALWAYS write a clear message describing *what* and *why*.
+
+## 3. Push (Upload to Cloud)
+We upload our local commits to GitHub.
+```bash
+git push origin main
+```
+*   `origin`: The nickname for our remote repo (GitHub).
+*   `main`: The branch we are working on.
+
+## 💡 Pro Tip: Status Check
+If you're ever unsure what's going on, run:
+```bash
+git status
+```
+It tells you what files are changed, what's staged, and what branch you're on. It's your compass! 🧭

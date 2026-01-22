@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Shortcuts for CAs | CA Hub</title>
+    <meta name="description"
+        content="Essential Excel shortcuts for Chartered Accountants. Master speed and efficiency.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        /* ================= TABLE STYLES ================= */
+        .shortcuts-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .search-icon {
+            font-size: 20px;
+            color: var(--text-secondary);
+        }
+
+        .category-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tag.active,
+        .tag:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .shortcut-group {
+            margin-bottom: 40px;
+        }
+
+        .group-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-green);
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .shortcut-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shortcut-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .key-combo {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .action-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .copy-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 12px;
+            color: var(--accent-cyan);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .shortcut-card:hover .copy-hint {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BACKGROUND -->
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <a href="index.html" class="logo">⚡ CA Hub</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../tech/index.html">Tech Hub</a>
+            <a href="../forms/index.html">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <div class="shortcuts-container">
+            <div class="page-header">
+                <div class="page-icon" style="background: linear-gradient(135deg, #10b981, rgba(16, 185, 129, 0.3));">📊
+                </div>
+                <h1>Excel Master Shortcuts</h1>
+                <p class="page-subtitle">Speed up your audits and analysis with these essential keys.</p>
+            </div>
+
+            <!-- Search Area -->
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input"
+                    placeholder="Search shortcuts (e.g., 'pivot', 'paste', 'filter')..." id="searchInput">
+            </div>
+
+            <!-- Filters -->
+            <div class="category-tags">
+                <div class="tag active" data-filter="all">All</div>
+                <div class="tag" data-filter="navigation">Navigation</div>
+                <div class="tag" data-filter="formatting">Formatting</div>
+                <div class="tag" data-filter="data">Data Analysis</div>
+                <div class="tag" data-filter="audit">Auditing</div>
+            </div>
+
+            <!-- SHORTCUTS LIST -->
+            <div id="shortcutsList">
+
+                <!-- Group: Navigation -->
+                <div class="shortcut-group" data-category="navigation">
+                    <div class="group-title">🚀 Navigation Speed</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Arrow</span>
+                            </div>
+                            <div class="action-text">Jump to edge of data region</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">PgUp/Dn</span>
+                            </div>
+                            <div class="action-text">Switch between worksheets</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Home</span>
+                            </div>
+                            <div class="action-text">Go to cell A1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Formatting -->
+                <div class="shortcut-group" data-category="formatting">
+                    <div class="group-title">✨ Formatting</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">1</span>
+                            </div>
+                            <div class="action-text">Open Format Cells dialog</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">!</span>
+                            </div>
+                            <div class="action-text">Apply Number format (2 decimals)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">B</span>
+                                <span class="kbd">A</span>
+                            </div>
+                            <div class="action-text">Add All Borders</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Data -->
+                <div class="shortcut-group" data-category="data">
+                    <div class="group-title">📉 Data & Analysis</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">N</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">T</span>
+                            </div>
+                            <div class="action-text">Insert Pivot Table</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">L</span>
+                            </div>
+                            <div class="action-text">Toggle Filters</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">=</span>
+                            </div>
+                            <div class="action-text">AutoSum</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Audit -->
+                <div class="shortcut-group" data-category="audit">
+                    <div class="group-title">🕵️ Auditing</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">[</span>
+                            </div>
+                            <div class="action-text">Trace Precedents (Go to source)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">F2</span>
+                            </div>
+                            <div class="action-text">Edit Active Cell</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">`</span>
+                            </div>
+                            <div class="action-text">Show Formulas</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="back-section">
+                <a href="index.html" class="back-btn">← Back to CA Hub</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Simple client-side search and filtering
+        const searchInput = document.getElementById('searchInput');
+        const filterTags = document.querySelectorAll('.tag');
+        const groups = document.querySelectorAll('.shortcut-group');
+        const cards = document.querySelectorAll('.shortcut-card');
+
+        // Filter Click
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active class from all
+                filterTags.forEach(t => t.classList.remove('active'));
+                // Add to clicked
+                tag.classList.add('active');
+
+                const filter = tag.dataset.filter;
+
+                groups.forEach(group => {
+                    if (filter === 'all' || group.dataset.category === filter) {
+                        group.style.display = 'block';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(term)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
