@@ -1,3 +1,4 @@
+[comment]: # (Updated: 2026-01-22)
 # 🎓 Git Real-World Safety Tutorial
 *Based on the "SkilledCA" Migration Incident (Jan 2026)*
 

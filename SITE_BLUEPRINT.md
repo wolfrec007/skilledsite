@@ -1,3 +1,4 @@
+[comment]: # (Updated: 2026-01-22)
 # 🏗️ SkilledCA Site Blueprint
 *Current Architecture as of Jan 22, 2026*
 

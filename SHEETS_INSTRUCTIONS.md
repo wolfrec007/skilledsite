@@ -1,3 +1,4 @@
+[comment]: # (Updated: 2026-01-22)
 # 📊 Google Sheets Feedback Setup Guide
 
 Follow these steps to connect your skilledca form to a Google Sheet.

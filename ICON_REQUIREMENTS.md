@@ -1,3 +1,4 @@
+[comment]: # (Updated: 2026-01-22)
 # Icon & Asset Requirements
 
 ## Recommended Source
