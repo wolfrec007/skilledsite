@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<!-- Updated: 2026-01-22 -->
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,12 +51,12 @@
             font-weight: 600;
             margin-bottom: 30px;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .back-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .category {
@@ -62,7 +64,7 @@
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .category h2 {
@@ -113,7 +115,7 @@
 
         .copy-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .copy-btn.copied {
@@ -156,10 +158,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <a href="/" class="back-btn">← Back to Home</a>
-        
+
         <div class="header">
             <h1>CMD Command Snippets</h1>
             <p>Useful Windows Command Line utilities for file management</p>
@@ -167,7 +170,7 @@
 
         <div class="category">
             <h2>📂 Finding Files</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">Search for files recursively</span>
@@ -195,7 +198,7 @@
 
         <div class="category">
             <h2>📋 Copying Files</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">Copy all JPGs to backup folder</span>
@@ -223,7 +226,7 @@
 
         <div class="category">
             <h2>✏️ Renaming Files</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">Change file extension</span>
@@ -243,7 +246,7 @@
 
         <div class="category">
             <h2>🗑️ Deleting Files</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">Delete temp files quietly</span>
@@ -271,7 +274,7 @@
 
         <div class="category">
             <h2>🗂️ Organizing Files</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">Sort files by extension into folders</span>
@@ -291,7 +294,7 @@
 
         <div class="category">
             <h2>⚙️ Batch Operations</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">List files to text file</span>
@@ -319,7 +322,7 @@
 
         <div class="category">
             <h2>🔧 Useful Combinations</h2>
-            
+
             <div class="snippet">
                 <div class="snippet-header">
                     <span class="snippet-desc">Export PDF list to file</span>
@@ -350,12 +353,12 @@
         function copyCode(button, elementId) {
             const codeBlock = document.getElementById(elementId);
             const text = codeBlock.textContent;
-            
+
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = button.textContent;
                 button.textContent = '✓ Copied!';
                 button.classList.add('copied');
-                
+
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.classList.remove('copied');
@@ -370,4 +373,5 @@
         }
     </script>
 </body>
+
 </html>
