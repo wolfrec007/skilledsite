@@ -215,6 +215,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-label" for="email">Your Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com"
+                        required>
+                </div>
+
+                <div class="form-group">
                     <label class="form-label">I am a...</label>
                     <select name="role" class="form-input" required style="background-image: none;">
                         <option value="" disabled selected style="background: #12121a;">Select your role</option>
@@ -247,6 +253,19 @@
                             <input type="radio" name="interest" value="both" required style="margin-right: 6px;"> Both
                         </label>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="learning_goals">What do you hope to learn?</label>
+                    <textarea id="learning_goals" name="learning_goals" class="form-textarea"
+                        placeholder="e.g., Master Excel formulas, Learn Python basics, etc." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="difficulties">What challenges are you currently facing?</label>
+                    <textarea id="difficulties" name="difficulties" class="form-textarea"
+                        placeholder="e.g., Finding time to study, Understanding complex concepts, etc."
+                        required></textarea>
                 </div>
 
                 <div class="form-group">
@@ -338,7 +357,7 @@
 
             // Your Google Apps Script URL will go here
             // INSTRUCTIONS: Replace this URL with your deployed Web App URL
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmZ02qMuPDygaYupwV8NIyopLDzZLTYYhOvLiCh6o8FUOm1xfyXHXhe9GLRvvNE3-aGw/exec';
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzp_KfjhoBXHKcFbRkJA8uns_AqOgJidysOXdNVTAdyaXsKqzFv_JXcS42rru8nW3mR_g/exec';
 
             // Disable button and show loading state
             submitBtn.disabled = true;
