@@ -235,6 +235,8 @@
                 <div class="tag" data-filter="fico">FICO (Finance)</div>
                 <div class="tag" data-filter="audit">Audit & Reports</div>
                 <div class="tag" data-filter="mm">MM/SD (Procurement)</div>
+                <div class="tag" data-filter="rectification"
+                    style="border-color: var(--accent-red); color: var(--accent-red);">Rectification (Reversals)</div>
             </div>
 
             <!-- SECTION: ESSENTIAL CONCEPTS (TOP) -->
@@ -556,6 +558,42 @@
                     </div>
                 </div>
 
+                <!-- Group: Rectification & Reversals -->
+                <div class="shortcut-group" data-category="rectification">
+                    <div class="group-title" style="color: var(--accent-red);">⚠️ Reversals & Rectification</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card" style="border-color: rgba(248, 113, 113, 0.3);">
+                            <div class="key-combo">
+                                <span class="kbd">FB08</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Reverse Individual Document (Correcting Entry)</div>
+                        </div>
+                        <div class="shortcut-card" style="border-color: rgba(248, 113, 113, 0.3);">
+                            <div class="key-combo">
+                                <span class="kbd">F.80</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Mass Reversal (Reverse multiple docs at once)</div>
+                        </div>
+                        <div class="shortcut-card" style="border-color: rgba(248, 113, 113, 0.3);">
+                            <div class="key-combo">
+                                <span class="kbd">FBRA</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Reset Cleared Items (Break the link between Invoice & Payment)
+                            </div>
+                        </div>
+                        <div class="shortcut-card" style="border-color: rgba(248, 113, 113, 0.3);">
+                            <div class="key-combo">
+                                <span class="kbd">KB61</span>
+                                <span class="module-badge module-co">CO</span>
+                            </div>
+                            <div class="action-text">Repost CO Line Items (Fix Cost Center allocation errors)</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Group: Tax & GST -->
                 <div class="shortcut-group" data-category="audit">
                     <div class="group-title">🇮🇳 Tax & GST (India)</div>
@@ -736,11 +774,7 @@
             <div class="back-section"
                 style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
                 <div style="display: flex; gap: 16px; align-items: center;">
-                    <a href="index" class="back-btn">← Back to CA Hub</a>
-                    <button class="btn-secondary" style="font-size: 14px; opacity: 0.7; cursor: not-allowed;"
-                        title="Coming Soon">
-                        🔧 Rectification Filter (Soon)
-                    </button>
+                    <a href="./" class="back-btn">← Back to CA Hub</a>
                 </div>
                 <button class="download-pdf-btn" onclick="openDownloadModal({
                     resourceName: 'SAP Master Cheat Sheet',
