@@ -28,7 +28,7 @@ function getHomeUrl() {
     if (window.location.pathname.includes('/forms/')) {
         return isLocal ? '../index.html' : '../';
     }
-    return isLocal ? 'index.html' : 'index';
+    return isLocal ? 'index.html' : './';
 }
 
 /**
