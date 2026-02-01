@@ -1,6 +1,6 @@
-[comment]: # (Updated: 2026-01-22)
+[comment]: # (Updated: 2026-01-31)
 # 🏗️ SkilledCA Site Blueprint
-*Current Architecture as of Jan 22, 2026*
+*Current Architecture as of Jan 31, 2026*
 
 This blueprint documents the current file structure, navigation flow, and key components of the SkilledCA website.
 
@@ -8,21 +8,31 @@ This blueprint documents the current file structure, navigation flow, and key co
 ```
 skilledca.in/
 ├── index.html                  # 🏠 Main Dynamic Homepage (Entry Point)
+├── privacy.html                # 🔒 Privacy Policy Page
+├── terms.html                  # 📜 Terms of Service Page
+├── cmd_snippet_widget.html     # 🔧 CMD Snippet Widget (Standalone)
 ├── ICON_REQUIREMENTS.md        # 📋 Icon naming & download guide
 ├── GIT_TUTORIAL.md             # 🎓 Git safety & rollback guide
+├── SHEETS_INSTRUCTIONS.md      # 📊 Google Sheets integration guide
+├── SITE_BLUEPRINT.md           # 🏗️ This file - Site structure docs
 │
 ├── tech/                       # 💻 Tech Hub Section
 │   ├── index.html              # Tech Hub Landing Page
 │   ├── backend.html            # Backend Path
 │   ├── go.html                 # Go Path
-│   ├── python-gui-roadmap.html # Python Path
+│   ├── python-gui-roadmap.html # Python GUI Roadmap
+│   ├── python-scripting.html   # Python Scripting Tutorials
+│   ├── python-beginner-content.js    # Python Beginner Content Data
+│   ├── python-tutorials-content.js   # Python Tutorials Content Data
 │   ├── cybersecurity.html      # Security Path
 │   ├── linux.html              # Linux Path
 │   ├── web-basics.html         # Web Dev Path
 │   └── cmd-snippets.html       # CMD Reference
 │
 ├── ca/                         # 📊 CA Hub Section
-│   └── index.html              # CA Hub Landing Page (Coming Soon)
+│   ├── index.html              # CA Hub Landing Page
+│   ├── excel-shortcuts.html    # Excel Shortcuts Reference
+│   └── thank-you.html          # Download Thank You Page
 │
 ├── forms/                      # 📝 Forms Module
 │   └── index.html              # Feedback Form
@@ -31,7 +41,8 @@ skilledca.in/
 │   └── main.css                # Global CSS (Theme, Layout, Responsive)
 │
 ├── scripts/                    # ⚙️ Shared Logic
-│   └── main.js                 # Global JS (Modals, Animations)
+│   ├── main.js                 # Global JS (Modals, Animations)
+│   └── download-system.js      # Reusable PDF Download with Lead Capture
 │
 └── assets/                     # 🖼️ Static Assets
     └── favicon.svg             # Site Icon

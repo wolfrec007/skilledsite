@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!-- Created: 2026-02-01 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Resources for CAs | CA Hub</title>
+    <meta name="description"
+        content="Essential SAP T-Codes and resources for Chartered Accountants. Master FICO, Audit, and MM/SD modules.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        /* ================= TABLE STYLES ================= */
+        .shortcuts-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .search-icon {
+            font-size: 20px;
+            color: var(--text-secondary);
+        }
+
+        .category-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tag.active,
+        .tag:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .shortcut-group {
+            margin-bottom: 40px;
+        }
+
+        .group-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-green);
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .shortcut-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shortcut-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .key-combo {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .action-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Module Badges */
+        .module-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: auto;
+            text-transform: uppercase;
+        }
+
+        .module-fi {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        /* Blue */
+        .module-co {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        /* Green */
+        .module-mm {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        /* Amber */
+        .module-sd {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        /* Red */
+
+        /* Download Button Styles */
+        .download-pdf-btn {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-pdf-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BACKGROUND -->
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <a href="index" class="logo">⚡ CA Hub</a>
+        <div class="nav-links">
+            <a href="../">Home</a>
+            <a href="../tech/">Tech Hub</a>
+            <a href="../forms/">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <div class="shortcuts-container">
+            <div class="page-header">
+                <div class="page-icon" style="background: linear-gradient(135deg, #fbbf24, rgba(251, 191, 36, 0.3));">🟡
+                </div>
+                <h1>SAP Resources for CAs</h1>
+                <p class="page-subtitle">Master essential T-Codes for FICO, Audit, and more.</p>
+            </div>
+
+            <!-- Search Area -->
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input"
+                    placeholder="Search T-Codes (e.g., 'FBL3N', 'create vendor', 'trial balance')..." id="searchInput">
+            </div>
+
+            <!-- Filters -->
+            <div class="category-tags">
+                <div class="tag active" data-filter="all">All</div>
+                <div class="tag" data-filter="navigation">Navigation</div>
+                <div class="tag" data-filter="fico">FICO (Finance)</div>
+                <div class="tag" data-filter="audit">Audit & Reports</div>
+                <div class="tag" data-filter="mm">MM/SD (Procurement)</div>
+            </div>
+
+            <!-- SECTION: ESSENTIAL CONCEPTS (TOP) -->
+            <div class="shortcut-group" style="margin-bottom: 50px;">
+                <div class="group-title" style="color: var(--accent-cyan); font-size: 24px;">🎓 SAP Fundamentals for
+                    Auditors</div>
+                <div class="shortcuts-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+
+                    <!-- Posting Keys -->
+                    <div class="shortcut-card" style="border-color: var(--accent-cyan);">
+                        <div class="key-combo">
+                            <span class="module-badge module-fi">POSTING KEYS (PK)</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>The DNA of a Transaction:</strong><br>
+                            PKs determine (1) Debit/Credit and (2) Field Status (what's required).
+                            <div
+                                style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 14px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px;">
+                                <div>
+                                    <strong style="color: #60a5fa;">G/L Accounts:</strong><br>
+                                    • <strong>40</strong>: Debit<br>
+                                    • <strong>50</strong>: Credit
+                                </div>
+                                <div>
+                                    <strong style="color: #f87171;">Vendor (K):</strong><br>
+                                    • <strong>31</strong>: Invoice (Cr)<br>
+                                    • <strong>25</strong>: Payment (Dr)
+                                </div>
+                                <div>
+                                    <strong style="color: #34d399;">Customer (D):</strong><br>
+                                    • <strong>01</strong>: Invoice (Dr)<br>
+                                    • <strong>15</strong>: Payment (Cr)
+                                </div>
+                                <div>
+                                    <strong style="color: #fbbf24;">Asset (A):</strong><br>
+                                    • <strong>70</strong>: Debit<br>
+                                    • <strong>75</strong>: Credit
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Master Data Fields -->
+                    <div class="shortcut-card" style="border-color: var(--accent-purple);">
+                        <div class="key-combo">
+                            <span class="module-badge module-co">CRITICAL FIELDS</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Decode the Document:</strong>
+                            <ul
+                                style="margin-top: 8px; padding-left: 20px; color: var(--text-secondary); line-height: 1.6;">
+                                <li><strong>Cost Center (KOSTL):</strong> Where the money is <em>spent</em>
+                                    (Department/Unit).</li>
+                                <li><strong>Profit Center (PRCTR):</strong> Where revenue is <em>earned</em> (Segment
+                                    reporting).</li>
+                                <li><strong>Assignment (ZUONR):</strong> Sorting key. For GR/IR, it's often the PO
+                                    Number.</li>
+                                <li><strong>Text (SGTXT):</strong> The narration or line item remark.</li>
+                                <li><strong>Reference (XBLNR):</strong> Vendor's Invoice Number (Crucial for duplicate
+                                    checks).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Custom T-Codes & Tables -->
+                    <div class="shortcut-card" style="grid-column: span 1 / -1;">
+                        <div class="key-combo">
+                            <span class="module-badge module-mm">T-CODE HACKING</span>
+                        </div>
+                        <div class="action-text">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                                <div>
+                                    <strong>Identifying Custom Reports:</strong><br>
+                                    Standard SAP codes are 4 characters (e.g., FB60).<br>
+                                    Custom codes <strong>ALWAYS</strong> start with <strong>'Z'</strong> or
+                                    <strong>'Y'</strong> (e.g., <em>Z_PO_REGISTER</em>).
+                                    These are tailored to your company's implementation.
+                                </div>
+                                <div style="border-left: 1px solid var(--glass-border); padding-left: 24px;">
+                                    <strong>How to Extract ALL T-Codes:</strong><br>
+                                    1. Go to table <strong>TSTC</strong> (SE16N > TSTC) for a global list.<br>
+                                    2. Use table <strong>AGR_TCODES</strong> to see T-Codes assigned to specific
+                                    <em>Roles</em>.<br>
+                                    3. <em>Tip:</em> In any menu, enable Extras > Settings > "Display Technical Names".
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SHORTCUTS LIST -->
+            <div id="shortcutsList">
+
+                <!-- Group: Navigation -->
+                <div class="shortcut-group" data-category="navigation">
+                    <div class="group-title">🚀 Navigation</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">/n</span>
+                            </div>
+                            <div class="action-text">Exit current transaction and return to start</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">/o</span>
+                            </div>
+                            <div class="action-text">Open new session</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">/n[T-Code]</span>
+                            </div>
+                            <div class="action-text">End current session and start new T-Code immediately<br>(e.g.,
+                                /nFBL3N)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">/o[T-Code]</span>
+                            </div>
+                            <div class="action-text">Open T-Code in a new window/session</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">/nex</span>
+                            </div>
+                            <div class="action-text">Log off from system immediately (No confirmation)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: FICO -->
+                <div class="shortcut-group" data-category="fico">
+                    <div class="group-title">💰 Finance & Controlling (FICO)</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FS00</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">G/L Account Master Record Maintenance</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FB50</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Enter G/L Account Document</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FB60</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Enter Vendor Invoice</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FB70</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Enter Customer Invoice</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">F-53</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Post Outgoing Payment</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">F-28</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Post Incoming Payment</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">AS01</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Create Asset Master Record</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Audit Reports -->
+                <div class="shortcut-group" data-category="audit">
+                    <div class="group-title">🔍 Audit & Reports</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FBL3N</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">G/L Account Line Items (Ledger Scrutiny)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FBL1N</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Vendor Line Items</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FBL5N</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Customer Line Items</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">F.01</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Financial Statements (Balance Sheet / P&L)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FS10N</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">G/L Account Balance Display</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">SE16N</span>
+                                <span class="module-badge module-co">TECH</span>
+                            </div>
+                            <div class="action-text">General Table Display (View raw data tables like BKPF, BSEG)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">S_ALR_87012178</span>
+                            </div>
+                            <div class="action-text">Customer Open Item Analysis (Ageing)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: MM/SD -->
+                <div class="shortcut-group" data-category="mm">
+                    <div class="group-title">📦 MM & SD (Procurement/Sales)</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">ME23N</span>
+                                <span class="module-badge module-mm">MM</span>
+                            </div>
+                            <div class="action-text">Display Purchase Order</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">MIGO</span>
+                                <span class="module-badge module-mm">MM</span>
+                            </div>
+                            <div class="action-text">Goods Movement (GRN entry)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">MIRO</span>
+                                <span class="module-badge module-mm">MM</span>
+                            </div>
+                            <div class="action-text">Enter Incoming Invoice (Logistics Verification)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">VA03</span>
+                                <span class="module-badge module-sd">SD</span>
+                            </div>
+                            <div class="action-text">Display Sales Order</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">VF03</span>
+                                <span class="module-badge module-sd">SD</span>
+                            </div>
+                            <div class="action-text">Display Billing Document</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">XK03</span>
+                                <span class="module-badge module-mm">MM</span>
+                            </div>
+                            <div class="action-text">Display Vendor (Central)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">XD03</span>
+                                <span class="module-badge module-sd">SD</span>
+                            </div>
+                            <div class="action-text">Display Customer (Central)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Asset Accounting -->
+                <div class="shortcut-group" data-category="fico">
+                    <div class="group-title">🏢 Asset Accounting</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">AW01N</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Asset Explorer (Complete Asset History & Values)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">AS01</span>
+                                <span class="module-badge module-fi">FI</span>
+                            </div>
+                            <div class="action-text">Create Asset Master</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Tax & GST -->
+                <div class="shortcut-group" data-category="audit">
+                    <div class="group-title">🇮🇳 Tax & GST (India)</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">FTXP</span>
+                                <span class="module-badge module-fi">CO</span>
+                            </div>
+                            <div class="action-text">Maintain Tax Codes</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">VK11</span>
+                                <span class="module-badge module-sd">SD</span>
+                            </div>
+                            <div class="action-text">Maintain Condition Records (GST Rates)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">J1IG*</span>
+                            </div>
+                            <div class="action-text">GST Transaction Series (e.g., J1IG_INWARD)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group: Period End -->
+                <div class="shortcut-group" data-category="audit">
+                    <div class="group-title">📅 Period End & Tables</div>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">OB52</span>
+                            </div>
+                            <div class="action-text">Open/Close Posting Periods (Critical for Audits)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">BKPF</span>
+                            </div>
+                            <div class="action-text">Accounting Document Header Table</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">BSEG</span>
+                            </div>
+                            <div class="action-text">Accounting Document Segment Table (Line Items)</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SECTION: PRO TIPS & EXECUTION GUIDE -->
+            <div class="shortcut-group" data-category="tips"
+                style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--glass-border);">
+                <div class="group-title">💡 Pro Execution Tips</div>
+                <div class="shortcuts-grid">
+
+                    <!-- Execution -->
+                    <div class="shortcut-card"
+                        style="background: rgba(16, 185, 129, 0.05); border-color: var(--accent-green);">
+                        <div class="key-combo">
+                            <span class="kbd">F8</span>
+                            <span class="module-badge"
+                                style="background: transparent; color: var(--text-primary);">EXECUTE</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>The "Run" Button:</strong><br>
+                            Always press <strong>F8</strong> to execute a report after filling your filters.
+                        </div>
+                    </div>
+
+                    <!-- Background Jobs -->
+                    <div class="shortcut-card">
+                        <div class="key-combo">
+                            <span class="kbd">F9</span> <span class="action-text">or Menu > Program</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Run in Background:</strong><br>
+                            1. Menu > Program > Execute in Background.<br>
+                            2. Check status in <strong>SM37</strong>.<br>
+                            3. View results in <strong>SP01</strong> (Spool).
+                        </div>
+                    </div>
+
+                    <!-- Exporting -->
+                    <div class="shortcut-card">
+                        <div class="key-combo">
+                            <span class="module-badge module-mm">EXPORT</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Exporting to Excel:</strong><br>
+                            • <strong>List Display:</strong> System > List > Save > Local File > Spreadsheet.<br>
+                            • <strong>ALV Grid:</strong> Click the "Excel" icon in the toolbar.
+                        </div>
+                    </div>
+
+                    <!-- Cleaning -->
+                    <div class="shortcut-card">
+                        <div class="key-combo">
+                            <span class="module-badge module-sd">EXCEL CLEANING</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Text to Columns:</strong><br>
+                            Select Column A > Data Tab > Text to Columns > Delimited > Finish.<br>
+                            <em>Fixes SAP's tendency to paste everything in one cell.</em>
+                        </div>
+                    </div>
+
+                    <!-- Variants -->
+                    <div class="shortcut-card">
+                        <div class="key-combo">
+                            <span class="kbd">Ctrl</span> <span class="kbd">S</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Save Variant:</strong><br>
+                            Save your filter settings (e.g., "Monthly Audit Filter") to reuse them later.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- SECTION: ADVANCED CONNECTIVITY GUIDE -->
+            <div class="shortcut-group" data-category="connect"
+                style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--glass-border);">
+                <div class="group-title">🔌 Connect SAP to External Tools</div>
+                <div class="shortcuts-grid">
+
+                    <!-- Power Query -->
+                    <div class="shortcut-card" style="grid-column: span 2;">
+                        <div class="key-combo">
+                            <span class="module-badge module-mm">EXCEL POWER QUERY</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Direct Connection (Get Data):</strong><br>
+                            1. Excel > Data Tab > Get Data > From Other Sources > From SAP HANA/BW.<br>
+                            2. <em>Note:</em> Requires SAP Client drivers installed on your PC.<br>
+                            3. Use <strong>SQVI</strong> (Quick Viewer) to join tables first, then connect to the view.
+                        </div>
+                    </div>
+
+                    <!-- GUI Scripting -->
+                    <div class="shortcut-card">
+                        <div class="key-combo">
+                            <span class="module-badge module-sd">GUI SCRIPTING</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Automation (VBA/Python):</strong><br>
+                            Enable scripting in SAP Options. Record a macro of your report export steps. Use the VBS
+                            code to
+                            automate daily dumps.
+                        </div>
+                    </div>
+
+                    <!-- External References -->
+                    <div class="shortcut-card">
+                        <div class="key-combo">
+                            <span class="module-badge module-fi">RESOURCES</span>
+                        </div>
+                        <div class="action-text">
+                            <strong>Official Guides:</strong><br>
+                            🔗 <a href="https://learn.microsoft.com/en-us/power-query/connectors/sap-hana/"
+                                target="_blank" style="color: var(--accent-cyan);">Microsoft: Connect to SAP
+                                HANA</a><br>
+                            🔗 <a
+                                href="https://help.sap.com/docs/SAP_GUI_FOR_WINDOWS/63bd20104af84112973ad59590645513/77236585144b4da38682de95f64d081b.html"
+                                target="_blank" style="color: var(--accent-cyan);">SAP: GUI Scripting Guide</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="back-section"
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                    <a href="index" class="back-btn">← Back to CA Hub</a>
+                    <button class="btn-secondary" style="font-size: 14px; opacity: 0.7; cursor: not-allowed;"
+                        title="Coming Soon">
+                        🔧 Rectification Filter (Soon)
+                    </button>
+                </div>
+                <button class="download-pdf-btn" onclick="openDownloadModal({
+                    resourceName: 'SAP Master Cheat Sheet',
+                    resourceType: 'PDF Guide',
+                    downloadUrl: '#' // Placeholder until user provides link
+                })">
+                    📥 Download Cheat Sheet
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN MODAL & SCRIPT -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/download-system.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOWNLOAD MODAL (Injected by download-system.js but adding container just in case) -->
+    <!-- Note: download-system.js creates the modal dynamically, so no static HTML needed here -->
+
+    <script>
+        // Simple search filter
+        document.getElementById('searchInput').addEventListener('keyup', function (e) {
+            const term = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.shortcut-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        });
+
+        // Category filter
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', function () {
+                // Remove active class
+                document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-filter');
+                const groups = document.querySelectorAll('.shortcut-group');
+
+                groups.forEach(group => {
+                    if (category === 'all' || group.getAttribute('data-category') === category) {
+                        group.style.display = 'block';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

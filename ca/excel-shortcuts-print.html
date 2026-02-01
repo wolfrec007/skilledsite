@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!-- 
+    Excel Master Shortcuts - Print-Friendly PDF Template
+    Open this file in Chrome, then: Ctrl+P → Save as PDF
+    Author: Samarth @ SkilledCA
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Master Shortcuts | SkilledCA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            line-height: 1.5;
+            padding: 40px;
+            max-width: 210mm;
+            /* A4 width */
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding-bottom: 24px;
+            border-bottom: 3px solid #10b981;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header-contact {
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-align: right;
+            font-size: 11px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .header-contact a {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #10b981;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Section Groups */
+        .section {
+            margin-bottom: 28px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Shortcuts Grid */
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .shortcut {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .keys {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .key {
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #333;
+            font-family: 'Consolas', monospace;
+        }
+
+        .action {
+            color: #495057;
+            font-size: 12px;
+            text-align: right;
+            flex: 1;
+        }
+
+        /* Formula Section */
+        .formula-section {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+        }
+
+        .formula-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 6px;
+        }
+
+        .formula-syntax {
+            font-family: 'Consolas', monospace;
+            background: #dcfce7;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 8px;
+            overflow-x: auto;
+        }
+
+        .formula-desc {
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #10b981;
+            text-align: center;
+        }
+
+        .author-box {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            border: 1px solid #10b981;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .author-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 4px;
+        }
+
+        .author-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .contact-info a {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .copyright {
+            font-size: 11px;
+            color: #888;
+            margin-top: 12px;
+        }
+
+        /* Repeated Watermark Pattern */
+        body::before {
+            /* Create a repeated SVG background for better quality printing */
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='50%25' fill='rgba(16, 185, 129, 0.04)' font-weight='800' font-family='sans-serif' font-size='30' text-anchor='middle' dominant-baseline='middle' transform='rotate(-45 150 150)'%3ESkilledCA.in%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 20px;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .header,
+            .footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            margin: 15mm;
+            size: A4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-contact">
+            📧 <a href="mailto:samarth@skilledca.in">samarth@skilledca.in</a><br>
+            🔗 <a href="https://www.linkedin.com/in/samarth-hs/">LinkedIn Profile</a>
+        </div>
+        <div class="logo">⚡ SkilledCA</div>
+        <h1 class="title">Excel Master Shortcuts</h1>
+        <p class="subtitle">Speed up your audits and analysis with these essential keyboard shortcuts</p>
+    </div>
+
+    <!-- Navigation Speed -->
+    <div class="section">
+        <div class="section-title">🚀 Navigation Speed</div>
+        <div class="shortcuts-grid">
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Home</span></div>
+                <div class="action">Go to cell A1</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">End</span></div>
+                <div class="action">Go to last used cell</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Arrow</span></div>
+                <div class="action">Jump to edge of data</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">G</span></div>
+                <div class="action">Go To dialog</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Page Up</span></div>
+                <div class="action">Previous sheet</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Page Down</span></div>
+                <div class="action">Next sheet</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Space</span></div>
+                <div class="action">Select entire column</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Shift</span><span class="key">Space</span></div>
+                <div class="action">Select entire row</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span class="key">*</span>
+                </div>
+                <div class="action">Select data region</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">A</span></div>
+                <div class="action">Select all cells</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">F</span></div>
+                <div class="action">Find dialog</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">H</span></div>
+                <div class="action">Find & Replace</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formatting -->
+    <div class="section">
+        <div class="section-title">🎨 Formatting</div>
+        <div class="shortcuts-grid">
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">B</span></div>
+                <div class="action">Bold text</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">I</span></div>
+                <div class="action">Italic text</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">U</span></div>
+                <div class="action">Underline text</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">1</span></div>
+                <div class="action">Format Cells dialog</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span class="key">!</span>
+                </div>
+                <div class="action">Number format</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span class="key">$</span>
+                </div>
+                <div class="action">Currency format</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span class="key">%</span>
+                </div>
+                <div class="action">Percentage format</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">D</span></div>
+                <div class="action">Fill Down</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">R</span></div>
+                <div class="action">Fill Right</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">H</span><span class="key">F</span><span
+                        class="key">F</span></div>
+                <div class="action">Change Font</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paste Special -->
+    <div class="section">
+        <div class="section-title">📋 Paste Special</div>
+        <div class="shortcuts-grid">
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Alt</span><span class="key">V</span>
+                </div>
+                <div class="action">Paste Special dialog</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span class="key">V</span>
+                </div>
+                <div class="action">Paste Values (quick)</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">H</span><span class="key">V</span><span
+                        class="key">V</span></div>
+                <div class="action">Paste Values</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">H</span><span class="key">V</span><span
+                        class="key">T</span></div>
+                <div class="action">Paste Formats</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">H</span><span class="key">V</span><span
+                        class="key">F</span></div>
+                <div class="action">Paste Formulas</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">H</span><span class="key">V</span><span
+                        class="key">E</span></div>
+                <div class="action">Paste Transpose</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data & Analysis -->
+    <div class="section">
+        <div class="section-title">📊 Data & Analysis</div>
+        <div class="shortcuts-grid">
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span class="key">L</span>
+                </div>
+                <div class="action">Toggle Filters</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">A</span><span class="key">S</span><span
+                        class="key">S</span></div>
+                <div class="action">Sort A-Z</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">A</span><span class="key">S</span><span
+                        class="key">D</span></div>
+                <div class="action">Sort Z-A</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">N</span><span class="key">V</span><span
+                        class="key">T</span></div>
+                <div class="action">Insert Pivot Table</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">A</span><span class="key">M</span></div>
+                <div class="action">Remove Duplicates</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">D</span><span class="key">F</span><span
+                        class="key">F</span></div>
+                <div class="action">Flash Fill</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">F11</span></div>
+                <div class="action">Quick Chart</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">T</span></div>
+                <div class="action">Create Table</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auditing -->
+    <div class="section">
+        <div class="section-title">🔍 Auditing & Formulas</div>
+        <div class="shortcuts-grid">
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">`</span></div>
+                <div class="action">Show/Hide Formulas</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">F2</span></div>
+                <div class="action">Edit Cell</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">F4</span></div>
+                <div class="action">Toggle $ reference</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">F9</span></div>
+                <div class="action">Recalculate</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">[</span></div>
+                <div class="action">Trace Precedents</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">]</span></div>
+                <div class="action">Trace Dependents</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Ctrl</span><span class="key">Shift</span><span
+                        class="key">Enter</span></div>
+                <div class="action">Array Formula</div>
+            </div>
+            <div class="shortcut">
+                <div class="keys"><span class="key">Alt</span><span class="key">=</span></div>
+                <div class="action">AutoSum</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Essential Formulas -->
+    <div class="section">
+        <div class="section-title">📝 Essential Formulas Reference</div>
+
+        <div class="formula-section">
+            <div class="formula-name">VLOOKUP / XLOOKUP</div>
+            <div class="formula-syntax">=VLOOKUP(lookup_value, table_array, col_index, [range_lookup])</div>
+            <div class="formula-syntax">=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found])</div>
+            <div class="formula-desc">Look up values in a table. XLOOKUP is more flexible and recommended for newer
+                Excel versions.</div>
+        </div>
+
+        <div class="formula-section">
+            <div class="formula-name">INDEX-MATCH (Pro Combo)</div>
+            <div class="formula-syntax">=INDEX(return_range, MATCH(lookup_value, lookup_range, 0))</div>
+            <div class="formula-desc">More powerful than VLOOKUP - can look left, handles insertions/deletions better.
+            </div>
+        </div>
+
+        <div class="formula-section">
+            <div class="formula-name">SUMIFS / COUNTIFS</div>
+            <div class="formula-syntax">=SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2]...)
+            </div>
+            <div class="formula-syntax">=COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2]...)</div>
+            <div class="formula-desc">Sum or count cells that meet multiple conditions.</div>
+        </div>
+
+        <div class="formula-section">
+            <div class="formula-name">MAXIFS / MINIFS</div>
+            <div class="formula-syntax">=MAXIFS(max_range, criteria_range1, criteria1, [criteria_range2, criteria2]...)
+            </div>
+            <div class="formula-desc">Find maximum/minimum values that meet criteria.</div>
+        </div>
+
+        <div class="formula-section">
+            <div class="formula-name">IFERROR (Error Handling)</div>
+            <div class="formula-syntax">=IFERROR(INDEX(range, MATCH(value, lookup, 0)), "Not Found")</div>
+            <div class="formula-desc">Wrap formulas to handle errors gracefully instead of showing #N/A or #REF! errors.
+            </div>
+        </div>
+
+        <div class="formula-section">
+            <div class="formula-name">AGGREGATE (Advanced)</div>
+            <div class="formula-syntax">=AGGREGATE(function_num, options, array)</div>
+            <div class="formula-desc">Powerful function that can ignore errors and hidden rows. Function 14 = LARGE, 15
+                = SMALL, 4 = MAX, 5 = MIN.</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="author-box">
+            <div class="author-name">Samarth</div>
+            <div class="author-title">Founder, SkilledCA | CA & Tech Enthusiast</div>
+            <div class="contact-info">
+                📧 <a href="mailto:samarth@skilledca.in">samarth@skilledca.in</a> &nbsp;|&nbsp;
+                🌐 <a href="https://skilledca.in">skilledca.in</a>
+            </div>
+        </div>
+        <p class="copyright">© 2026 SkilledCA. Empowering professionals with practical skills.</p>
+    </div>
+</body>
+
+</html>

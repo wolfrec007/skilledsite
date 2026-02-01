@@ -146,6 +146,27 @@
         .shortcut-card:hover .copy-hint {
             opacity: 1;
         }
+
+        /* Download Button Styles */
+        .download-pdf-btn {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-pdf-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
     </style>
 </head>
 
@@ -159,11 +180,11 @@
 
     <!-- NAVIGATION -->
     <nav class="nav">
-        <a href="index.html" class="logo">⚡ CA Hub</a>
+        <a href="index" class="logo">⚡ CA Hub</a>
         <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="../tech/index.html">Tech Hub</a>
-            <a href="../forms/index.html">Feedback</a>
+            <a href="../">Home</a>
+            <a href="../tech/">Tech Hub</a>
+            <a href="../forms/">Feedback</a>
             <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
         </div>
     </nav>
@@ -192,6 +213,7 @@
                 <div class="tag" data-filter="formatting">Formatting</div>
                 <div class="tag" data-filter="data">Data Analysis</div>
                 <div class="tag" data-filter="audit">Auditing</div>
+                <div class="tag" data-filter="formulas">Formulas</div>
             </div>
 
             <!-- SHORTCUTS LIST -->
@@ -221,6 +243,144 @@
                                 <span class="kbd">Home</span>
                             </div>
                             <div class="action-text">Go to cell A1</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">End</span>
+                            </div>
+                            <div class="action-text">Go to last used cell in sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">G</span>
+                            </div>
+                            <div class="action-text">Go To dialog (navigate to cell/range)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">End</span>
+                            </div>
+                            <div class="action-text">Select from current cell to last used cell</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">Home</span>
+                            </div>
+                            <div class="action-text">Select from current cell to A1</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Space</span>
+                            </div>
+                            <div class="action-text">Select entire column</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">Space</span>
+                            </div>
+                            <div class="action-text">Select entire row</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">*</span>
+                            </div>
+                            <div class="action-text">Select current data region</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">A</span>
+                            </div>
+                            <div class="action-text">Select all cells (or current region)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">PgUp</span>
+                            </div>
+                            <div class="action-text">Select current and previous sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">PgDn</span>
+                            </div>
+                            <div class="action-text">Select current and next sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Right-click</span>
+                                <span class="kbd">Sheet Tab</span>
+                            </div>
+                            <div class="action-text">Select All Sheets (from menu)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">O</span>
+                                <span class="kbd">M</span>
+                            </div>
+                            <div class="action-text">Move or Copy Sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">I</span>
+                                <span class="kbd">S</span>
+                            </div>
+                            <div class="action-text">Insert New Sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">O</span>
+                                <span class="kbd">R</span>
+                            </div>
+                            <div class="action-text">Rename Sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">D</span>
+                                <span class="kbd">S</span>
+                            </div>
+                            <div class="action-text">Delete Sheet</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">F5</span>
+                            </div>
+                            <div class="action-text">Open Go To dialog</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">F</span>
+                            </div>
+                            <div class="action-text">Find dialog</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">H</span>
+                            </div>
+                            <div class="action-text">Find and Replace dialog</div>
                         </div>
                     </div>
                 </div>
@@ -253,6 +413,117 @@
                             </div>
                             <div class="action-text">Add All Borders</div>
                         </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">F</span>
+                                <span class="kbd">F</span>
+                            </div>
+                            <div class="action-text">Change Font Name</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">F</span>
+                                <span class="kbd">S</span>
+                            </div>
+                            <div class="action-text">Change Font Size</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">D</span>
+                            </div>
+                            <div class="action-text">Fill Down (copy from cell above)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">R</span>
+                            </div>
+                            <div class="action-text">Fill Right (copy from cell left)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">V</span>
+                            </div>
+                            <div class="action-text">Open Paste Special dialog</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Ctrl</span>
+                                <span class="kbd">Shift</span>
+                                <span class="kbd">V</span>
+                            </div>
+                            <div class="action-text">Paste Values only (quick)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">V</span>
+                            </div>
+                            <div class="action-text">Paste Values</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">T</span>
+                            </div>
+                            <div class="action-text">Paste Formats only</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">F</span>
+                            </div>
+                            <div class="action-text">Paste Formulas only</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">W</span>
+                            </div>
+                            <div class="action-text">Paste Column Widths</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">E</span>
+                            </div>
+                            <div class="action-text">Paste Transpose (rows↔columns)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">A</span>
+                            </div>
+                            <div class="action-text">Paste All (with source formatting)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">V</span>
+                                <span class="kbd">U</span>
+                            </div>
+                            <div class="action-text">Paste Values + Number Formats</div>
+                        </div>
                     </div>
                 </div>
 
@@ -284,6 +555,44 @@
                             </div>
                             <div class="action-text">AutoSum</div>
                         </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">L</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">D</span>
+                            </div>
+                            <div class="action-text">Highlight Duplicates</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">A</span>
+                                <span class="kbd">M</span>
+                            </div>
+                            <div class="action-text">Remove Duplicates</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">S</span>
+                                <span class="kbd">U</span>
+                            </div>
+                            <div class="action-text">Custom Sort</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">Alt</span>
+                                <span class="kbd">H</span>
+                                <span class="kbd">F</span>
+                                <span class="kbd">D</span>
+                                <span class="kbd">S</span>
+                                <span class="kbd">K</span>
+                            </div>
+                            <div class="action-text">Find Blanks (Go To Special)</div>
+                        </div>
                     </div>
                 </div>
 
@@ -314,10 +623,286 @@
                     </div>
                 </div>
 
+                <!-- Group: Formulas -->
+                <div class="shortcut-group" data-category="formulas">
+                    <div class="group-title">📐 Essential Formulas Reference</div>
+                    <div class="shortcuts-grid">
+
+                        <!-- VLOOKUP -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=VLOOKUP()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =VLOOKUP(lookup_value, table_array, col_index,
+                                [range_lookup])<br>
+                                <em>Looks up value in first column, returns value from specified column. Use FALSE for
+                                    exact match.</em>
+                            </div>
+                        </div>
+
+                        <!-- HLOOKUP -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=HLOOKUP()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =HLOOKUP(lookup_value, table_array, row_index,
+                                [range_lookup])<br>
+                                <em>Same as VLOOKUP but searches horizontally in first row.</em>
+                            </div>
+                        </div>
+
+                        <!-- XLOOKUP -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=XLOOKUP()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =XLOOKUP(lookup_value, lookup_array, return_array,
+                                [if_not_found], [match_mode])<br>
+                                <em>Modern replacement for VLOOKUP. More flexible, can search left-to-right or
+                                    right-to-left.</em>
+                            </div>
+                        </div>
+
+                        <!-- INDEX -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=INDEX()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =INDEX(array, row_num, [col_num])<br>
+                                <em>Returns value at specified row/column position in a range.</em>
+                            </div>
+                        </div>
+
+                        <!-- MATCH -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=MATCH()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =MATCH(lookup_value, lookup_array, [match_type])<br>
+                                <em>Returns position of a value in a range. Use 0 for exact match.</em>
+                            </div>
+                        </div>
+
+                        <!-- INDEX-MATCH Combo -->
+                        <div class="shortcut-card" style="grid-column: span 2;">
+                            <div class="key-combo">
+                                <span class="kbd">=INDEX() + MATCH()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>The Power Combo:</strong><br>
+                                =INDEX(return_range, MATCH(lookup_value, lookup_range, 0))<br><br>
+                                <strong>Example:</strong> =INDEX(B2:B100, MATCH("John", A2:A100, 0))<br>
+                                <em>Finds "John" in column A, returns corresponding value from column B.</em><br><br>
+                                <strong>Why better than VLOOKUP?</strong><br>
+                                ✓ Can lookup left (VLOOKUP can't)<br>
+                                ✓ Faster on large datasets<br>
+                                ✓ Column insertions won't break it
+                            </div>
+                        </div>
+
+                        <!-- 2D INDEX-MATCH -->
+                        <div class="shortcut-card" style="grid-column: span 2;">
+                            <div class="key-combo">
+                                <span class="kbd">2D INDEX-MATCH</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Two-way lookup:</strong><br>
+                                =INDEX(data_range, MATCH(row_lookup, row_headers, 0), MATCH(col_lookup, col_headers,
+                                0))<br><br>
+                                <em>Looks up both row and column to find intersection value. Perfect for matrix
+                                    lookups.</em>
+                            </div>
+                        </div>
+
+                        <!-- SUMIF -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=SUMIF()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =SUMIF(range, criteria, [sum_range])<br>
+                                <em>Sum values that meet a single condition.</em>
+                            </div>
+                        </div>
+
+                        <!-- SUMIFS -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=SUMIFS()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =SUMIFS(sum_range, criteria_range1, criteria1,
+                                [criteria_range2, criteria2]...)<br>
+                                <em>Sum with multiple conditions. Note: sum_range comes FIRST!</em>
+                            </div>
+                        </div>
+
+                        <!-- COUNTIF -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=COUNTIF()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =COUNTIF(range, criteria)<br>
+                                <em>Count cells meeting a condition.</em>
+                            </div>
+                        </div>
+
+                        <!-- COUNTIFS -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=COUNTIFS()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =COUNTIFS(criteria_range1, criteria1, [criteria_range2,
+                                criteria2]...)<br>
+                                <em>Count with multiple conditions.</em>
+                            </div>
+                        </div>
+
+                        <!-- MAXIFS -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=MAXIFS()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =MAXIFS(max_range, criteria_range1, criteria1, ...)<br>
+                                <em>Returns maximum value that meets conditions.</em><br>
+                                <strong>Example:</strong> =MAXIFS(B:B, A:A, "Sales") → Max value in B where A="Sales"
+                            </div>
+                        </div>
+
+                        <!-- MINIFS -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=MINIFS()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =MINIFS(min_range, criteria_range1, criteria1, ...)<br>
+                                <em>Returns minimum value that meets conditions.</em>
+                            </div>
+                        </div>
+
+                        <!-- AVERAGEIF -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=AVERAGEIF()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =AVERAGEIF(range, criteria, [average_range])<br>
+                                <em>Average of cells meeting a condition.</em>
+                            </div>
+                        </div>
+
+                        <!-- AVERAGEIFS -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=AVERAGEIFS()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =AVERAGEIFS(avg_range, criteria_range1, criteria1, ...)<br>
+                                <em>Average with multiple conditions.</em>
+                            </div>
+                        </div>
+
+                        <!-- AGGREGATE -->
+                        <div class="shortcut-card" style="grid-column: span 2;">
+                            <div class="key-combo">
+                                <span class="kbd">=AGGREGATE()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =AGGREGATE(function_num, options, ref1, [ref2]...)<br><br>
+                                <strong>Function Numbers:</strong><br>
+                                1=AVERAGE, 2=COUNT, 3=COUNTA, 4=MAX, 5=MIN, 6=PRODUCT, 7=STDEV.S, 9=SUM, 14=LARGE,
+                                15=SMALL<br><br>
+                                <strong>Options (ignore):</strong><br>
+                                5=Hidden rows, 6=Error values, 7=Hidden rows & errors<br><br>
+                                <strong>Example:</strong> =AGGREGATE(9, 6, A1:A100) → SUM ignoring errors<br>
+                                <em>Super powerful! Ignores errors and hidden rows unlike regular functions.</em>
+                            </div>
+                        </div>
+
+                        <!-- AGGREGATE + INDEX for conditional MAX -->
+                        <div class="shortcut-card" style="grid-column: span 2;">
+                            <div class="key-combo">
+                                <span class="kbd">AGGREGATE + Conditional</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>MAX with condition (alternative to MAXIFS):</strong><br>
+                                =AGGREGATE(14, 6, 1/(A:A="Sales")*B:B, 1)<br><br>
+                                <strong>Nth LARGEST with condition:</strong><br>
+                                =AGGREGATE(14, 6, 1/(A:A="Sales")*B:B, 2) → 2nd largest<br><br>
+                                <em>Works in older Excel versions that don't have MAXIFS.</em>
+                            </div>
+                        </div>
+
+                        <!-- SUMPRODUCT -->
+                        <div class="shortcut-card" style="grid-column: span 2;">
+                            <div class="key-combo">
+                                <span class="kbd">=SUMPRODUCT()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =SUMPRODUCT(array1, [array2]...)<br><br>
+                                <strong>Conditional Sum:</strong> =SUMPRODUCT((A:A="Sales")*(B:B>100)*C:C)<br>
+                                <em>Sum column C where A="Sales" AND B>100. Very powerful for complex conditions!</em>
+                            </div>
+                        </div>
+
+                        <!-- IFERROR -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=IFERROR()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =IFERROR(value, value_if_error)<br>
+                                <em>Wrap around any formula to handle #N/A, #VALUE!, #REF! errors.</em>
+                            </div>
+                        </div>
+
+                        <!-- IFNA -->
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">=IFNA()</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>Syntax:</strong> =IFNA(value, value_if_na)<br>
+                                <em>Only catches #N/A errors, lets other errors show (better for debugging).</em>
+                            </div>
+                        </div>
+
+                        <!-- Combo: IFERROR + INDEX-MATCH -->
+                        <div class="shortcut-card" style="grid-column: span 2;">
+                            <div class="key-combo">
+                                <span class="kbd">Pro Combo: Error-Safe Lookup</span>
+                            </div>
+                            <div class="action-text">
+                                <strong>=IFERROR(INDEX(return_range, MATCH(lookup, lookup_range, 0)), "Not
+                                    Found")</strong><br><br>
+                                <em>INDEX-MATCH wrapped in IFERROR. Returns "Not Found" instead of #N/A when no
+                                    match.</em>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
-            <div class="back-section">
+            <div class="back-section"
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
                 <a href="index.html" class="back-btn">← Back to CA Hub</a>
+                <button class="download-pdf-btn" onclick="openDownloadModal({
+                    resourceName: 'Excel Master Shortcuts',
+                    resourceType: 'PDF Cheat Sheet',
+                    downloadUrl: 'https://drive.google.com/uc?export=download&id=1TW76eEP119Ph4Xpw2oPmvruR9gwtyYoF'
+                })">
+                    📥 Download as PDF
+                </button>
             </div>
 
         </div>
@@ -325,6 +910,13 @@
 
     <!-- Scripts -->
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/download-system.js"></script>
+    <script>
+        // Initialize download modal on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            injectDownloadModal();
+        });
+    </script>
     <script>
         // Simple client-side search and filtering
         const searchInput = document.getElementById('searchInput');

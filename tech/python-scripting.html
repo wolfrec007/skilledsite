@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<!-- Python Scripting Tutorials - Single Page App -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Scripting Essentials | Tech Hub</title>
+    <meta name="description" content="Master essential Python modules for building production-ready scripts.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+        }
+
+        .tutorial-app {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+
+        .tutorial-sidebar {
+            width: var(--sidebar-width);
+            position: fixed;
+            top: 70px;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            border-right: 1px solid var(--glass-border);
+            overflow-y: auto;
+            padding: 24px 0;
+            z-index: 10;
+            transition: transform 0.3s ease, width 0.3s ease;
+        }
+
+        /* Ultra-thin, nearly invisible scrollbar */
+        .tutorial-sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .tutorial-sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .tutorial-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .tutorial-sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Firefox scrollbar */
+        .tutorial-sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+        }
+
+        /* Collapsed state - fully hidden */
+        .tutorial-sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        /* Collapse toggle button */
+        .sidebar-collapse-btn {
+            position: absolute;
+            top: 20px;
+            right: -40px;
+            width: 32px;
+            height: 32px;
+            border-radius: 0 8px 8px 0;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--glass-border);
+            border-left: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+
+        .sidebar-collapse-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        .tutorial-sidebar.collapsed .sidebar-collapse-btn {
+            position: fixed;
+            left: 0;
+            top: 90px;
+            right: auto;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #22c55e, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sidebar-header p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin: 2px 8px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .sidebar-nav .nav-icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar-nav .nav-label {
+            font-size: 11px;
+            padding: 2px 8px;
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border-radius: 4px;
+            margin-left: auto;
+        }
+
+        /* Collapsible sidebar sections */
+        .sidebar-section {
+            margin: 8px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin: 0 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .section-header:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .section-header .section-icon {
+            font-size: 14px;
+        }
+
+        .section-header .section-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .section-header .section-arrow {
+            margin-left: auto;
+            font-size: 10px;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .section-header.expanded .section-arrow {
+            transform: rotate(180deg);
+        }
+
+        .section-header[data-level="beginner"] {
+            border-left: 3px solid #22c55e;
+        }
+
+        .section-header[data-level="intermediate"] {
+            border-left: 3px solid #f59e0b;
+        }
+
+        .section-header[data-level="advanced"] {
+            border-left: 3px solid #ef4444;
+        }
+
+        .section-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .section-items.expanded {
+            max-height: 500px;
+        }
+
+        .section-items .sidebar-nav {
+            padding: 4px 0;
+        }
+
+        .section-items .sidebar-nav a {
+            padding: 10px 16px 10px 24px;
+            font-size: 13px;
+        }
+
+        .tutorial-main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 40px;
+            max-width: 900px;
+        }
+
+        .tutorial-content {
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .tutorial-content h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 0 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--glass-border);
+            background: linear-gradient(135deg, #22c55e, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tutorial-content h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 48px 0 20px;
+            color: var(--accent-cyan);
+        }
+
+        .tutorial-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 32px 0 16px;
+        }
+
+        .tutorial-content p {
+            margin: 16px 0;
+        }
+
+        .tutorial-content ul,
+        .tutorial-content ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .tutorial-content li {
+            margin: 8px 0;
+        }
+
+        .tutorial-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #e879f9;
+        }
+
+        .tutorial-content pre {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+
+        .tutorial-content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Expandable code explanations */
+        .code-block-wrapper {
+            margin: 24px 0;
+        }
+
+        .code-block-wrapper pre {
+            margin: 0;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .code-block-wrapper.no-explanation pre {
+            border-radius: 12px;
+        }
+
+        .expand-btn {
+            width: 100%;
+            padding: 10px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .expand-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-cyan);
+        }
+
+        .expand-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        .code-explanation {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid var(--glass-border);
+            border-top: none;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .code-explanation.expanded {
+            max-height: 1000px;
+            padding: 16px 20px;
+        }
+
+        .code-explanation p {
+            margin: 8px 0;
+            color: var(--text-secondary);
+        }
+
+        .code-explanation code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1px 6px;
+            border-radius: 3px;
+            color: #a78bfa;
+            font-size: 12px;
+        }
+
+        .code-explanation strong {
+            color: var(--accent-cyan);
+        }
+
+        .tutorial-content blockquote {
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 20px;
+            margin: 24px 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .tutorial-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+
+        .tutorial-content th,
+        .tutorial-content td {
+            padding: 12px 16px;
+            border: 1px solid var(--glass-border);
+            text-align: left;
+        }
+
+        .tutorial-content th {
+            background: rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+        }
+
+        .tutorial-content hr {
+            border: none;
+            height: 1px;
+            background: var(--glass-border);
+            margin: 48px 0;
+        }
+
+        .tutorial-content strong {
+            color: #fff;
+        }
+
+        .tutorial-content a {
+            color: var(--accent-cyan);
+        }
+
+        .tutorial-nav-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .tutorial-nav-btn {
+            padding: 16px 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            flex: 1;
+            max-width: 250px;
+        }
+
+        .tutorial-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+        }
+
+        .tutorial-nav-btn.next {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .nav-btn-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .nav-btn-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        @media (max-width: 900px) {
+            .tutorial-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .tutorial-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .tutorial-main {
+                margin-left: 0;
+                padding: 24px;
+            }
+
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="index.html" class="logo">⚡ Tech Hub</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="index.html">All Paths</a>
+            <a href="../forms/index.html">Feedback</a>
+        </div>
+    </nav>
+
+    <div class="tutorial-app">
+        <aside class="tutorial-sidebar" id="sidebar">
+            <button class="sidebar-collapse-btn" onclick="collapseSidebar()" title="Collapse sidebar">◀</button>
+            <div class="sidebar-header">
+                <h2>🐍 Python Scripting</h2>
+                <p>10 modules + Clean Code guide</p>
+            </div>
+            <ul class="sidebar-nav" style="margin-bottom: 8px;">
+                <li><a href="#intro" class="active"><span class="nav-icon">🏠</span>Introduction</a></li>
+            </ul>
+
+            <!-- BEGINNER SECTION -->
+            <div class="sidebar-section">
+                <div class="section-header expanded" data-level="beginner" onclick="toggleSection(this)">
+                    <span class="section-icon">🌱</span>
+                    <span class="section-title">Beginner (15 modules)</span>
+                    <span class="section-arrow">▼</span>
+                </div>
+                <div class="section-items expanded">
+                    <ul class="sidebar-nav">
+                        <li><a href="#setup"><span class="nav-icon">🚀</span>1. Setup<span
+                                    class="nav-label">START</span></a></li>
+                        <li><a href="#variables"><span class="nav-icon">📦</span>2. Variables</a></li>
+                        <li><a href="#io"><span class="nav-icon">💬</span>3. Input/Output</a></li>
+                        <li><a href="#operators"><span class="nav-icon">➕</span>4. Operators</a></li>
+                        <li><a href="#conditionals"><span class="nav-icon">🔀</span>5. Conditionals</a></li>
+                        <li><a href="#loops"><span class="nav-icon">🔄</span>6. Loops</a></li>
+                        <li><a href="#lists"><span class="nav-icon">📋</span>7. Lists</a></li>
+                        <li><a href="#dicts"><span class="nav-icon">📚</span>8. Dictionaries</a></li>
+                        <li><a href="#functions"><span class="nav-icon">🔧</span>9. Functions</a></li>
+                        <li><a href="#strings"><span class="nav-icon">🔤</span>10. Strings</a></li>
+                        <li><a href="#files"><span class="nav-icon">📁</span>11. File I/O</a></li>
+                        <li><a href="#errorbasics"><span class="nav-icon">🛡️</span>12. Errors</a></li>
+                        <li><a href="#modules"><span class="nav-icon">📦</span>13. Modules</a></li>
+                        <li><a href="#listcomp"><span class="nav-icon">⚡</span>14. Comprehensions</a></li>
+                        <li><a href="#project"><span class="nav-icon">🎯</span>15. Final Project</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- INTERMEDIATE SECTION (All 10 tutorials) -->
+            <div class="sidebar-section">
+                <div class="section-header expanded" data-level="intermediate" onclick="toggleSection(this)">
+                    <span class="section-icon">📈</span>
+                    <span class="section-title">Intermediate</span>
+                    <span class="section-arrow">▼</span>
+                </div>
+                <div class="section-items expanded">
+                    <ul class="sidebar-nav">
+                        <li><a href="#pathlib"><span class="nav-icon">📁</span>1. pathlib</a></li>
+                        <li><a href="#tqdm"><span class="nav-icon">📊</span>2. tqdm</a></li>
+                        <li><a href="#errors"><span class="nav-icon">🛡️</span>3. Error Handling</a></li>
+                        <li><a href="#pandas"><span class="nav-icon">🐼</span>4. Pandas</a></li>
+                        <li><a href="#logging"><span class="nav-icon">📝</span>5. Logging</a></li>
+                        <li><a href="#config"><span class="nav-icon">⚙️</span>6. Configuration</a></li>
+                        <li><a href="#cli"><span class="nav-icon">💻</span>7. CLI Arguments</a></li>
+                        <li><a href="#types"><span class="nav-icon">🏷️</span>8. Type Hints</a></li>
+                        <li><a href="#context"><span class="nav-icon">🔒</span>9. Context Managers</a></li>
+                        <li><a href="#production"><span class="nav-icon">🚀</span>10. Production</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ADVANCED SECTION -->
+            <div class="sidebar-section">
+                <div class="section-header" data-level="advanced" onclick="toggleSection(this)">
+                    <span class="section-icon">�</span>
+                    <span class="section-title">Advanced</span>
+                    <span class="section-arrow">▼</span>
+                </div>
+                <div class="section-items">
+                    <ul class="sidebar-nav">
+                        <li style="padding: 12px 24px; color: var(--text-secondary); font-size: 12px;">Coming soon...
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="tutorial-main">
+            <div id="tutorial-content" class="tutorial-content">
+                <!-- Content loaded dynamically -->
+            </div>
+            <div class="tutorial-nav-bottom">
+                <button class="tutorial-nav-btn prev" id="prevBtn" onclick="navigatePrev()">
+                    <div class="nav-btn-label">← Previous</div>
+                    <div class="nav-btn-title" id="prevTitle">-</div>
+                </button>
+                <button class="tutorial-nav-btn next" id="nextBtn" onclick="navigateNext()">
+                    <div class="nav-btn-label">Next →</div>
+                    <div class="nav-btn-title" id="nextTitle">-</div>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">☰</button>
+
+    <script src="../scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="python-tutorials-content.js"></script>
+    <script src="python-beginner-content.js"></script>
+    <script>
+        const sections = ['intro', 'setup', 'variables', 'io', 'operators', 'conditionals', 'loops', 'lists', 'dicts', 'functions', 'strings', 'files', 'errorbasics', 'modules', 'listcomp', 'project', 'pathlib', 'tqdm', 'errors', 'pandas', 'logging', 'config', 'cli', 'types', 'context', 'production', 'cleancode'];
+        const titles = ['Introduction', 'Setup', 'Variables', 'Input/Output', 'Operators', 'Conditionals', 'Loops', 'Lists', 'Dictionaries', 'Functions', 'Strings', 'File I/O', 'Errors', 'Modules', 'Comprehensions', 'Final Project', 'pathlib', 'tqdm', 'Error Handling', 'Pandas', 'Logging', 'Configuration', 'CLI Arguments', 'Type Hints', 'Context Managers', 'Production', 'Clean Code'];
+        let currentIndex = 0;
+
+        function loadSection(id) {
+            const content = window.tutorialContent[id] || '<h1>Coming Soon</h1><p>This section is being written.</p>';
+            document.getElementById('tutorial-content').innerHTML = marked.parse(content);
+            Prism.highlightAll();
+            addCodeExplanations(); // Add expand buttons to code blocks
+            document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+            document.querySelector(`.sidebar-nav a[href="#${id}"]`).classList.add('active');
+            currentIndex = sections.indexOf(id);
+            updateNavButtons();
+            window.scrollTo(0, 0);
+            if (window.innerWidth <= 900) document.getElementById('sidebar').classList.remove('open');
+        }
+
+        // Add expandable explanations to code blocks
+        function addCodeExplanations() {
+            const codeBlocks = document.querySelectorAll('.tutorial-content pre');
+            codeBlocks.forEach((pre, index) => {
+                // Check if this code block has an explanation in the explanations object
+                const code = pre.textContent.trim();
+                const explanation = getExplanation(code);
+
+                if (explanation) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'code-block-wrapper';
+                    pre.parentNode.insertBefore(wrapper, pre);
+                    wrapper.appendChild(pre);
+
+                    const btn = document.createElement('button');
+                    btn.className = 'expand-btn';
+                    btn.innerHTML = '<span class="arrow">▼</span> Show Explanation';
+                    btn.onclick = function () {
+                        this.classList.toggle('expanded');
+                        explanationDiv.classList.toggle('expanded');
+                        this.innerHTML = this.classList.contains('expanded')
+                            ? '<span class="arrow">▼</span> Hide Explanation'
+                            : '<span class="arrow">▼</span> Show Explanation';
+                    };
+                    wrapper.appendChild(btn);
+
+                    const explanationDiv = document.createElement('div');
+                    explanationDiv.className = 'code-explanation';
+                    explanationDiv.innerHTML = explanation;
+                    wrapper.appendChild(explanationDiv);
+                }
+            });
+        }
+
+        // Code explanations database
+        function getExplanation(code) {
+            // Normalize code for better matching
+            const normalizedCode = code.trim().toLowerCase();
+
+            // Don't add explanations to very short code snippets
+            if (code.length < 15) return null;
+
+            // Don't add explanations to output/result blocks
+            if (normalizedCode.startsWith('===') || normalizedCode.startsWith('---')) return null;
+
+            // Merge beginner and intermediate explanations
+            const allExplanations = {
+                ...window.beginnerExplanations || {},
+                // Intermediate/Advanced explanations
+                'from pathlib import Path': `
+                    <p><strong>Line 1:</strong> <code>from pathlib import Path</code> - Imports the Path class from Python's built-in pathlib module. This is the modern, object-oriented way to handle file paths.</p>
+                `,
+                'filepath = Path("C:/Users/data/report.csv")': `
+                    <p><strong>Path object:</strong> Creates a Path object from a string. Unlike raw strings, Path objects understand directory structure and provide helpful methods.</p>
+                    <p><strong>Forward slashes:</strong> Even on Windows, you can use forward slashes - Python handles the conversion automatically!</p>
+                `,
+                'from tqdm import tqdm': `
+                    <p><strong>tqdm:</strong> A fast, extensible progress bar library. The name comes from Arabic "taqaddum" (تقدّم) meaning "progress".</p>
+                    <p><strong>Usage:</strong> Simply wrap any iterable with <code>tqdm()</code> to get a progress bar!</p>
+                `,
+                'import pandas as pd': `
+                    <p><strong>pandas:</strong> The most popular Python library for data manipulation and analysis.</p>
+                    <p><strong>as pd:</strong> Standard convention to alias pandas as "pd" for shorter code.</p>
+                    <p><strong>DataFrame:</strong> pandas' main data structure - think of it as a spreadsheet in Python.</p>
+                `,
+                'import logging': `
+                    <p><strong>logging:</strong> Python's built-in logging module - much better than print() for production code.</p>
+                    <p><strong>Benefits:</strong> Timestamps, severity levels, file output, and configurable formatting.</p>
+                `,
+                'import argparse': `
+                    <p><strong>argparse:</strong> Python's standard library for parsing command-line arguments.</p>
+                    <p><strong>ArgumentParser:</strong> The main class that handles all argument parsing logic.</p>
+                    <p><strong>add_argument:</strong> Defines each argument the script accepts.</p>
+                `
+            };
+
+            // Pattern-based matching with specificity  
+            // Check for specific code patterns in order of specificity
+
+            // Try/except patterns
+            if (code.match(/try:\s*$/m) && code.match(/except/)) {
+                if (allExplanations['try:']) return allExplanations['try:'];
+            }
+
+            // Import statements
+            if (code.match(/^from\s+pathlib\s+import/m)) return allExplanations['from pathlib import Path'];
+            if (code.match(/^from\s+tqdm\s+import/m)) return allExplanations['from tqdm import tqdm'];
+            if (code.match(/^import\s+pandas/m)) return allExplanations['import pandas as pd'];
+            if (code.match(/^import\s+logging/m)) return allExplanations['import logging'];
+            if (code.match(/^import\s+argparse/m)) return allExplanations['import argparse'];
+
+            // For loop patterns
+            if (code.match(/for\s+\w+\s+in\s+range\(5\):/)) {
+                if (allExplanations['for i in range(5):']) return allExplanations['for i in range(5):'];
+            }
+            if (code.match(/for\s+\w+\s+in\s+range\(/)) {
+                if (allExplanations['range(start, stop, step)']) return allExplanations['range(start, stop, step)'];
+            }
+
+            // While loops
+            if (code.match(/while\s+\w+\s*<\s*\d+:/)) {
+                if (allExplanations['while count < 5:']) return allExplanations['while count < 5:'];
+            }
+
+            // Control flow
+            if (code.match(/\bbreak\b/) && !code.match(/\bcontinue\b/)) {
+                if (allExplanations['break']) return allExplanations['break'];
+            }
+            if (code.match(/\bcontinue\b/)) {
+                if (allExplanations['continue']) return allExplanations['continue'];
+            }
+
+            // Conditionals
+            if (code.match(/if\s+\w+\s*>=\s*18:/)) {
+                if (allExplanations['if age >= 18:']) return allExplanations['if age >= 18:'];
+            }
+            if (code.match(/\belif\b/)) {
+                if (allExplanations['elif']) return allExplanations['elif'];
+            }
+            if (code.match(/^else:/m) && !code.match(/elif/)) {
+                if (allExplanations['else:']) return allExplanations['else:'];
+            }
+
+            // Specific code snippets - more specific patterns first
+            if (code.includes('name = "Alice"') && code.includes('age = 25')) {
+                if (allExplanations['name = "Alice"']) return allExplanations['name = "Alice"'];
+            }
+            if (code.includes('f"') || code.includes('f\'')) {
+                if (allExplanations['f"Hello {name}"']) return allExplanations['f"Hello {name}"'];
+            }
+            if (code.includes('input(') && !code.includes('int(') && !code.includes('float(')) {
+                if (allExplanations['input()']) return allExplanations['input()'];
+            }
+            if (code.match(/type\([^)]+\)/)) {
+                if (allExplanations['type()']) return allExplanations['type()'];
+            }
+            if (code.match(/int\(input/)) {
+                if (allExplanations['int()']) return allExplanations['int()'];
+            }
+            if (code.match(/float\(/)) {
+                if (allExplanations['float()']) return allExplanations['float()'];
+            }
+
+            // Operators
+            if (code.includes('//') && !code.includes('http://')) {
+                if (allExplanations['a // b']) return allExplanations['a // b'];
+            }
+            if (code.match(/\d+\s*%\s*\d+/)) {
+                if (allExplanations['a % b']) return allExplanations['a % b'];
+            }
+            if (code.includes('**')) {
+                if (allExplanations['a ** b']) return allExplanations['a ** b'];
+            }
+            if (code.includes('==')) {
+                if (allExplanations['x == y']) return allExplanations['x == y'];
+            }
+            if (code.match(/\band\b/) && code.match(/>=|<=|>|</)) {
+                if (allExplanations['and']) return allExplanations['and'];
+            }
+            if (code.match(/\bor\b/) && code.match(/>=|<=|>|</)) {
+                if (allExplanations['or']) return allExplanations['or'];
+            }
+            if (code.match(/\bnot\s+\w+/)) {
+                if (allExplanations['not']) return allExplanations['not'];
+            }
+
+            // Lists
+            if (code.match(/=\s*\[[^\]]*\]/)) {
+                if (code.includes('"apple"') || code.includes('"banana"')) {
+                    if (allExplanations['fruits = ["apple", "banana"]']) return allExplanations['fruits = ["apple", "banana"]'];
+                }
+            }
+            if (code.match(/\w+\[\d+\]/)) {
+                if (allExplanations['fruits[0]']) return allExplanations['fruits[0]'];
+            }
+            if (code.match(/\w+\[\d+:\d+\]/)) {
+                if (allExplanations['fruits[1:3]']) return allExplanations['fruits[1:3]'];
+            }
+            if (code.includes('.append(')) {
+                if (allExplanations['.append()']) return allExplanations['.append()'];
+            }
+            if (code.includes('.pop(')) {
+                if (allExplanations['.pop()']) return allExplanations['.pop()'];
+            }
+            if (code.match(/len\(/)) {
+                if (allExplanations['len()']) return allExplanations['len()'];
+            }
+
+            // Dictionaries
+            if (code.match(/=\s*\{[^}]*:[^}]*\}/)) {
+                if (allExplanations['person = {"name": "Alice"}']) return allExplanations['person = {"name": "Alice"}'];
+            }
+            if (code.match(/\w+\["[^"]+"\]/)) {
+                if (allExplanations['person["name"]']) return allExplanations['person["name"]'];
+            }
+            if (code.includes('.get(')) {
+                if (allExplanations['.get()']) return allExplanations['.get()'];
+            }
+            if (code.includes('.items()')) {
+                if (allExplanations['.items()']) return allExplanations['.items()'];
+            }
+
+            // Functions
+            if (code.match(/def\s+\w+\([^)]*\):/)) {
+                if (code.includes('def greet') && code.includes('=')) {
+                    if (allExplanations['def greet(name="World"):']) return allExplanations['def greet(name="World"):'];
+                } else if (code.includes('def greet')) {
+                    if (allExplanations['def greet(name):']) return allExplanations['def greet(name):'];
+                }
+            }
+            if (code.match(/^\s*return\b/m)) {
+                if (allExplanations['return']) return allExplanations['return'];
+            }
+
+            // Strings
+            if (code.includes('.lower()')) {
+                if (allExplanations['.lower()']) return allExplanations['.lower()'];
+            }
+            if (code.includes('.strip()')) {
+                if (allExplanations['.strip()']) return allExplanations['.strip()'];
+            }
+            if (code.includes('.split(')) {
+                if (allExplanations['.split()']) return allExplanations['.split()'];
+            }
+            if (code.includes('.join(')) {
+                if (allExplanations['" ".join()']) return allExplanations['" ".join()'];
+            }
+
+            // File I/O
+            if (code.includes('with open(') || code.includes('with open()')) {
+                if (allExplanations['with open() as f:']) return allExplanations['with open() as f:'];
+            }
+            if (code.includes('.read()')) {
+                if (allExplanations['.read()']) return allExplanations['.read()'];
+            }
+            if (code.includes('.write(')) {
+                if (allExplanations['.write()']) return allExplanations['.write()'];
+            }
+
+            // Error handling
+            if (code.includes('except ValueError')) {
+                if (allExplanations['except ValueError:']) return allExplanations['except ValueError:'];
+            }
+            if (code.includes('except Exception as')) {
+                if (allExplanations['except Exception as e:']) return allExplanations['except Exception as e:'];
+            }
+
+            // Basic Python commands
+            if (code.includes('python --version')) {
+                if (allExplanations['python --version']) return allExplanations['python --version'];
+            }
+            if (code.includes('print("Hello, World!")')) {
+                if (allExplanations['print("Hello, World!")']) return allExplanations['print("Hello, World!")'];
+            }
+            if (code.match(/^#[^#]/m) && code.length < 100) {
+                if (allExplanations['# This is a comment']) return allExplanations['# This is a comment'];
+            }
+
+            return null;
+        }
+
+        // Toggle sidebar sections (Beginner/Intermediate/Advanced)
+        function toggleSection(header) {
+            header.classList.toggle('expanded');
+            const items = header.nextElementSibling;
+            items.classList.toggle('expanded');
+        }
+
+        function updateNavButtons() {
+            document.getElementById('prevBtn').style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
+            document.getElementById('nextBtn').style.visibility = currentIndex < sections.length - 1 ? 'visible' : 'hidden';
+            if (currentIndex > 0) document.getElementById('prevTitle').textContent = titles[currentIndex - 1];
+            if (currentIndex < sections.length - 1) document.getElementById('nextTitle').textContent = titles[currentIndex + 1];
+        }
+
+        function navigatePrev() { if (currentIndex > 0) { window.location.hash = sections[currentIndex - 1]; } }
+        function navigateNext() { if (currentIndex < sections.length - 1) { window.location.hash = sections[currentIndex + 1]; } }
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+        function collapseSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+            // Adjust main content margin
+            const main = document.querySelector('.tutorial-main');
+            if (sidebar.classList.contains('collapsed')) {
+                main.style.marginLeft = '0';
+            } else {
+                main.style.marginLeft = 'var(--sidebar-width)';
+            }
+        }
+
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1) || 'intro';
+            if (sections.includes(hash)) loadSection(hash);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.slice(1) || 'intro';
+            loadSection(sections.includes(hash) ? hash : 'intro');
+        });
+    </script>
+</body>
+
+</html>
