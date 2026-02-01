@@ -230,17 +230,6 @@ function triggerDownload() {
  * Get thank you page URL based on current location
  */
 function getThankYouUrl() {
-    const isLocal = window.location.protocol === 'file:';
-    const path = window.location.pathname;
-
-    // Local Development (needs .html)
-    if (isLocal) {
-        if (path.includes('/ca/')) return 'thank-you.html';
-        if (path.includes('/tech/')) return '../ca/thank-you.html';
-        return 'ca/thank-you.html';
-    }
-
-    // Production (Vercel - Absolute path + Clean URL)
     return '/ca/thank-you';
 }
 

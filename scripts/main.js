@@ -23,12 +23,7 @@ function goHome() {
  * Get the correct URL for homepage based on current location
  */
 function getHomeUrl() {
-    // Check if we're in a subdirectory
-    const isLocal = window.location.protocol === 'file:';
-    if (window.location.pathname.includes('/forms/')) {
-        return isLocal ? '../index.html' : '../';
-    }
-    return isLocal ? 'index.html' : './';
+    return '/';
 }
 
 /**
@@ -58,39 +53,9 @@ function initNavScroll() {
 document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
     initContactModal();
-    fixLocalLinks(); // Handle local file:// protocol
 });
 
-/**
- * Fix links for local development (file:// protocol)
- * Clean URLs don't work natively when opening files directly.
- * This script automatically appends .html for local testing.
- */
-function fixLocalLinks() {
-    if (window.location.protocol === 'file:') {
-        // Fix home URL redirection
-        const originalGetHome = getHomeUrl;
 
-        // Fix all anchor tags
-        const links = document.querySelectorAll('a[href]');
-        links.forEach(link => {
-            const href = link.getAttribute('href');
-            // Skip hash links, external links, or already having extension
-            if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.includes('.html')) {
-                return;
-            }
-
-            // Handle directory roots (e.g. "../" or "../ca/")
-            if (href.endsWith('/')) {
-                link.setAttribute('href', href + 'index.html');
-            }
-            // Handle clean URLs (e.g. "backend", "../index")
-            else {
-                link.setAttribute('href', href + '.html');
-            }
-        });
-    }
-}
 
 /* ================= CONTACT MODAL ================= */
 
