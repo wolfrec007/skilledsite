@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- Updated: 2026-01-22 -->
+<!-- Updated: 2026-02-02 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Cybersecurity | Tech Hub</title>
+    <title>Learn Git | Tech Hub</title>
     <meta name="description"
-        content="Security fundamentals, threat analysis & protection strategies. Learn ethical hacking with practice platforms like TryHackMe and HackTheBox.">
+        content="Master Git version control. Learn branching, merging, pull requests, and collaboration workflows.">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,43 +15,43 @@
     <link rel="stylesheet" href="../styles/main.css">
 
     <style>
-        /* Pink accent overrides for cybersecurity */
+        /* Red/Orange accent for Git */
         .page-icon {
-            background: linear-gradient(135deg, var(--accent-pink), rgba(236, 72, 153, 0.3));
-            box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.4);
+            background: linear-gradient(135deg, #f05032, rgba(240, 80, 50, 0.3));
+            box-shadow: 0 20px 40px -15px rgba(240, 80, 50, 0.4);
         }
 
         .section-icon {
-            background: linear-gradient(135deg, var(--accent-pink), transparent);
+            background: linear-gradient(135deg, #f05032, transparent);
         }
 
         .section li:hover {
-            background: rgba(236, 72, 153, 0.1);
+            background: rgba(240, 80, 50, 0.1);
         }
 
-        .platform {
-            margin-top: 12px;
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent);
-            border: 1px solid rgba(236, 72, 153, 0.2);
-            border-radius: 12px;
+        .resource-box {
+            background: linear-gradient(135deg, rgba(240, 80, 50, 0.1), transparent);
+            border-color: rgba(240, 80, 50, 0.3);
         }
 
-        .platform a {
-            color: var(--accent-pink);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
+        .resource-btn {
+            background: linear-gradient(135deg, #f05032, #c0392b);
+            box-shadow: 0 10px 30px -10px rgba(240, 80, 50, 0.5);
         }
 
-        .platform a:hover {
-            text-decoration: underline;
+        .resource-btn:hover {
+            box-shadow: 0 15px 40px -10px rgba(240, 80, 50, 0.6);
         }
 
-        .platform p {
-            color: var(--text-secondary);
-            font-size: 13px;
-            margin-top: 6px;
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            color: #e2e8f0;
+            margin-top: 8px;
         }
     </style>
 </head>
@@ -76,13 +76,13 @@
     <main class="main-container">
         <div class="container">
             <div class="page-header">
-                <div class="page-icon">🛡️</div>
-                <h1>Cybersecurity Roadmap</h1>
-                <p class="page-subtitle">Security fundamentals, threat analysis & protection</p>
+                <div class="page-icon">🌳</div>
+                <h1>Git Version Control</h1>
+                <p class="page-subtitle">Master the art of collaboration and code history</p>
             </div>
 
             <div class="section">
-                <h2><span class="section-icon">1</span> Foundations</h2>
+                <h2><span class="section-icon">1</span> What is Git?</h2>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
@@ -92,87 +92,70 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                What is cybersecurity?
+                                Distributed Version Control System (DVCS)
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>It is the practice of protecting systems, networks, and programs from digital
-                                    attacks. The core goal is the <strong>CIA Triad</strong>: Confidentiality (only
-                                    authorized access), Integrity (data is not tampered with), and Availability (systems
-                                    are up and running).</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span class="accordion-title-wrapper">
-                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <polyline points="6 9 12 15 18 9"></polyline>
-                                    </svg></span>
-                                Types of hackers
-                            </span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p><strong>White Hat:</strong> Ethical hackers hired to find vulnerabilities and fix
-                                    them.</p>
-                                <p><strong>Black Hat:</strong> Malicious hackers who exploit flaws for personal gain or
-                                    damage.</p>
-                                <p><strong>Grey Hat:</strong> Operated without permission but often without malicious
-                                    intent, though still illegal.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span class="accordion-title-wrapper">
-                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <polyline points="6 9 12 15 18 9"></polyline>
-                                    </svg></span>
-                                Attack surface & threat models
-                            </span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p><strong>Attack Surface:</strong> The sum of all points where an unauthorized user can
-                                    try to enter data or extract data (e.g., open ports, input fields).</p>
-                                <p><strong>Threat Modeling:</strong> A structured approach to identifying potential
-                                    threats to a system and prioritizing mitigations.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span class="accordion-title-wrapper">
-                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <polyline points="6 9 12 15 18 9"></polyline>
-                                    </svg></span>
-                                Basic networking (IP, DNS, HTTP)
-                            </span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-body">
-                                <p>You cannot secure what you don't understand.
-                                    <br>- <strong>IP:</strong> The address of a computer.
-                                    <br>- <strong>DNS:</strong> The phonebook translating domains (google.com) to IPs.
-                                    <br>- <strong>HTTP:</strong> The protocol for web communication. Secure it with
-                                    HTTPS/TLS.
+                                <p>Unlike centralized systems where code lives in one place, Git gives every developer a
+                                    full copy of the entire project history on their own machine. This means you can
+                                    work offline, commit changes, and view history without needing a network connection.
                                 </p>
+                                <p><strong>Key Benefit:</strong> Improved speed and ability to work offline.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Tracking changes in code over time
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Git takes "snapshots" of your project files at specific moments when you commit. It
+                                    doesn't just store the differences; it remembers exactly how every file looked at
+                                    every point in time. This allows you to travel back to any previous state.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Collaborating with others without overwriting work
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Git handles changes from multiple people politely. If two people change different
+                                    files, Git merges them automatically. If they change the same line, Git flags a
+                                    "conflict" allowing you to resolve it, preventing accidental overwrites.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="resource-box">
+                    <h3>🎮 Interactive Learning</h3>
+                    <p style="margin-bottom: 12px; color: var(--text-secondary); font-size: 14px;">The best way to learn
+                        Git branching is by seeing it visually!</p>
+                    <a class="resource-btn" href="https://learngitbranching.js.org/" target="_blank">
+                        Learn Git Branching (Interactive) →
+                    </a>
+                </div>
             </div>
 
             <div class="section">
-                <h2><span class="section-icon">2</span> Operating Systems & Linux</h2>
+                <h2><span class="section-icon">2</span> Essential Commands</h2>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
@@ -182,17 +165,16 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Linux file system & permissions
+                                <code>git init</code> - Start tracking a repository
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Linux is the OS of the internet.
-                                    <br><strong>Filesystem:</strong> Starts at root <code>/</code>. Key folders:
-                                    <code>/etc</code> (config), <code>/var</code> (logs), <code>/home</code> (users).
-                                    <br><strong>Permissions:</strong> Read (r), Write (w), Execute (x) for Owner, Group,
-                                    Others. Crucial for limiting access.
-                                </p>
+                                <p>Initializes a new Git repository. It creates a hidden <code>.git</code> folder to
+                                    store version control info. Run this once at the start of a project.</p>
+                                <pre><code>mkdir my-project
+cd my-project
+git init</code></pre>
                             </div>
                         </div>
                     </div>
@@ -204,15 +186,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Processes & services
+                                <code>git status</code> - Check changes
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p><strong>Processes:</strong> Running programs. Use `ps` or `top` to view them.
-                                    <br><strong>Services (Daemons):</strong> Background processes (like a web server)
-                                    managed by `systemd` (e.g., `systemctl start nginx`).
-                                </p>
+                                <p>Your dashboard. It tells you which files have been modified, which are "staged", and
+                                    which are untracked. Use this frequently to see what Git sees.</p>
                             </div>
                         </div>
                     </div>
@@ -224,14 +204,31 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Basic bash scripting
+                                <code>git add .</code> - Stage changes
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Scripting allows you to automate tasks and attacks. A simple bash script can scan a
-                                    network, parse logs, or automate backups. It's an essential skill for any security
-                                    professional.</p>
+                                <p>Moves changes to the "Staging Area". The <code>.</code> means "all files". Think of
+                                    it as preparing a package box before sealing it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                <code>git commit -m "msg"</code> - Save changes
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Permanently saves staged changes to history. The message describes what you did.</p>
+                                <pre><code>git commit -m "Initial commit"</code></pre>
                             </div>
                         </div>
                     </div>
@@ -239,7 +236,7 @@
             </div>
 
             <div class="section">
-                <h2><span class="section-icon">3</span> Networking for Security</h2>
+                <h2><span class="section-icon">3</span> Branching & Merging</h2>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
@@ -249,16 +246,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                TCP/IP, UDP
+                                <code>git branch</code> - List branches
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p><strong>TCP:</strong> Reliable, connection-oriented (3-way handshake). Emails, Web.
-                                    <br><strong>UDP:</strong> Fast, connectionless, no guarantee of delivery. Streaming,
-                                    DNS.
-                                    <br>Attackers exploit these (e.g., SYN Flood attacks on TCP).
-                                </p>
+                                <p>Lists all branches. The active branch is highlighted. Branches let you work on
+                                    features independently.</p>
                             </div>
                         </div>
                     </div>
@@ -270,16 +264,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Firewalls & NAT
+                                <code>git checkout -b new-feature</code> - Create & switch
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p><strong>Firewall:</strong> A security device (software/hardware) that filters network
-                                    traffic based on rules.
-                                    <br><strong>NAT (Network Address Translation):</strong> Allows private IP addresses
-                                    to share a single public IP, adding a layer of obscuration.
-                                </p>
+                                <p>A shortcut to create a branch named <code>new-feature</code> and switch to it
+                                    immediately.</p>
                             </div>
                         </div>
                     </div>
@@ -291,15 +282,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Ports & services
+                                <code>git merge feature</code> - Combine changes
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Ports are virtual doors for services.
-                                    <br><strong>Common Ports:</strong> 80 (HTTP), 443 (HTTPS), 22 (SSH), 21 (FTP).
-                                    <br>Scanning for open ports (using Nmap) is the first step in reconnaissance.
-                                </p>
+                                <p>Integrates the specified branch into your current branch (usually main) after work is
+                                    done.</p>
                             </div>
                         </div>
                     </div>
@@ -307,7 +296,7 @@
             </div>
 
             <div class="section">
-                <h2><span class="section-icon">4</span> Web Security Basics</h2>
+                <h2><span class="section-icon">4</span> Remote Repositories (GitHub)</h2>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
@@ -317,14 +306,12 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                HTTP methods
+                                <code>git remote add origin [url]</code> - Connect to GitHub
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Understanding GET, POST, PUT, DELETE is vital. Vulnerabilities often arise when
-                                    dangerous methods (like PUT/DELETE) are left enabled on public servers, or when
-                                    sensitive data is passed via GET parameters (visible in history).</p>
+                                <p>Links your local repo to a remote server. "origin" is the nickname for the URL.</p>
                             </div>
                         </div>
                     </div>
@@ -336,16 +323,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Cookies & sessions
+                                <code>git push -u origin main</code> - Upload code
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Used to maintain state.
-                                    <br><strong>Risk:</strong> Session Hijacking. If an attacker steals your session
-                                    cookie, they become you.
-                                    <br><strong>Protection:</strong> Use `HttpOnly` and `Secure` flags on cookies.
-                                </p>
+                                <p>Uploads commits to the remote. The <code>-u</code> flag saves the connection for
+                                    future pushes.</p>
                             </div>
                         </div>
                     </div>
@@ -357,17 +341,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                OWASP Top 10 vulnerabilities
+                                <code>git pull</code> - Download changes
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>The standard awareness document for developers. Includes:
-                                    <br>1. <strong>Injection</strong> (SQLi)
-                                    <br>2. <strong>Broken Authentication</strong>
-                                    <br>3. <strong>XSS (Cross-Site Scripting)</strong>
-                                    <br>Learning to exploit these (legally) helps you prevent them.
-                                </p>
+                                <p>Downloads and merges the latest changes from the remote server into your local
+                                    branch.</p>
                             </div>
                         </div>
                     </div>
@@ -375,23 +355,7 @@
             </div>
 
             <div class="section">
-                <h2><span class="section-icon">🧪</span> Practice Platforms</h2>
-                <div class="platform">
-                    <a href="https://tryhackme.com" target="_blank">TryHackMe (THM)</a>
-                    <p>Beginner-friendly, guided learning paths</p>
-                </div>
-                <div class="platform">
-                    <a href="https://www.hackthebox.com" target="_blank">Hack The Box (HTB)</a>
-                    <p>Advanced labs for penetration testing</p>
-                </div>
-                <div class="platform">
-                    <a href="https://picoctf.org" target="_blank">picoCTF</a>
-                    <p>CTF-style challenges for beginners</p>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2><span class="section-icon">🎯</span> Career Paths</h2>
+                <h2><span class="section-icon">5</span> Undo & Fix</h2>
                 <div class="accordion">
                     <div class="accordion-item">
                         <button class="accordion-header">
@@ -401,13 +365,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Penetration Tester
+                                <code>git checkout -- [file]</code> - Discard local
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Simulates cyberattacks on a company's system (with permission) to find weaknesses
-                                    before criminals do. Often generates a report detailing vulnerabilities.</p>
+                                <p><strong>Warning:</strong> Discards all local changes to the file, reverting it to the
+                                    last commit.</p>
                             </div>
                         </div>
                     </div>
@@ -419,13 +383,13 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Security Analyst
+                                <code>git reset HEAD~1</code> - Undo last commit
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Monitors an organization's networks for security breaches. They install firewalls,
-                                    encryption programs, and investigate violations.</p>
+                                <p>Undoes the last commit but keeps the file changes in your folder so you can fix and
+                                    recommit.</p>
                             </div>
                         </div>
                     </div>
@@ -437,13 +401,35 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Blue Team / SOC Analyst
+                                <code>git log</code> - View history
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>The defensive side. SOC (Security Operations Center) analysts work 24/7 to detect,
-                                    analyze, and respond to cybersecurity incidents in real-time.</p>
+                                <p>Displays the history of commits (hash, author, date, message).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section practice-section">
+                <h2><span class="section-icon">🛠</span> Practice Workflow</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                1. Create a new repo on GitHub
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Go to GitHub, click "+", select "New Repository", and give it a name.</p>
                             </div>
                         </div>
                     </div>
@@ -455,14 +441,65 @@
                                         stroke-linejoin="round">
                                         <polyline points="6 9 12 15 18 9"></polyline>
                                     </svg></span>
-                                Red Team
+                                2. Clone it locally
                             </span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-body">
-                                <p>Advanced offensive security. Unlike standard pentesting, Red Teams simulate
-                                    full-scope, multi-layered attacks (social engineering, physical access, network
-                                    breach) to test the organization's detection capabilities.</p>
+                                <p>Run <code>git clone [url]</code> to download the repo to your machine.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                3. Create a 'feature' branch
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Isolate your work: <code>git checkout -b feature/my-feature</code>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                4. Make changes, commit, and push
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Edit files, <code>git add .</code>, <code>git commit -m "Done"</code>, and
+                                    <code>git push origin feature/my-feature</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                5. Open a Pull Request on GitHub
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Go to GitHub and create a Pull Request to merge your feature into main.</p>
                             </div>
                         </div>
                     </div>
@@ -492,7 +529,7 @@
                 </div>
                 <form id="contactForm" class="contact-form">
                     <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
-                    <input type="hidden" name="subject" value="New message from Tech Hub">
+                    <input type="hidden" name="subject" value="New message from Git Tutorial">
                     <div class="form-group">
                         <label for="contactName">Your Name</label>
                         <input type="text" id="contactName" name="name" placeholder="John Doe" required>

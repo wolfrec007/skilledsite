@@ -27,6 +27,7 @@
         <a href="index.html" class="logo">⚡ Tech Hub</a>
         <div class="nav-links">
             <a href="../index.html">Home</a><a href="index.html">Tech Hub</a>
+            <a href="../about.html">About</a>
             <a href="../forms/index.html">Feedback</a>
             <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
         </div>
@@ -57,53 +58,395 @@
             <!-- Backend Foundations -->
             <div class="section">
                 <h2><span class="section-icon">1</span> Backend Foundations</h2>
-                <ul>
-                    <li>What is a backend system?</li>
-                    <li>Client–Server architecture</li>
-                    <li>HTTP methods, status codes</li>
-                    <li>REST principles</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                What is a backend system?
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>The "backend" is the part of the application that users don't see—it runs on the
+                                    server. It handles data processing, storage, business logic, and security. While the
+                                    frontend is the "waiter" handling the customer, the backend is the "kitchen"
+                                    preparing the food.</p>
+                                <p><strong>Key Roles:</strong> Managing databases, handling APIs, and ensuring security.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Client–Server architecture
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>This is the fundamental model of the web. The <strong>Client</strong> (browser/mobile
+                                    app) requests resources or actions. The <strong>Server</strong> (backend) processes
+                                    this request and sends back a response.</p>
+                                <p><strong>Example:</strong> You (Client) click "Order Pizza" -> Request sent to Server
+                                    -> Server checks inventory/payment -> Server sends "Order Confirmed" response.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                HTTP methods, status codes
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Methods:</strong> Verbs that tell the server what to do.
+                                    <br><code>GET</code> (Retrieve data), <code>POST</code> (Create data),
+                                    <code>PUT</code> (Update data), <code>DELETE</code> (Remove data).
+                                </p>
+                                <p><strong>Status Codes:</strong> Numbers indicating the result.
+                                    <br><code>200 OK</code> (Success), <code>404 Not Found</code> (Client Error),
+                                    <code>500 Server Error</code> (Server crashed).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                REST principles
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Representational State Transfer (REST)</strong> is a design style for APIs.
+                                    It treats everything as a "Resource" (like a user, a tweet, a product) accessible
+                                    via a standard URL (e.g., <code>/users/123</code>).</p>
+                                <p><strong>Stateless:</strong> Each request must contain all info needed; the server
+                                    doesn't remember previous requests automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Application Architecture -->
             <div class="section">
                 <h2><span class="section-icon">2</span> Application Architecture</h2>
-                <ul>
-                    <li>Controllers, services, repositories</li>
-                    <li>Business logic vs infrastructure</li>
-                    <li>Middleware & request lifecycle</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Controllers, services, repositories
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>A common way to organize backend code (Separation of Concerns):</p>
+                                <ul>
+                                    <li><strong>Controller:</strong> Handles the incoming HTTP request and validation.
+                                    </li>
+                                    <li><strong>Service:</strong> Contains the actual business logic (e.g., "Calculate
+                                        tax").</li>
+                                    <li><strong>Repository:</strong> Handles the direct communication with the database
+                                        (SQL queries).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Business logic vs infrastructure
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Business Logic:</strong> The rules unique to your app (e.g., "Users get 10%
+                                    off on birthdays"). This is your core value.</p>
+                                <p><strong>Infrastructure:</strong> The plumbing that supports it (e.g., Sending emails,
+                                    connecting to Redis, parsing JSON). Keep these separate so you can swap tools
+                                    easily.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Middleware & request lifecycle
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Middleware</strong> functions are like checkpoints that a request passes
+                                    through before reaching your main code.</p>
+                                <p><strong>Examples:</strong> Logging ("Request came from IP 1.2.3.4"), Authentication
+                                    ("Is this user logged in?"), Parsing ("Convert this JSON body to an object"). if a
+                                    check fails, the middleware stops the request.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Data & Persistence -->
             <div class="section">
                 <h2><span class="section-icon">3</span> Data & Persistence</h2>
-                <ul>
-                    <li>Relational vs NoSQL databases</li>
-                    <li>Data modeling</li>
-                    <li>Transactions & indexing</li>
-                    <li>Basic caching concepts</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Relational vs NoSQL databases
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Relational (SQL):</strong> Stores data in tables with strict rows/columns
+                                    (e.g., PostgreSQL, MySQL). Good for structured data with relationships (User ->
+                                    Orders).</p>
+                                <p><strong>NoSQL:</strong> Stores data as documents, key-pairs, or graphs (e.g.,
+                                    MongoDB, Redis). Flexible schema, good for rapid changes or massive unstructured
+                                    data.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Data modeling
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>The art of designing how data is stored. It involves defining entities (User,
+                                    Product) and their relationships (One-to-One, One-to-Many, Many-to-Many).</p>
+                                <p><strong>Goal:</strong> Design for data integrity (no duplicates) and query efficiency
+                                    (fast retrieval).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Transactions & indexing
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Transactions:</strong> Ensure "all or nothing" operations. If you transfer
+                                    money, deducting from A and adding to B must both happen, or neither should.</p>
+                                <p><strong>Indexing:</strong> Like the index at the back of a book. It helps the
+                                    database find a specific row (e.g., matching an email) instantly without scanning
+                                    the entire table.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Basic caching concepts
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Caching means storing frequently accessed data in fast, temporary storage (RAM/Redis)
+                                    instead of querying the slow database every time.</p>
+                                <p><strong>Example:</strong> Storing the list of "Top 10 Products" for 5 minutes so you
+                                    don't calculate it for every single visitor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Authentication & Security -->
             <div class="section">
                 <h2><span class="section-icon">4</span> Authentication & Security</h2>
-                <ul>
-                    <li>Authentication vs authorization</li>
-                    <li>Sessions & tokens (JWT)</li>
-                    <li>Input validation & error handling</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Authentication vs Authorization
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Authentication (AuthN):</strong> "Who are you?" Verifying identity (e.g.,
+                                    Login with password).</p>
+                                <p><strong>Authorization (AuthZ):</strong> "What are you allowed to do?" Verifying
+                                    permissions (e.g., Admin can delete users, regular user cannot).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Sessions & tokens (JWT)
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Sessions:</strong> Server stores a record of the login in memory/database and
+                                    gives the user a cookie ID. Stateful.</p>
+                                <p><strong>JWT (JSON Web Token):</strong> Server signs a token containing user info. The
+                                    user sends this token with requests. Server validates the signature. Stateless and
+                                    scalable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Input validation & error handling
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Never trust user input.</strong> Always sanitize and validate data (e.g.,
+                                    check if email format is valid) before processing to prevent SQL Injection or XSS
+                                    attacks.</p>
+                                <p><strong>Error Handling:</strong> Don't expose raw stack traces to users. Send generic
+                                    messages ("Something went wrong") while logging the detailed error internally.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Scalability & Reliability -->
             <div class="section">
                 <h2><span class="section-icon">5</span> Scalability & Reliability</h2>
-                <ul>
-                    <li>Logging & monitoring basics</li>
-                    <li>Handling failures</li>
-                    <li>Performance optimization</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Logging & monitoring basics
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>You can't fix what you can't see. <strong>Logging</strong> records what happened
+                                    (e.g., "User X paid $5"). <strong>Monitoring</strong> tracks system health (CPU
+                                    usage, error rates) and alerts you if the server is about to crash.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Handling failures
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Systems fail. Good backends are resilient. Techniques include
+                                    <strong>Retries</strong> (try again if network blips), <strong>Timeouts</strong>
+                                    (stop waiting after 5s), and <strong>Circuit Breakers</strong> (stop calling a
+                                    broken service to prevent cascading failure).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Performance optimization
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Making things fast. Common strategies: Database indexing, Caching API responses,
+                                    optimizing code algorithms, and using vertical (bigger server) or horizontal (more
+                                    servers) scaling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Practice Projects -->

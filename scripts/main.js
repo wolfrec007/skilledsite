@@ -20,6 +20,30 @@ function goHome() {
 }
 
 /**
+ * Initialize Accordion
+ */
+function initAccordion() {
+    const accordions = document.querySelectorAll('.accordion-header');
+
+    accordions.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const content = item.querySelector('.accordion-content');
+
+            // Toggle active state
+            item.classList.toggle('active');
+
+            // Handle max-height for transition
+            if (item.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        });
+    });
+}
+
+/**
  * Get the correct URL for homepage based on current location
  */
 function getHomeUrl() {
@@ -53,6 +77,7 @@ function initNavScroll() {
 document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
     initContactModal();
+    initAccordion();
 });
 
 

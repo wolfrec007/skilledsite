@@ -56,6 +56,7 @@
         <a href="index.html" class="logo">⚡ Tech Hub</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="../about.html">About</a>
             <a href="../forms/index.html">Feedback</a>
             <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
         </div>
@@ -71,11 +72,70 @@
 
             <div class="section">
                 <h2><span class="section-icon">1</span> Introduction to Linux</h2>
-                <ul>
-                    <li>What is Linux & how it works?</li>
-                    <li>Linux distributions overview</li>
-                    <li>Installing Linux (dual boot / VM)</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                What is Linux & how it works?
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Linux is an open-source operating system kernel. Unlike Windows/macOS, it's free,
+                                    customizable, and powers 90% of the internet servers. It places control in your
+                                    hands.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Linux distributions overview
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Since the kernel is free, anyone can bundle it with software. These bundles are
+                                    "Distros".
+                                    <br>- <strong>Ubuntu/Mint:</strong> User-friendly, great for beginners.
+                                    <br>- <strong>Kali:</strong> For hackers (pre-installed tools).
+                                    <br>- <strong>Arch:</strong> For experts who want to build their OS from scratch.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Installing Linux (dual boot / VM)
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>VM (Virtual Machine):</strong> Safest. Run Linux as an app inside Windows
+                                    using VirtualBox.
+                                    <br><strong>Dual Boot:</strong> Install alongside Windows. Choose which OS to load
+                                    at startup. Better performance but risks messing up partitions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="resource-box">
                     <a class="resource-btn" href="https://youtu.be/v392lEyM29A?si=jnIVoDYausvqzUFq" target="_blank">
                         📺 Watch Linux Tutorial
@@ -85,66 +145,474 @@
 
             <div class="section">
                 <h2><span class="section-icon">2</span> Filesystem & Shell Basics</h2>
-                <ul>
-                    <li>Filesystem hierarchy</li>
-                    <li>Home, root, etc directories</li>
-                    <li>Basic bash commands</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Filesystem hierarchy
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>It's a tree starting at Root <code>/</code>.
+                                    <br><code>/home</code>: User files.
+                                    <br><code>/bin</code>: Binaries (programs like ls, cp).
+                                    <br><code>/etc</code>: Configuration files.
+                                    <br><code>/var</code>: Variable files (logs, web files).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Home, root, etc directories
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>~</code> (tilde) represents your home folder (e.g.,
+                                    <code>/home/samarth</code>).
+                                    <br><code>/root</code> is the home folder for the Superuser (admin).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Basic bash commands
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>man [command]</code>: Show manual/help.
+                                    <br><code>clear</code>: Clear screen.
+                                    <br><code>history</code>: Show previous commands.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">3</span> Navigation & File Manipulation</h2>
-                <ul>
-                    <li>cd, ls, pwd</li>
-                    <li>cp, mv, rm</li>
-                    <li>mkdir, rmdir</li>
-                    <li>cat, less, head, tail</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                cd, ls, pwd
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>pwd</code>: Print Working Directory (Where am I?).
+                                    <br><code>ls -la</code>: List all files (including hidden) with details.
+                                    <br><code>cd ..</code>: Go up one folder.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                cp, mv, rm
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>cp file1 file2</code>: Copy.
+                                    <br><code>mv file1 newname</code>: Move (or Rename).
+                                    <br><code>rm file</code>: Delete (Remove). <strong>Warning:</strong> No Recycle Bin!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                mkdir, rmdir
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>mkdir folder_name</code>: Make Directory.
+                                    <br><code>rmdir folder_name</code>: Remove empty directory. Use <code>rm -r</code>
+                                    for non-empty ones.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                cat, less, head, tail
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>cat file</code>: Show entire file content.
+                                    <br><code>less file</code>: Scroll through large files.
+                                    <br><code>head/tail</code>: Show first/last 10 lines (useful for logs).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">4</span> Users & Permissions</h2>
-                <ul>
-                    <li>User accounts & Groups</li>
-                    <li>chmod, chown, chgrp</li>
-                    <li>sudo vs root</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                User accounts & Groups
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Each file belongs to a User and a Group.
+                                    <br><code>whoami</code>: Shows current user.
+                                    <br><code>id</code>: Shows user/group IDs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                chmod, chown, chgrp
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>chmod +x script.sh</code>: Make executable.
+                                    <br><code>chmod 700 file</code>: Only owner can read/write/execute.
+                                    <br><code>chown user:group file</code>: Change ownership.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                sudo vs root
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Root:</strong> The God mode user. Can delete entire OS.
+                                    <br><strong>Sudo:</strong> "SuperUser DO". Allows a normal user to run one command
+                                    as root (e.g., <code>sudo apt update</code>).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">5</span> Package Management</h2>
-                <ul>
-                    <li>apt, yum, dnf basics</li>
-                    <li>Installing & removing packages</li>
-                    <li>Updating the system</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                apt, yum, dnf basics
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>How you install software.
+                                    <br><strong>Debian/Ubuntu:</strong> Uses <code>apt</code>.
+                                    <br><strong>RHEL/CentOS:</strong> Uses <code>yum</code> or <code>dnf</code>.
+                                    <br>It's like an App Store for the command line.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Installing & removing packages
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <pre><code>sudo apt install python3
+sudo apt remove python3</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Updating the system
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Update the list of available packages, then upgrade the installed ones.</p>
+                                <pre><code>sudo apt update && sudo apt upgrade</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">6</span> Bash Scripting</h2>
-                <ul>
-                    <li>Writing shell scripts</li>
-                    <li>Variables & functions</li>
-                    <li>Loops & conditionals</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Writing shell scripts
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>A file containing a series of commands. Must start with shebang
+                                    <code>#!/bin/bash</code> and be executable.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Variables & functions
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <pre><code>#!/bin/bash
+NAME="Sam"
+echo "Hello $NAME"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Loops & conditionals
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <pre><code>if [ -f "file.txt" ]; then
+    echo "File exists"
+fi</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">7</span> Networking Basics</h2>
-                <ul>
-                    <li>ip, ifconfig</li>
-                    <li>ping, netstat, ss</li>
-                    <li>SSH basics</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                ip, ifconfig
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Commands to view network interfaces and IP addresses. <code>ip addr show</code> is
+                                    the modern replacement for <code>ifconfig</code>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                ping, netstat, ss
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>ping google.com</code>: Check connectivity.
+                                    <br><code>ss -tuln</code>: Check open ports (listening sockets).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                SSH basics
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Secure Shell:</strong> Log into remote servers securely.
+                                    <br><code>ssh user@192.168.1.50</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section practice-section">
                 <h2><span class="section-icon">🛠</span> Practice Projects</h2>
-                <ul>
-                    <li>Create a backup script</li>
-                    <li>Automate system updates</li>
-                    <li>Build a user management script</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Create a backup script
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Write a bash script that uses <code>tar</code> to compress a project folder into a
+                                    <code>.tar.gz</code> archive, adds a timestamp to the filename (e.g.,
+                                    <code>backup_2024-01-01.tar.gz</code>), and moves it to a /backup directory.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Automate system updates
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Create a script (and schedule it with <code>cron</code>) that runs
+                                    <code>apt update</code> and logs the output to a text file each week, so you know
+                                    when updates are available.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Build a user management script
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Write a script that takes a username as an argument, creates the user, creates a home
+                                    directory, and adds them to a specific group, automating the onboarding process.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="back-section">

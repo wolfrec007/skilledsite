@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | SkilledCA</title>
+    <meta name="description"
+        content="Meet Samarth, the creator of SkilledCA. Bridging the gap between Chartered Accountancy and Technology.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .about-hero {
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        .profile-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            padding: 4px;
+            margin: 0 auto 24px;
+            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.5);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #1a1a1a;
+            /* Fallback for image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            object-fit: cover;
+        }
+
+        .about-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff, var(--text-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-subtitle {
+            font-size: 18px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 {
+            color: var(--text-primary);
+            font-size: 24px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="index.html" class="logo">⚡ SkilledCA</a>
+        <div class="nav-links">
+            <a href="tech/">Tech Hub</a>
+            <a href="ca/">CA Hub</a>
+            <a href="about.html" class="active">About</a>
+            <a href="forms/">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <section class="about-hero">
+
+            <h1 class="about-title">Hi, I'm Samarth.</h1>
+            <p class="about-subtitle">CA Final Student × Tech Enthusiast</p>
+
+            <article class="about-content">
+                <p>
+                    Welcome to <strong>SkilledCA</strong>! I created this platform to bridge the gap between two
+                    distinct yet increasingly converging worlds: <strong>Finance</strong> and
+                    <strong>Technology</strong>.
+                </p>
+                <p>
+                    By profession, I am a <strong>CA Final Student</strong> currently doing my articleship at
+                    <strong>PKF Sridhar & Santhanam</strong>. I understand the intricacies of audits,
+                    taxation, compliance, and the daily challenges finance professionals face. But unlike the
+                    traditional path, I found my passion in automation and coding.
+                </p>
+
+                <h2>Why SkilledCA?</h2>
+                <p>
+                    I realized that many CAs and finance professionals spend hours on repetitive tasks that could be
+                    solved with simple scripts or better tools. On the flip side, many developers don't understand the
+                    specific needs of the finance domain.
+                </p>
+                <p>
+                    SkilledCA is my attempt to maintain a repository of my learnings and share them with the community.
+                    Whether you're a developer looking to understand fintech workflows or a CA wanting to learn Python
+                    to automate your Excel sheets, you're in the right place.
+                </p>
+
+                <h2>My Toolkit</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">📊 Excel</div>
+                    <div class="skill-item">🗄️ SQL</div>
+                    <div class="skill-item">🐍 Python</div>
+                    <div class="skill-item">🌐 Web Dev</div>
+                    <div class="skill-item">🤖 Automation</div>
+                    <div class="skill-item">💼 SAP</div>
+                    <div class="skill-item">🐧 Linux</div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/samarth-hs" target="_blank" class="social-btn">LinkedIn</a>
+                    <a href="https://github.com/wolfrec007" target="_blank" class="social-btn">GitHub</a>
+                    <a href="#" onclick="openContactModal(); return false;" class="social-btn">Contact Me</a>
+                </div>
+
+                <div
+                    style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                    <p style="margin-bottom: 20px; font-size: 18px;">Could you spare a few seconds to share your
+                        thoughts? Your feedback is valuable!</p>
+                    <a href="forms/" class="social-btn"
+                        style="background: var(--accent-cyan); color: #000; border-color: var(--accent-cyan);">Give
+                        Feedback 📝</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from About Page">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

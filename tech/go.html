@@ -78,6 +78,7 @@
         <a href="index.html" class="logo">⚡ Tech Hub</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="../about.html">About</a>
             <a href="../forms/index.html">Feedback</a>
             <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
         </div>
@@ -94,11 +95,71 @@
 
             <div class="section">
                 <h2><span class="section-icon">1</span> Introduction to Go</h2>
-                <ul>
-                    <li>What is Go (Golang)? Why use it?</li>
-                    <li>Installing Go</li>
-                    <li>Hello World</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                What is Go (Golang)? Why use it?
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Go is an open-source language by Google. It is statically typed, compiled, and
+                                    designed for simplicity and performance.</p>
+                                <p><strong>Why?</strong> It handles concurrency (multiple tasks at once) brilliantly
+                                    with Goroutines, making it perfect for cloud servers and microservices.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Installing Go
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Download from <a href="https://go.dev/dl/" target="_blank">go.dev</a>. Once
+                                    installed, verifying it by running <code>go version</code> in your terminal. You'll
+                                    also need to set up your <code>GOPATH</code>, though newer versions handle this
+                                    automatically with Modules.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Hello World
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <pre><code>package main
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, Go!")
+}</code></pre>
+                                <p>Run it with <code>go run main.go</code>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="resource-box">
                     <a class="resource-btn" href="https://youtu.be/DCU9GkggAPg?si=fDRKu2MQI_Tctnb0" target="_blank">
                         📺 Watch Go Tutorial
@@ -108,68 +169,381 @@
 
             <div class="section">
                 <h2><span class="section-icon">2</span> Go Basics</h2>
-                <ul>
-                    <li>Variables & Data Types</li>
-                    <li>Constants</li>
-                    <li>Printing & Formatting</li>
-                    <li>Comments</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Variables & Data Types
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Explicit:</strong> <code>var x int = 10</code>
+                                    <br><strong>Short (Inference):</strong> <code>x := 10</code> (Only inside functions)
+                                    <br><strong>Types:</strong> <code>string</code>, <code>int</code>,
+                                    <code>float64</code>, <code>bool</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Constants
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Values that cannot change. Defined using <code>const</code>.</p>
+                                <pre><code>const Pi = 3.14
+const AppName = "My App"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Printing & Formatting
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Use the <code>fmt</code> package.
+                                    <br><code>fmt.Println("Hi")</code>: Prints a line.
+                                    <br><code>fmt.Printf("Age: %d", age)</code>: Prints formatted string (%d for int, %s
+                                    for string).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">3</span> Control Flow</h2>
-                <ul>
-                    <li>if / else</li>
-                    <li>switch statements</li>
-                    <li>Loops (for)</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                if / else
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>No parentheses required around the condition.</p>
+                                <pre><code>if x > 10 {
+    fmt.Println("Big")
+} else {
+    fmt.Println("Small")
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Loops (for)
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Go only has <code>for</code>. There is no <code>while</code>.</p>
+                                <pre><code>// Standard loop
+for i := 0; i < 5; i++ { }
+
+// Like a while loop
+for x < 10 { }</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">4</span> Functions in Go</h2>
-                <ul>
-                    <li>Defining Functions</li>
-                    <li>Return Values</li>
-                    <li>Multiple Return Values</li>
-                    <li>Variadic Functions</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Defining Functions
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Declared with <code>func</code>. Types come after names.</p>
+                                <pre><code>func add(x int, y int) int {
+    return x + y
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Multiple Return Values
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>A unique feature of Go. Functions can return more than one result.</p>
+                                <pre><code>func swap(x, y string) (string, string) {
+    return y, x
+}
+a, b := swap("hello", "world")</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">5</span> Go Data Structures</h2>
-                <ul>
-                    <li>Slices</li>
-                    <li>Arrays</li>
-                    <li>Maps</li>
-                    <li>Structs</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Slices & Arrays
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Arrays:</strong> Fixed size. <code>[5]int</code>.
+                                    <br><strong>Slices:</strong> Dynamic size. Wrappers around arrays. This is what you
+                                    use 99% of the time. <code>[]int{1, 2, 3}</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Maps
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Key-value pairs (like Python dicts).</p>
+                                <pre><code>m := make(map[string]int)
+m["Age"] = 30</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Structs
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Custom data types holding multiple fields.</p>
+                                <pre><code>type Person struct {
+    Name string
+    Age  int
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">6</span> Pointers & Packages</h2>
-                <ul>
-                    <li>Pointers and Memory</li>
-                    <li>Packages & Modules</li>
-                    <li>Importing Libraries</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Pointers and Memory
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Go gives you control over memory access without the complexity of C.</p>
+                                <p><code>&</code> gets the memory address. <code>*</code> gets the value at an address.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Packages & Modules
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Packages:</strong> Code is organized in packages. <code>package main</code>
+                                    is the entry point.
+                                    <br><strong>Modules:</strong> Dependency management (like package.json). Initialize
+                                    with <code>go mod init myapp</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">⚡</span> Concurrency (Go's Superpower)</h2>
-                <ul>
-                    <li>Goroutines</li>
-                    <li>Channels</li>
-                    <li>Select statement</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Goroutines
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>A lightweight thread managed by the Go runtime. Just add <code>go</code> before a
+                                    function call to run it in the background.</p>
+                                <pre><code>go doSomething() // Runs concurrently</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Channels
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Pipes that connect concurrent goroutines. You can send values into channels from one
+                                    goroutine and receive those values into another.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section practice-section">
                 <h2><span class="section-icon">🛠</span> Practice Projects</h2>
-                <ul>
-                    <li>CLI calculator</li>
-                    <li>Basic File Reader</li>
-                    <li>Goroutine Demo App</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                CLI calculator
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Build a command-line tool that takes two numbers and an operator (+, -, *, /) as
+                                    arguments and prints the result. Use <code>os.Args</code> to read input.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Basic File Reader
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Write a program that reads a text file and counts the number of words in it. You'll
+                                    learn about the <code>os</code> and <code>bufio</code> packages.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Goroutine Demo App
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Create a program that fetches data from 3 different URLs simultaneously using
+                                    goroutines and prints which one finished first. Teaches practical concurrency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="back-section">

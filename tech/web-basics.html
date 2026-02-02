@@ -67,6 +67,7 @@
         <a href="index.html" class="logo">⚡ Tech Hub</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="../about.html">About</a>
             <a href="../forms/index.html">Feedback</a>
             <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
         </div>
@@ -82,68 +83,311 @@
 
             <div class="section">
                 <h2><span class="section-icon">1</span> How the Web Works</h2>
-                <ul>
-                    <li>Client vs Server</li>
-                    <li>What happens when you open a website?</li>
-                    <li>DNS, IP Address, HTTP/HTTPS</li>
-                    <li>Browsers & rendering engines</li>
-                </ul>
-                <div class="resource">
-                    <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web"
-                        target="_blank">MDN – How the Web Works</a>
-                    <p>Best beginner-friendly explanation</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Client-Server model
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Client:</strong> Your browser (Chrome, Firefox). It requests data.
+                                    <br><strong>Server:</strong> A computer somewhere else (Amazon, Google) that sends
+                                    the data back.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                DNS & Hosting
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>DNS:</strong> The internet's phonebook. Turns <code>google.com</code> into an
+                                    IP address.
+                                    <br><strong>Hosting:</strong> Renting space on a server to store your website files
+                                    so others can access them.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-box">
+                    <a class="resource-btn" href="https://youtu.be/zJSY8tbf_ys?si=t27Z_v-d-kQG-Wl3" target="_blank">
+                        📺 Watch Web Basics Tutorial
+                    </a>
                 </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">2</span> HTML – Structure</h2>
-                <ul>
-                    <li>HTML tags & elements</li>
-                    <li>Head vs Body</li>
-                    <li>Links, images, lists, tables</li>
-                    <li>Forms & inputs</li>
-                    <li>Semantic HTML</li>
-                </ul>
-                <div class="resource"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN
-                        HTML Guide</a></div>
-                <div class="resource"><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML</a></div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Semantic Tags
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Use tags that have meaning. Instead of just <code>&lt;div&gt;</code>, use
+                                    <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>,
+                                    and <code>&lt;footer&gt;</code>. This helps SEO and accessibility.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Forms & Inputs
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>How you get data from users.
+                                    <br><code>&lt;input type="text"&gt;</code>, <code>&lt;button&gt;</code>,
+                                    <code>&lt;form&gt;</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Links & Images
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>&lt;a href="url"&gt;</code> points to another page.
+                                    <br><code>&lt;img src="image.jpg" alt="Description"&gt;</code> displays an image.
+                                    Always use alt text!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">3</span> CSS – Styling</h2>
-                <ul>
-                    <li>Selectors & properties</li>
-                    <li>Box model</li>
-                    <li>Flexbox & Grid</li>
-                    <li>Responsive design</li>
-                </ul>
-                <div class="resource"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN CSS
-                        Docs</a></div>
-                <div class="resource"><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Box Model
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Every element is a box.
+                                    <br><strong>Content:</strong> The text/image.
+                                    <br><strong>Padding:</strong> Space inside the box.
+                                    <br><strong>Border:</strong> The line around the box.
+                                    <br><strong>Margin:</strong> Space outside the box (pushes other things away).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Flexbox & Grid
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>The modern ways to lay out pages.
+                                    <br><strong>Flexbox:</strong> For 1D layouts (a row of buttons).
+                                    <br><strong>Grid:</strong> For 2D layouts (entire page structure).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Responsive Design
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Making sites work on phones. Use <code>@media</code> queries to change styles based
+                                    on screen size (e.g., stack columns on mobile).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">4</span> JavaScript – Interactivity</h2>
-                <ul>
-                    <li>Variables & data types</li>
-                    <li>Functions & events</li>
-                    <li>DOM manipulation</li>
-                    <li>Basic async (fetch)</li>
-                </ul>
-                <div class="resource"><a href="https://javascript.info/" target="_blank">JavaScript.info</a></div>
-                <div class="resource"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                        target="_blank">MDN JavaScript</a></div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                DOM Manipulation
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>The DOM (Document Object Model) is the tree of HTML elements. JS can change it.
+                                    <br><code>document.querySelector('h1').textContent = 'Hello';</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Variables, Functions, Events
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><strong>Let/Const:</strong> Store data.
+                                    <br><strong>Functions:</strong> Reusable logic.
+                                    <br><strong>Events:</strong> Reacting to clicks, typing, etc.
+                                    (<code>button.addEventListener('click', ...)</code>).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Async / Await & Fetch API
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>How to get data from a server without reloading the page.
+                                    <br><code>const data = await fetch('/api/user');</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
                 <h2><span class="section-icon">5</span> Developer Tools</h2>
-                <ul>
-                    <li>Browser DevTools</li>
-                    <li>VS Code & Live Server</li>
-                    <li>Basic Git & GitHub</li>
-                </ul>
-                <div class="resource"><a href="https://developer.chrome.com/docs/devtools/" target="_blank">Chrome
-                        DevTools Docs</a></div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Inspect Element
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Right-click anything -> Inspect. You can change HTML/CSS live to test ideas. F12
+                                    opens the full suite.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Console Debugging
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p><code>console.log('debug info')</code> prints here. Errors appear here in red. It's
+                                    your first stop when something breaks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Network Tab
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Shows every file (images, scripts, API calls) loading. Great for debugging slow sites
+                                    or failed API requests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
@@ -164,12 +408,62 @@
 
             <div class="section">
                 <h2><span class="section-icon">7</span> Beginner Projects</h2>
-                <ul>
-                    <li>Personal portfolio website</li>
-                    <li>Landing page</li>
-                    <li>To-do list (HTML + JS)</li>
-                    <li>Responsive blog page</li>
-                </ul>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Personal Portfolio
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Build a simple site with an "About Me" and "Contact" section. Great for practicing
+                                    semantic HTML and layout.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                To-Do List App
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>The classic. Type a task, hit enter, add it to a list. Click to delete. Teaches you
+                                    how to create elements with JS.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title-wrapper">
+                                <span class="accordion-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg></span>
+                                Weather App (using API)
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Use the Fetch API to get real weather data from a free API (like OpenWeatherMap) and
+                                    display it nicely on screen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="section">

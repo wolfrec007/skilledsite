@@ -200,12 +200,12 @@
     </div>
 
     <!-- NAVIGATION -->
-    <!-- NAVIGATION -->
     <nav class="nav">
         <a href="./" class="logo">⚡ CA Hub</a>
         <div class="nav-links">
             <a href="../">Home</a>
             <a href="../tech/">Tech Hub</a>
+            <a href="../about.html">About</a>
             <a href="../forms/">Feedback</a>
             <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
         </div>
@@ -219,6 +219,18 @@
                 </div>
                 <h1>SAP Resources for CAs</h1>
                 <p class="page-subtitle">Master essential T-Codes for FICO, Audit, and more.</p>
+
+                <div class="contributors"
+                    style="margin-top: 20px; font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+                    <span>✨ Contributed by:</span>
+                    <a href="mailto:likith@skilledca.in"
+                        style="color: var(--accent-cyan); text-decoration: none; border-bottom: 1px dotted var(--accent-cyan);">Sai
+                        Likith GV</a>
+                    <span>&</span>
+                    <a href="mailto:samarth@skilledca.in"
+                        style="color: var(--accent-cyan); text-decoration: none; border-bottom: 1px dotted var(--accent-cyan);">Samarth
+                        HS</a>
+                </div>
             </div>
 
             <!-- Search Area -->
@@ -237,6 +249,12 @@
                 <div class="tag" data-filter="mm">MM/SD (Procurement)</div>
                 <div class="tag" data-filter="rectification"
                     style="border-color: var(--accent-red); color: var(--accent-red);">Rectification (Reversals)</div>
+                <div class="tag" data-filter="library"
+                    style="border-color: var(--accent-purple); color: var(--accent-purple);">📚 Full Library</div>
+                <div class="tag" data-filter="standard"
+                    style="border-color: var(--accent-cyan); color: var(--accent-cyan);">✅ Standard Only</div>
+                <div class="tag" data-filter="custom"
+                    style="border-color: var(--accent-red); color: var(--accent-red);">⚠️ Custom Only</div>
             </div>
 
             <!-- SECTION: ESSENTIAL CONCEPTS (TOP) -->
@@ -366,6 +384,12 @@
                                 <span class="kbd">/nex</span>
                             </div>
                             <div class="action-text">Log off from system immediately (No confirmation)</div>
+                        </div>
+                        <div class="shortcut-card">
+                            <div class="key-combo">
+                                <span class="kbd">F3</span>
+                            </div>
+                            <div class="action-text">Back (Go to previous screen/step)</div>
                         </div>
                     </div>
                 </div>
@@ -771,6 +795,26 @@
                 </div>
             </div>
 
+            <!-- SECTION: DYNAMIC T-CODES LIBRARY -->
+            <div class="shortcut-group" data-category="library">
+                <div class="group-title" style="color: var(--accent-purple);">📚 Full T-Codes Library</div>
+
+                <div
+                    style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 24px; font-size: 14px; color: #fca5a5; display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="font-size: 18px;">⚠️</div>
+                    <div>
+                        <strong>Note on Custom T-Codes (Z/Y):</strong><br>
+                        Transactions starting with <strong>'Z'</strong> or <strong>'Y'</strong> are custom-built for
+                        specific entities. These may not work in your organization's SAP system or may be named
+                        differently.
+                    </div>
+                </div>
+
+                <div class="shortcuts-grid" id="dynamicTCodesGrid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+
             <div class="back-section"
                 style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
                 <div style="display: flex; gap: 16px; align-items: center;">
@@ -790,6 +834,7 @@
 
     <!-- MAIN MODAL & SCRIPT -->
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/tcodes-data.js"></script>
     <script src="../scripts/download-system.js"></script>
 
     <!-- CONTACT MODAL -->
@@ -837,33 +882,141 @@
     <!-- Note: download-system.js creates the modal dynamically, so no static HTML needed here -->
 
     <script>
-        // Simple search filter
+        // Render T-Codes from data file
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('dynamicTCodesGrid');
+            if (typeof tCodesData !== 'undefined' && grid) {
+                tCodesData.forEach(item => {
+                    // Skip empty items
+                    if (!item.Transaction) return;
+
+                    const card = document.createElement('div');
+                    card.className = 'shortcut-card';
+
+                    // DETERMINE IF CUSTOM T-CODE (Starts with Z or Y)
+                    const isCustom = item.Transaction.toUpperCase().startsWith('Z') || item.Transaction.toUpperCase().startsWith('Y') || item.Transaction.toUpperCase().startsWith('J1');
+
+                    let badgeClass = 'module-badge';
+                    let badgeStyle = '';
+                    const rawArea = (item.Area || 'SAP').toUpperCase();
+                    let filterCategory = 'other';
+
+                    // Map Excel Areas to Filter Categories
+                    if (rawArea.includes('FI') || rawArea.includes('ACCOUNT') || rawArea.includes('ASSET')) {
+                        badgeClass += ' module-fi';
+                        filterCategory = 'fico';
+                    } else if (rawArea.includes('CO')) {
+                        badgeClass += ' module-co';
+                        filterCategory = 'fico';
+                    } else if (rawArea.includes('MM') || rawArea.includes('INV') || rawArea.includes('P2P') || rawArea.includes('LOG')) {
+                        badgeClass += ' module-mm';
+                        filterCategory = 'mm';
+                    } else if (rawArea.includes('SD') || rawArea.includes('SALE')) {
+                        badgeClass += ' module-sd';
+                        filterCategory = 'mm'; // Mapping Sales to MM/SD group
+                    } else if (rawArea.includes('AUDIT') || rawArea.includes('REP')) {
+                        filterCategory = 'audit';
+                    } else if (rawArea.includes('HR') || rawArea.includes('PAY')) {
+                        filterCategory = 'hr';
+                        badgeStyle = 'background: rgba(236, 72, 153, 0.2); color: #f472b6;'; // Pink for HR
+                    } else {
+                        badgeStyle = 'background: rgba(255,255,255,0.1); color: #ccc;';
+                    }
+
+                    if (isCustom) {
+                        badgeClass += ' module-custom';
+                        badgeStyle = 'background: rgba(239, 68, 68, 0.1); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3);';
+                    }
+
+                    // Set Data Attributes for Filtering
+                    card.setAttribute('data-custom', isCustom);
+                    card.setAttribute('data-category', filterCategory);
+                    card.setAttribute('data-search-terms', `${item.Transaction} ${item['Tcode Description']} ${item.Description} ${rawArea}`.toLowerCase());
+
+                    card.innerHTML = `
+                        <div class="key-combo">
+                            <span class="kbd">${item.Transaction}</span>
+                            <span class="${badgeClass}" style="${badgeStyle}">${isCustom ? 'CUSTOM' : rawArea}</span>
+                        </div>
+                        <div class="action-text">${item['Tcode Description'] || item.Description || ''}</div>
+                        ${isCustom ? '<div style="font-size: 10px; color: #fca5a5; margin-top: 8px; font-style: italic;">⚠️ Entity specific</div>' : ''}
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        });
+
+        // Search Filter
         document.getElementById('searchInput').addEventListener('keyup', function (e) {
             const term = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.shortcut-card');
 
             cards.forEach(card => {
+                // Check visible text
                 const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(term) ? 'block' : 'none';
+                // Check hidden search terms (for dynamic cards)
+                const searchTerms = card.getAttribute('data-search-terms') || '';
+
+                card.style.display = (text.includes(term) || searchTerms.includes(term)) ? 'block' : 'none';
             });
         });
 
-        // Category filter
+        // Category & Type Filter Logic
         document.querySelectorAll('.tag').forEach(tag => {
             tag.addEventListener('click', function () {
                 // Remove active class
                 document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
 
-                const category = this.getAttribute('data-filter');
-                const groups = document.querySelectorAll('.shortcut-group');
+                const filter = this.getAttribute('data-filter');
+                console.log('Filter selected:', filter);
 
+                // 1. Handle Static Groups (Sections)
+                const groups = document.querySelectorAll('.shortcut-group');
                 groups.forEach(group => {
-                    if (category === 'all' || group.getAttribute('data-category') === category) {
+                    const groupCat = group.getAttribute('data-category');
+
+                    if (filter === 'all') {
+                        group.style.display = 'block';
+                    } else if (filter === 'custom') {
+                        // Show only Library for Custom filter
+                        group.style.display = (groupCat === 'library') ? 'block' : 'none';
+                    } else if (filter === 'standard') {
+                        // Show everything
                         group.style.display = 'block';
                     } else {
-                        group.style.display = 'none';
+                        // Standard Category Match (e.g., FICO, MM)
+                        // Always show Library too so we can filter inside it
+                        if (groupCat === filter || groupCat === 'library') {
+                            group.style.display = 'block';
+                        } else {
+                            group.style.display = 'none';
+                        }
                     }
+                });
+
+                // 2. Handle Dynamic Card Filtering (Inside Library)
+                const dynamicCards = document.querySelectorAll('#dynamicTCodesGrid .shortcut-card');
+                dynamicCards.forEach(card => {
+                    const isCustom = card.getAttribute('data-custom') === 'true';
+                    const cardCat = card.getAttribute('data-category');
+
+                    let shouldShow = true;
+
+                    if (filter === 'all') {
+                        shouldShow = true;
+                    } else if (filter === 'custom') {
+                        shouldShow = isCustom;
+                    } else if (filter === 'standard') {
+                        shouldShow = !isCustom;
+                    } else if (filter === 'library') {
+                        shouldShow = true;
+                    } else {
+                        // Category Filters (fico, mm, etc.)
+                        shouldShow = (cardCat === filter);
+                    }
+
+                    card.style.display = shouldShow ? 'block' : 'none';
                 });
             });
         });
