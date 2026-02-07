@@ -325,15 +325,7 @@
         <div class="orb"></div>
     </div>
 
-    <!-- NAVIGATION -->
-    <nav class="nav">
-        <a href="../index.html" class="logo">⚡ Learning Hub</a>
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="../index.html#paths">Explore Paths</a>
-            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
-        </div>
-    </nav>
+    <!-- NO NAVIGATION - Standalone Form -->
 
     <!-- FORM SECTION -->
     <section class="form-section">
@@ -341,7 +333,7 @@
             <!-- Form Header -->
             <div class="form-header">
                 <div class="form-icon">🚀</div>
-                <h1 class="form-title">API Tutorial Feedback</h1>
+                <h1 class="form-title">Feedback - session on API</h1>
                 <p class="form-subtitle">Thanks for attending! Please share your feedback on the session</p>
                 <div class="form-topic">📡 Session: Introduction to APIs</div>
             </div>
@@ -536,7 +528,7 @@
             // TODO: Replace with your Google Apps Script URL
             // Create a new Google Sheet with headers: Timestamp, Name, Content, Communication, Delivery, Examples, Complexity, Practical, Materials, Overall, Review
             // Then create an Apps Script with doPost function to handle the form data
-            const SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLXQ02nAfphx2LkwqRrWmOBvRiaZboRhZpJyOXZG0sXEqzHy-jS8TDqXXYzJfJ5B1G/exec';
 
             // Disable button and show loading state
             submitBtn.disabled = true;
@@ -571,46 +563,7 @@
         });
     </script>
 
-    <!-- CONTACT MODAL -->
-    <div id="contactModal" class="contact-modal">
-        <div class="contact-content">
-            <button class="contact-close" onclick="closeContactModal()">×</button>
-            <div class="contact-form-container">
-                <div class="contact-header">
-                    <h2>Say Hi! 👋</h2>
-                    <p>Have a question or just want to connect? Drop me a message!</p>
-                </div>
-                <div class="contact-recipient">
-                    <span>📧 Sending to:</span>
-                    <span>samarth@skilledca.in</span>
-                </div>
-                <form id="contactForm" class="contact-form">
-                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
-                    <input type="hidden" name="subject" value="New message from Learning Hub">
-                    <div class="form-group">
-                        <label for="contactName">Your Name</label>
-                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail">Your Email</label>
-                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">Message</label>
-                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="contact-submit">Send Message ✨</button>
-                </form>
-            </div>
-            <div class="contact-success">
-                <div class="contact-success-icon">🎉</div>
-                <h3>Message Sent!</h3>
-                <p>Thanks for reaching out! I'll get back to you soon.</p>
-                <button class="btn-primary" onclick="closeContactModal()">Close</button>
-            </div>
-        </div>
-    </div>
+
 </body>
 
 </html>
