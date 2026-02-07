@@ -7,15 +7,16 @@
 3. Add these headers in Row 1:
    - A1: `Timestamp`
    - B1: `Name`
-   - C1: `Content`
-   - D1: `Communication`
-   - E1: `Delivery`
-   - F1: `Examples`
-   - G1: `Complexity`
-   - H1: `Practical`
-   - I1: `Materials`
-   - J1: `Overall`
-   - K1: `Review`
+   - C1: `Email`
+   - D1: `Content`
+   - E1: `Communication`
+   - F1: `Delivery`
+   - G1: `Examples`
+   - H1: `Complexity`
+   - I1: `Practical`
+   - J1: `Materials`
+   - K1: `Overall`
+   - L1: `Review`
 
 ## Step 2: Create Google Apps Script
 
@@ -29,6 +30,7 @@ function doPost(e) {
     
     // Get form data
     var name = e.parameter.name;
+    var email = e.parameter.email;
     var content = e.parameter.content;
     var communication = e.parameter.communication;
     var delivery = e.parameter.delivery;
@@ -42,6 +44,7 @@ function doPost(e) {
     sheet.appendRow([
       new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'}),
       name,
+      email,
       content,
       communication,
       delivery,
