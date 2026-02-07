@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<!-- API Tutorial Feedback Form - Saturday Session -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tutorial Feedback | Learning Hub</title>
+    <meta name="description" content="Share your feedback on the API tutorial session">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        /* ================= FORM-SPECIFIC STYLES ================= */
+        .form-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 80px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 48px;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 24px;
+            box-shadow: 0 10px 40px -10px rgba(245, 158, 11, 0.4);
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .form-topic {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 16px;
+            color: #fbbf24;
+        }
+
+        /* ================= FORM ELEMENTS ================= */
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: #f59e0b;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* ================= RATING SLIDER STYLES ================= */
+        .rating-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+
+        .rating-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rating-item {
+            margin-bottom: 24px;
+        }
+
+        .rating-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .rating-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .rating-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rating-label span {
+            font-size: 16px;
+        }
+
+        .rating-value {
+            font-size: 18px;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: right;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slider-container {
+            position: relative;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: visible;
+        }
+
+        .slider-track {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            border-radius: 4px;
+            transition: width 0.15s ease;
+        }
+
+        .rating-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rating-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 3px solid white;
+        }
+
+        .rating-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        .rating-slider::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: transform 0.2s ease;
+            border: 3px solid white;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* ================= SUBMIT BUTTON ================= */
+        .btn-submit {
+            width: 100%;
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px -10px rgba(245, 158, 11, 0.4);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px -10px rgba(245, 158, 11, 0.6);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ================= SUCCESS MESSAGE ================= */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #f59e0b, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .success-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 32px 20px;
+            }
+
+            .rating-section {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BACKGROUND ELEMENTS -->
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <a href="../index.html" class="logo">⚡ Learning Hub</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#paths">Explore Paths</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <!-- FORM SECTION -->
+    <section class="form-section">
+        <div class="form-container">
+            <!-- Form Header -->
+            <div class="form-header">
+                <div class="form-icon">🚀</div>
+                <h1 class="form-title">API Tutorial Feedback</h1>
+                <p class="form-subtitle">Help us improve future sessions with your valuable feedback</p>
+                <div class="form-topic">📡 Topic: APIs & Web Services</div>
+            </div>
+
+            <!-- Feedback Form -->
+            <form id="feedbackForm">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label class="form-label" for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                </div>
+
+                <!-- Rating Section -->
+                <div class="rating-section">
+                    <div class="rating-section-title">
+                        <span>⭐</span> Rate Your Experience (1-10)
+                    </div>
+
+                    <!-- Content Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>📚</span> Content Quality</div>
+                            <div class="rating-value" id="contentValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="contentTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="content"
+                                name="content" oninput="updateSlider('content')">
+                        </div>
+                        <div class="slider-labels"><span>Poor</span><span>Excellent</span></div>
+                    </div>
+
+                    <!-- Communication Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>🗣️</span> Communication</div>
+                            <div class="rating-value" id="communicationValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="communicationTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="communication"
+                                name="communication" oninput="updateSlider('communication')">
+                        </div>
+                        <div class="slider-labels"><span>Poor</span><span>Excellent</span></div>
+                    </div>
+
+                    <!-- Delivery Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>🎯</span> Delivery & Pace</div>
+                            <div class="rating-value" id="deliveryValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="deliveryTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="delivery"
+                                name="delivery" oninput="updateSlider('delivery')">
+                        </div>
+                        <div class="slider-labels"><span>Poor</span><span>Excellent</span></div>
+                    </div>
+
+                    <!-- Examples Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>💡</span> Examples Used</div>
+                            <div class="rating-value" id="examplesValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="examplesTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="examples"
+                                name="examples" oninput="updateSlider('examples')">
+                        </div>
+                        <div class="slider-labels"><span>Poor</span><span>Excellent</span></div>
+                    </div>
+
+                    <!-- Complexity Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>🧠</span> Complexity Level</div>
+                            <div class="rating-value" id="complexityValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="complexityTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="complexity"
+                                name="complexity" oninput="updateSlider('complexity')">
+                        </div>
+                        <div class="slider-labels"><span>Too Simple</span><span>Too Complex</span></div>
+                    </div>
+
+                    <!-- Practical Application Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>📝</span> Practical Application</div>
+                            <div class="rating-value" id="practicalValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="practicalTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="practical"
+                                name="practical" oninput="updateSlider('practical')">
+                        </div>
+                        <div class="slider-labels"><span>Not Useful</span><span>Very Useful</span></div>
+                    </div>
+
+                    <!-- Materials Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>🎨</span> Materials & Slides</div>
+                            <div class="rating-value" id="materialsValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="materialsTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="materials"
+                                name="materials" oninput="updateSlider('materials')">
+                        </div>
+                        <div class="slider-labels"><span>Poor</span><span>Excellent</span></div>
+                    </div>
+
+                    <!-- Overall Rating -->
+                    <div class="rating-item">
+                        <div class="rating-header">
+                            <div class="rating-label"><span>⭐</span> Overall Satisfaction</div>
+                            <div class="rating-value" id="overallValue">5</div>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-track" id="overallTrack" style="width: 50%;"></div>
+                            <input type="range" min="1" max="10" value="5" class="rating-slider" id="overall"
+                                name="overall" oninput="updateSlider('overall')">
+                        </div>
+                        <div class="slider-labels"><span>Poor</span><span>Excellent</span></div>
+                    </div>
+                </div>
+
+                <!-- Detailed Review -->
+                <div class="form-group">
+                    <label class="form-label" for="review">Detailed Review (Optional)</label>
+                    <textarea id="review" name="review" class="form-textarea"
+                        placeholder="Share any additional thoughts, suggestions, or specific feedback about the API tutorial..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    Submit Feedback 🚀
+                </button>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">🎉</div>
+                <h2 class="success-title">Thank You!</h2>
+                <p class="success-text">Your feedback has been submitted successfully. We appreciate your time and input
+                    to help us improve our tutorials!</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Update slider visual feedback
+        function updateSlider(name) {
+            const slider = document.getElementById(name);
+            const value = slider.value;
+            const track = document.getElementById(name + 'Track');
+            const valueDisplay = document.getElementById(name + 'Value');
+
+            // Update value display
+            valueDisplay.textContent = value;
+
+            // Update track width (percentage based on 1-10 scale)
+            const percentage = ((value - 1) / 9) * 100;
+            track.style.width = percentage + '%';
+        }
+
+        // Initialize all sliders on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const sliders = ['content', 'communication', 'delivery', 'examples', 'complexity', 'practical', 'materials', 'overall'];
+            sliders.forEach(name => updateSlider(name));
+        });
+
+        // Google Sheet Integration
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const form = this;
+            const successMessage = document.getElementById('successMessage');
+
+            // TODO: Replace with your Google Apps Script URL
+            // Create a new Google Sheet with headers: Timestamp, Name, Content, Communication, Delivery, Examples, Complexity, Practical, Materials, Overall, Review
+            // Then create an Apps Script with doPost function to handle the form data
+            const SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const formData = new FormData(form);
+            // Add timestamp
+            formData.append('timestamp', new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }));
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    // Success!
+                    form.style.display = 'none';
+                    document.querySelector('.form-header').style.display = 'none';
+                    successMessage.classList.add('show');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // Fallback - show success for demo/local testing
+                    if (SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                        form.style.display = 'none';
+                        document.querySelector('.form-header').style.display = 'none';
+                        successMessage.classList.add('show');
+                    } else {
+                        submitBtn.textContent = 'Error! Try again.';
+                        submitBtn.disabled = false;
+                    }
+                });
+        });
+    </script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from Learning Hub">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
