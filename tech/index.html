@@ -547,7 +547,7 @@
         <div class="paths-container">
             <div class="grid">
 
-                <div class="banner" data-accent="cyan" onclick="redirect('backend')">
+                <div class="banner" data-accent="cyan" onclick="redirect('/tech/backend')">
                     <div class="banner-icon">🔧</div>
                     <div class="banner-content">
                         <h3>Backend Development</h3>
@@ -555,7 +555,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="blue" onclick="redirect('go')">
+                <div class="banner" data-accent="blue" onclick="redirect('/tech/go')">
                     <div class="banner-icon">🚀</div>
                     <div class="banner-content">
                         <h3>Go Programming</h3>
@@ -563,7 +563,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="green" onclick="redirect('python-gui-roadmap')">
+                <div class="banner" data-accent="green" onclick="redirect('/tech/python-gui-roadmap')">
                     <div class="banner-icon">🐍</div>
                     <div class="banner-content">
                         <h3>Python Mastery</h3>
@@ -571,7 +571,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="green" onclick="redirect('python-scripting')">
+                <div class="banner" data-accent="green" onclick="redirect('/tech/python-scripting')">
                     <div class="banner-icon">📜</div>
                     <div class="banner-content">
                         <h3>Python Scripting Essentials</h3>
@@ -579,7 +579,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="pink" onclick="redirect('cybersecurity')">
+                <div class="banner" data-accent="pink" onclick="redirect('/tech/cybersecurity')">
                     <div class="banner-icon">🛡️</div>
                     <div class="banner-content">
                         <h3>Cybersecurity</h3>
@@ -587,7 +587,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="orange" onclick="redirect('linux')">
+                <div class="banner" data-accent="orange" onclick="redirect('/tech/linux')">
                     <div class="banner-icon">🐧</div>
                     <div class="banner-content">
                         <h3>Linux & CLI</h3>
@@ -595,7 +595,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="purple" onclick="redirect('web-basics')">
+                <div class="banner" data-accent="purple" onclick="redirect('/tech/web-basics')">
                     <div class="banner-icon">🌐</div>
                     <div class="banner-content">
                         <h3>Web Fundamentals</h3>
@@ -603,7 +603,7 @@
                     </div>
                 </div>
 
-                <div class="banner" data-accent="orange" onclick="redirect('git')">
+                <div class="banner" data-accent="orange" onclick="redirect('/tech/git')">
                     <div class="banner-icon">🌳</div>
                     <div class="banner-content">
                         <h3>Git Version Control</h3>
@@ -692,20 +692,20 @@
             <div class="footer-section">
                 <h3>Learning Paths</h3>
                 <div class="footer-links">
-                    <a href="backend">Backend Development</a>
-                    <a href="go">Go Programming</a>
-                    <a href="python-gui-roadmap">Python Mastery</a>
-                    <a href="cybersecurity">Cybersecurity</a>
+                    <a href="/tech/backend">Backend Development</a>
+                    <a href="/tech/go">Go Programming</a>
+                    <a href="/tech/python-gui-roadmap">Python Mastery</a>
+                    <a href="/tech/cybersecurity">Cybersecurity</a>
                 </div>
             </div>
 
             <div class="footer-section">
                 <h3>Resources</h3>
                 <div class="footer-links">
-                    <a href="linux">Linux & CLI</a>
-                    <a href="web-basics">Web Fundamentals</a>
-                    <a href="git">Git & Version Control</a>
-                    <a href="cmd-snippets">CMD Snippets</a>
+                    <a href="/tech/linux">Linux & CLI</a>
+                    <a href="/tech/web-basics">Web Fundamentals</a>
+                    <a href="/tech/git">Git & Version Control</a>
+                    <a href="/tech/cmd-snippets">CMD Snippets</a>
                     <a href="#" onclick="openQuiz(); return false;">Take Quiz</a>
                 </div>
             </div>
@@ -713,8 +713,8 @@
             <div class="footer-section">
                 <h3>Legal</h3>
                 <div class="footer-links">
-                    <a href="privacy">Privacy Policy</a>
-                    <a href="terms">Terms & Conditions</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms & Conditions</a>
                 </div>
             </div>
         </div>
@@ -915,14 +915,14 @@
                     icon: '🌐',
                     title: 'Web Fundamentals',
                     description: 'Start with HTML, CSS & JavaScript basics',
-                    url: 'web-basics.html'
+                    url: '/tech/web-basics'
                 });
                 if (experience !== 'beginner') {
                     paths.push({
                         icon: '🔧',
                         title: 'Backend Development',
                         description: 'Learn server-side programming and APIs',
-                        url: 'backend.html'
+                        url: '/tech/backend'
                     });
                 }
             }
@@ -932,7 +932,7 @@
                     icon: '🐍',
                     title: 'Python Mastery',
                     description: 'Perfect for GUI applications',
-                    url: 'python-gui-roadmap.html'
+                    url: '/tech/python-gui-roadmap'
                 });
             }
 
@@ -941,13 +941,13 @@
                     icon: '🔧',
                     title: 'Backend Development',
                     description: 'Master server-side architecture',
-                    url: 'backend.html'
+                    url: '/tech/backend'
                 });
                 paths.push({
                     icon: '🚀',
                     title: 'Go Programming',
                     description: 'Build high-performance backend systems',
-                    url: 'go.html'
+                    url: '/tech/go'
                 });
             }
 
@@ -956,13 +956,13 @@
                     icon: '🛡️',
                     title: 'Cybersecurity',
                     description: 'Learn ethical hacking and security',
-                    url: 'cybersecurity.html'
+                    url: '/tech/cybersecurity'
                 });
                 paths.push({
                     icon: '🐧',
                     title: 'Linux & CLI',
                     description: 'Essential for security professionals',
-                    url: 'linux.html'
+                    url: '/tech/linux'
                 });
             }
 
@@ -971,28 +971,28 @@
                     icon: '🐧',
                     title: 'Linux & CLI',
                     description: 'Master system administration',
-                    url: 'linux.html'
+                    url: '/tech/linux'
                 });
             }
 
             // If beginner, always suggest fundamentals
-            if (experience === 'beginner' && !paths.some(p => p.url === 'web-basics.html')) {
+            if (experience === 'beginner' && !paths.some(p => p.url === '/tech/web-basics')) {
                 paths.unshift({
                     icon: '🌐',
                     title: 'Web Fundamentals',
                     description: 'Great starting point for beginners',
-                    url: 'web-basics.html'
+                    url: '/tech/web-basics'
                 });
             }
 
             // Ensure at least 2 recommendations
             if (paths.length < 2) {
-                if (!paths.some(p => p.url === 'python-gui-roadmap.html')) {
+                if (!paths.some(p => p.url === '/tech/python-gui-roadmap')) {
                     paths.push({
                         icon: '🐍',
                         title: 'Python Mastery',
                         description: 'Versatile language for many applications',
-                        url: 'python-gui-roadmap.html'
+                        url: '/tech/python-gui-roadmap'
                     });
                 }
             }

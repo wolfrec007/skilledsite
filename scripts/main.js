@@ -54,6 +54,20 @@ function getHomeUrl() {
  * Navigate to a page with transition
  */
 function redirect(page) {
+    if (!page) {
+        return;
+    }
+
+    if (/^(https?:|mailto:|tel:)/.test(page) || page.startsWith('/')) {
+        window.location.href = page;
+        return;
+    }
+
+    if (window.location.pathname.startsWith('/tech')) {
+        window.location.href = `/tech/${page}`;
+        return;
+    }
+
     window.location.href = page;
 }
 
