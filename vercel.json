@@ -9,18 +9,6 @@
     {
       "source": "/about",
       "destination": "/about.html"
-    },
-    {
-      "source": "/tech/(.*)",
-      "destination": "/tech/$1.html"
-    },
-    {
-      "source": "/ca/(.*)",
-      "destination": "/ca/$1.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1.html"
     }
   ]
 }
