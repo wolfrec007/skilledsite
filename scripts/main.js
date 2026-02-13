@@ -3,10 +3,7 @@
    Learning Hub - Shared Scripts
    =============================================================== */
 
-    } else {
-    window.location.href = getHomeUrl();
-}
-}
+
 
 /**
  * Initialize Accordion
