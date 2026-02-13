@@ -3,6 +3,58 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/excel-shortcuts",
+      "destination": "/ca/excel-shortcuts.html"
+    },
+    {
+      "source": "/excel-shortcuts-print",
+      "destination": "/ca/excel-shortcuts-print.html"
+    },
+    {
+      "source": "/sap-resources",
+      "destination": "/ca/sap-resources.html"
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/ca/thank-you.html"
+    },
+    {
+      "source": "/backend",
+      "destination": "/tech/backend.html"
+    },
+    {
+      "source": "/cmd-snippets",
+      "destination": "/tech/cmd-snippets.html"
+    },
+    {
+      "source": "/cybersecurity",
+      "destination": "/tech/cybersecurity.html"
+    },
+    {
+      "source": "/git",
+      "destination": "/tech/git.html"
+    },
+    {
+      "source": "/go",
+      "destination": "/tech/go.html"
+    },
+    {
+      "source": "/linux",
+      "destination": "/tech/linux.html"
+    },
+    {
+      "source": "/python-gui-roadmap",
+      "destination": "/tech/python-gui-roadmap.html"
+    },
+    {
+      "source": "/python-scripting",
+      "destination": "/tech/python-scripting.html"
+    },
+    {
+      "source": "/web-basics",
+      "destination": "/tech/web-basics.html"
+    },
+    {
       "source": "/forms_saturday",
       "destination": "/forms/forms_saturday.html"
     },
