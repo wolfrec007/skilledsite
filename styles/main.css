@@ -576,6 +576,7 @@ h1 {
     letter-spacing: -1px;
     background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.7));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 16px;
 }
@@ -639,7 +640,18 @@ h1 {
     }
 
     .nav-links {
-        gap: 16px;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        /* Space for scrollbar if needed */
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    }
+
+    /* Hide scrollbar */
+    .nav-links::-webkit-scrollbar {
+        display: none;
     }
 
     .main-container {
