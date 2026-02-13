@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Disclosure | SkilledCA</title>
+    <meta name="description" content="Legal disclosure and business information for SkilledCA.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .legal-container {
+            max-width: 800px;
+            margin: 120px auto 60px;
+            padding: 0 24px;
+        }
+
+        .legal-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .legal-header h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .legal-section {
+            margin-bottom: 32px;
+        }
+
+        .legal-section h2 {
+            font-size: 20px;
+            color: var(--accent-cyan);
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 8px;
+        }
+
+        .legal-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--glass-border);
+        }
+
+        .legal-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .legal-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-cyan);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="/" class="logo">⚡ SkilledCA</a>
+        <div class="nav-links">
+            <a href="/tech/">Tech Hub</a>
+            <a href="/ca/">CA Hub</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+
+    <div class="legal-container">
+        <div class="legal-header">
+            <h1>Legal Disclosure</h1>
+            <p style="color: var(--text-secondary);">Business Information & Compliance</p>
+        </div>
+
+        <div class="legal-content">
+            <div class="legal-section">
+                <h2>Business Identity</h2>
+                <div class="legal-row">
+                    <span class="legal-label">Legal Name</span>
+                    <span class="legal-value">HOSADURGA SATHISH SAMARTH</span>
+                </div>
+                <div class="legal-row">
+                    <span class="legal-label">Trade Name</span>
+                    <span class="legal-value">SkilledCA</span>
+                </div>
+                <div class="legal-row">
+                    <span class="legal-label">Operator</span>
+                    <span class="legal-value">Samarth HS</span>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>Contact Information</h2>
+                <div class="legal-row">
+                    <span class="legal-label">Email</span>
+                    <span class="legal-value"><a href="mailto:samarth@skilledca.in"
+                            style="color: inherit; text-decoration: none;">samarth@skilledca.in</a></span>
+                </div>
+                <div class="legal-row">
+                    <span class="legal-label">Support</span>
+                    <span class="legal-value"><a href="#" onclick="openContactModal(); return false;"
+                            style="color: inherit;">Contact Form</a></span>
+                </div>
+            </div>
+
+            <div class="legal-section">
+                <h2>Policies</h2>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                    This website is operated as an educational resource. By using this site, you agree to our Terms of
+                    Service and Privacy Policy.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="/terms" style="color: var(--accent-cyan);">Terms of Service</a>
+                    <span style="color: var(--glass-border);">|</span>
+                    <a href="/privacy" style="color: var(--accent-cyan);">Privacy Policy</a>
+                    <span style="color: var(--glass-border);">|</span>
+                    <a href="/refund-policy" style="color: var(--accent-cyan);">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
