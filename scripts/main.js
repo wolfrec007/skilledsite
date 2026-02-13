@@ -3,20 +3,9 @@
    Learning Hub - Shared Scripts
    =============================================================== */
 
-/**
- * Navigate to homepage with fade transition
- */
-function goHome() {
-    const container = document.querySelector('.container');
-    if (container) {
-        container.style.opacity = '0';
-        container.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            window.location.href = getHomeUrl();
-        }, 300);
     } else {
-        window.location.href = getHomeUrl();
-    }
+    window.location.href = getHomeUrl();
+}
 }
 
 /**
@@ -50,15 +39,7 @@ function getHomeUrl() {
     return '/';
 }
 
-/**
- * Navigate to a page with transition
- */
-function redirect(page) {
-    if (!page) {
-        return;
-    }
-    window.location.href = page;
-}
+// Redirect function removed. Use native <a href> tags.
 
 /**
  * Navigation scroll effect - adds 'scrolled' class when scrolling

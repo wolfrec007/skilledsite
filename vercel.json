@@ -1,14 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/forms_saturday",
-      "destination": "/forms/forms_saturday.html"
-    },
-    {
-      "source": "/about",
-      "destination": "/about.html"
-    }
-  ]
+  "trailingSlash": false
 }
