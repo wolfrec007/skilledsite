@@ -80,6 +80,61 @@
             color: var(--accent-purple);
             margin-top: 8px;
         }
+
+        /* GSTR Utilities Section */
+        .gstr-section {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+
+        .gstr-section h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .gstr-section .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .gstr-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .gstr-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .embed-frame {
+            width: 100%;
+            height: 800px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .gstr-card {
+                padding: 20px;
+            }
+
+            .embed-frame {
+                height: 680px;
+            }
+        }
     </style>
 </head>
 
@@ -147,6 +202,22 @@
                 <div class="preview-card-icon">📋</div>
                 <div class="preview-card-title">TDS Rate Finder</div>
                 <div class="preview-card-status">Coming Soon</div>
+            </div>
+        </div>
+
+        <div class="gstr-section">
+            <h2>🧾 GSTR Utilities</h2>
+            <p class="section-subtitle">Interactive tools to help with GST return preparation</p>
+
+            <div class="gstr-card">
+                <h3>📋 GSTR-3B Tool</h3>
+                <iframe
+                    src="https://samarthhs-gstr-3b.hf.space"
+                    frameborder="0"
+                    class="embed-frame"
+                    allow="clipboard-write"
+                    title="GSTR-3B Tool"
+                ></iframe>
             </div>
         </div>
 
