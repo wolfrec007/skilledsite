@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- Updated: 2026-03-07 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSTR-3B Utility | CA Hub</title>
+    <meta name="description"
+        content="Interactive GSTR-3B utility tool for Chartered Accountants. Prepare and verify your GSTR-3B returns with ease.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .gstr-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 20px 60px;
+        }
+
+        .gstr-header {
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 640px;
+        }
+
+        .gstr-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--accent-green);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .gstr-header h1 {
+            font-size: clamp(30px, 5vw, 44px);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .gstr-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .gstr-tool-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 40px;
+        }
+
+        .gstr-tool-chrome {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .gstr-tool-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .gstr-tool-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .gstr-tool-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .gstr-tool-dots span:nth-child(1) { background: #ef4444; }
+        .gstr-tool-dots span:nth-child(2) { background: #f59e0b; }
+        .gstr-tool-dots span:nth-child(3) { background: #10b981; }
+
+        .gstr-tool-title {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .gstr-tool-body {
+            position: relative;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .embed-frame {
+            display: block;
+            width: 100%;
+            height: 80vh;
+            min-height: 500px;
+            max-height: 900px;
+            border: none;
+            background: transparent;
+        }
+
+        .gstr-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gstr-loading.hidden {
+            opacity: 0;
+        }
+
+        .gstr-spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--accent-cyan);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .gstr-loading span {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .gstr-footer-links {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .gstr-page {
+                padding: 90px 12px 40px;
+            }
+
+            .embed-frame {
+                height: 70vh;
+                min-height: 400px;
+            }
+
+            .gstr-tool-bar {
+                padding: 10px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .embed-frame {
+                height: 65vh;
+                min-height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="/ca/" class="logo">⚡ CA Hub</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tech/">Tech Hub</a>
+            <a href="/about">About</a>
+            <a href="/forms/">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <section class="gstr-page">
+        <div class="gstr-header">
+            <div class="gstr-header-badge">🧾 CA Utility Tool</div>
+            <h1>GSTR-3B Utility</h1>
+            <p>Prepare and verify your GSTR-3B returns interactively — right here in your browser.</p>
+        </div>
+
+        <div class="gstr-tool-wrapper">
+            <div class="gstr-tool-chrome">
+                <div class="gstr-tool-bar">
+                    <div class="gstr-tool-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span class="gstr-tool-title">GSTR-3B Tool — samarthhs-gstr-3b.hf.space</span>
+                </div>
+                <div class="gstr-tool-body">
+                    <div class="gstr-loading" id="gstrLoading">
+                        <div class="gstr-spinner"></div>
+                        <span>Loading GSTR-3B tool…</span>
+                    </div>
+                    <iframe
+                        src="https://samarthhs-gstr-3b.hf.space"
+                        frameborder="0"
+                        class="embed-frame"
+                        allow="clipboard-write"
+                        title="GSTR-3B Tool"
+                        onload="document.getElementById('gstrLoading').classList.add('hidden')"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="gstr-footer-links">
+            <a href="/ca/" class="btn-secondary">← Back to CA Hub</a>
+        </div>
+    </section>
+
+    <script src="/scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
