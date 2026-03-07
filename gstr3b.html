@@ -19,13 +19,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 100px 20px 60px;
+            padding: 80px 0 40px;
         }
 
         .gstr-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             max-width: 640px;
+            padding: 0 20px;
         }
 
         .gstr-header-badge {
@@ -43,8 +44,8 @@
         }
 
         .gstr-header h1 {
-            font-size: clamp(30px, 5vw, 44px);
-            margin-bottom: 10px;
+            font-size: clamp(26px, 4vw, 36px);
+            margin-bottom: 8px;
             line-height: 1.2;
         }
 
@@ -56,15 +57,22 @@
 
         .gstr-tool-wrapper {
             width: 100%;
-            max-width: 1100px;
-            margin-bottom: 40px;
+            max-width: 100%;
+            margin-bottom: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .gstr-tool-chrome {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            border-radius: 0;
             overflow: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .gstr-tool-bar {
@@ -103,16 +111,18 @@
             position: relative;
             width: 100%;
             background: rgba(0, 0, 0, 0.2);
+            flex: 1;
+            display: flex;
         }
 
         .embed-frame {
             display: block;
             width: 100%;
-            height: 80vh;
-            min-height: 500px;
-            max-height: 900px;
+            height: calc(100vh - 180px);
+            min-height: 600px;
             border: none;
             background: transparent;
+            flex: 1;
         }
 
         .gstr-loading {
@@ -157,16 +167,17 @@
             align-items: center;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 0 20px;
         }
 
         @media (max-width: 768px) {
             .gstr-page {
-                padding: 90px 12px 40px;
+                padding: 70px 0 24px;
             }
 
             .embed-frame {
-                height: 70vh;
-                min-height: 400px;
+                height: calc(100vh - 160px);
+                min-height: 500px;
             }
 
             .gstr-tool-bar {
@@ -176,8 +187,8 @@
 
         @media (max-width: 480px) {
             .embed-frame {
-                height: 65vh;
-                min-height: 350px;
+                height: calc(100vh - 150px);
+                min-height: 400px;
             }
         }
     </style>
