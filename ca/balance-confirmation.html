@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!-- Created: 2026-04-04 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Confirmation | SkilledCA</title>
+    <meta name="description"
+        content="SkilledCA balance confirmation portal for circularization workflows with cloud and offline modes.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .portal-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .layout-shell {
+            display: grid;
+            grid-template-columns: 300px minmax(0, 1fr);
+            gap: 20px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 98px;
+            height: fit-content;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 18px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .sidebar-links {
+            display: grid;
+            gap: 8px;
+        }
+
+        .sidebar-link {
+            display: block;
+            text-decoration: none;
+            color: var(--text-secondary);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .side-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .side-card p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .quick-guide {
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 12px;
+        }
+
+        .quick-guide ul {
+            list-style: none;
+            display: grid;
+            gap: 7px;
+        }
+
+        .quick-guide li {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .main-panel {
+            display: grid;
+            gap: 18px;
+        }
+
+        .page-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .page-head h1 {
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.1;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.75));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-head p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            max-width: 620px;
+        }
+
+        .top-action {
+            white-space: nowrap;
+            align-self: flex-start;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 11px 14px;
+            color: white;
+            background: rgba(6, 182, 212, 0.85);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            transition: all 0.2s ease;
+        }
+
+        .top-action:hover {
+            background: rgba(6, 182, 212, 1);
+            transform: translateY(-1px);
+        }
+
+        .embed-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 14px;
+        }
+
+        .embed-frame {
+            width: 100%;
+            height: 720px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .docs-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .docs-card h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .docs-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .docs-grid {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .doc-tile {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .doc-tile h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .doc-tile p {
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .portal-footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            padding: 4px 0 0;
+        }
+
+        @media (max-width: 1024px) {
+            .layout-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .page-head {
+                flex-direction: column;
+            }
+
+            .top-action {
+                align-self: flex-end;
+            }
+
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .embed-frame {
+                height: 620px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="/ca/" class="logo">⚡ CA Hub</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tech/">Tech Hub</a>
+            <a href="/about">About</a>
+            <a href="/forms/">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="portal-container">
+            <div class="layout-shell">
+                <aside class="sidebar">
+                    <div>
+                        <h3>Readme</h3>
+                        <div class="sidebar-links">
+                            <a class="sidebar-link" href="#docs">User Documentation</a>
+                            <a class="sidebar-link" href="Template.xlsx" download>Download Template</a>
+                            <a class="sidebar-link" href="run_mailer.bat" download>Offline App Launcher</a>
+                        </div>
+                    </div>
+
+                    <div class="side-card">
+                        <h3>Help</h3>
+                        <p>Use Cloud mode for browser runs and Offline mode for local Outlook sync. If setup fails,
+                            use Say Hi from the navbar and we will help with configuration.</p>
+                    </div>
+
+                    <div class="side-card quick-guide">
+                        <h3>Quick Guide</h3>
+                        <ul>
+                            <li>1. Fill the template from row 3.</li>
+                            <li>2. Validate email IDs and balances.</li>
+                            <li>3. Preview placeholders before sending.</li>
+                            <li>4. Send a pilot batch first.</li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <main class="main-panel">
+                    <section class="page-head">
+                        <div>
+                            <h1>SkilledCA Mailer</h1>
+                            <p>Balance confirmation and circularization workspace.</p>
+                        </div>
+                        <a class="top-action" href="run_mailer.bat" download>Download Offline App</a>
+                    </section>
+
+                    <section class="embed-card">
+                        <iframe src="https://your-app-name.streamlit.app/?embed=true" class="embed-frame"
+                            title="SkilledCA Mailer App"></iframe>
+                    </section>
+
+                    <section class="docs-card" id="docs">
+                        <h2>User Documentation</h2>
+                        <p>Follow this checklist before sending balance confirmations in bulk.</p>
+
+                        <div class="docs-grid">
+                            <article class="doc-tile">
+                                <h3>1. Preparation</h3>
+                                <p>Download the Excel template and fill the Party List sheet from row 3. Ensure Email
+                                    ID and Outstanding Balance are complete before upload.</p>
+                            </article>
+
+                            <article class="doc-tile">
+                                <h3>2. Email Engines</h3>
+                                <p>Cloud mode works with Gmail or Outlook 365 using app passwords. Local mode connects
+                                    with desktop Outlook through the offline launcher.</p>
+                            </article>
+
+                            <article class="doc-tile">
+                                <h3>3. Templates</h3>
+                                <p>Use placeholders like {{party_name}} and {{amount}} in subject and body for
+                                    personalized messages at scale.</p>
+                            </article>
+
+                            <article class="doc-tile">
+                                <h3>4. Privacy and Safety</h3>
+                                <p>For sensitive audits, use the offline launcher to keep processing on your local
+                                    environment.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <div class="portal-footer">&copy; 2026 skilledca.in | Built for the Modern Auditor</div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
