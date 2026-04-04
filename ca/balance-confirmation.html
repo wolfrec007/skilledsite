@@ -24,6 +24,11 @@
             display: grid;
             grid-template-columns: 300px minmax(0, 1fr);
             gap: 20px;
+            transition: grid-template-columns 0.25s ease;
+        }
+
+        .layout-shell.collapsed {
+            grid-template-columns: 56px minmax(0, 1fr);
         }
 
         .sidebar {
@@ -36,6 +41,47 @@
             padding: 18px;
             display: grid;
             gap: 14px;
+            transition: padding 0.25s ease;
+        }
+
+        .layout-shell.collapsed .sidebar {
+            padding: 10px;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .sidebar-toggle {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(0, 0, 0, 0.25);
+            color: var(--text-primary);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.26);
+        }
+
+        .sidebar-body {
+            display: grid;
+            gap: 14px;
+            transition: opacity 0.2s ease;
+        }
+
+        .layout-shell.collapsed .sidebar-body {
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            overflow: hidden;
+            pointer-events: none;
         }
 
         .sidebar h3 {
@@ -116,19 +162,33 @@
             padding: 20px;
         }
 
+        .page-head-copy {
+            max-width: 640px;
+        }
+
         .page-head h1 {
             font-size: clamp(30px, 4vw, 44px);
             line-height: 1.1;
-            margin-bottom: 6px;
-            background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.75));
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #eaf9ff;
+            text-wrap: balance;
+            text-shadow: 0 8px 24px rgba(6, 182, 212, 0.18);
+        }
+
+        .brand-gradient {
+            background: linear-gradient(135deg, #f8fdff 0%, #8be7ff 45%, #8b5cf6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .page-head p {
-            color: var(--text-secondary);
-            font-size: 14px;
+            color: #d6ebff;
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.95;
             max-width: 620px;
         }
 
@@ -221,8 +281,24 @@
                 grid-template-columns: 1fr;
             }
 
+            .layout-shell.collapsed {
+                grid-template-columns: 1fr;
+            }
+
             .sidebar {
                 position: static;
+            }
+
+            .sidebar-toggle {
+                display: none;
+            }
+
+            .sidebar-body {
+                opacity: 1;
+                visibility: visible;
+                height: auto;
+                overflow: visible;
+                pointer-events: auto;
             }
 
             .page-head {
@@ -266,36 +342,43 @@
         <div class="portal-container">
             <div class="layout-shell">
                 <aside class="sidebar">
-                    <div>
+                    <div class="sidebar-header">
+                        <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar"
+                            aria-expanded="true">&laquo;</button>
+                    </div>
+
+                    <div class="sidebar-body">
+                        <div>
                         <h3>Readme</h3>
                         <div class="sidebar-links">
                             <a class="sidebar-link" href="#docs">User Documentation</a>
                             <a class="sidebar-link" href="Template.xlsx" download>Download Template</a>
                             <a class="sidebar-link" href="run_mailer.bat" download>Offline App Launcher</a>
                         </div>
-                    </div>
+                        </div>
 
-                    <div class="side-card">
-                        <h3>Help</h3>
-                        <p>Use Cloud mode for browser runs and Offline mode for local Outlook sync. If setup fails,
-                            use Say Hi from the navbar and we will help with configuration.</p>
-                    </div>
+                        <div class="side-card">
+                            <h3>Help</h3>
+                            <p>Use Cloud mode for browser runs and Offline mode for local Outlook sync. If setup fails,
+                                use Say Hi from the navbar and we will help with configuration.</p>
+                        </div>
 
-                    <div class="side-card quick-guide">
-                        <h3>Quick Guide</h3>
-                        <ul>
-                            <li>1. Fill the template from row 3.</li>
-                            <li>2. Validate email IDs and balances.</li>
-                            <li>3. Preview placeholders before sending.</li>
-                            <li>4. Send a pilot batch first.</li>
-                        </ul>
+                        <div class="side-card quick-guide">
+                            <h3>Quick Guide</h3>
+                            <ul>
+                                <li>1. Fill the template from row 3.</li>
+                                <li>2. Validate email IDs and balances.</li>
+                                <li>3. Preview placeholders before sending.</li>
+                                <li>4. Send a pilot batch first.</li>
+                            </ul>
+                        </div>
                     </div>
                 </aside>
 
                 <main class="main-panel">
                     <section class="page-head">
-                        <div>
-                            <h1>SkilledCA Mailer</h1>
+                        <div class="page-head-copy">
+                            <h1><span class="brand-gradient">SkilledCA</span> Mailer</h1>
                             <p>Balance confirmation and circularization workspace.</p>
                         </div>
                         <a class="top-action" href="run_mailer.bat" download>Download Offline App</a>
@@ -344,6 +427,33 @@
     </div>
 
     <script src="/scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layoutShell = document.querySelector('.layout-shell');
+            const toggleBtn = document.getElementById('sidebarToggle');
+
+            if (!layoutShell || !toggleBtn) {
+                return;
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                layoutShell.classList.toggle('collapsed');
+                const isCollapsed = layoutShell.classList.contains('collapsed');
+                toggleBtn.innerHTML = isCollapsed ? '&raquo;' : '&laquo;';
+                toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
+                toggleBtn.setAttribute('aria-label', isCollapsed ? 'Expand sidebar' : 'Collapse sidebar');
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 1024) {
+                    layoutShell.classList.remove('collapsed');
+                    toggleBtn.innerHTML = '&laquo;';
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    toggleBtn.setAttribute('aria-label', 'Collapse sidebar');
+                }
+            });
+        });
+    </script>
 
     <div id="contactModal" class="contact-modal">
         <div class="contact-content">
