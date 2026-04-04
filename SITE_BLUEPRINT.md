@@ -32,6 +32,7 @@ skilledca.in/
 ├── ca/                         # 📊 CA Hub Section
 │   ├── index.html              # CA Hub Landing Page
 │   ├── excel-shortcuts.html    # Excel Shortcuts Reference
+│   ├── mailer-portal.html      # Mailer UI for circularization workflows
 │   └── thank-you.html          # Download Thank You Page
 │
 ├── forms/                      # 📝 Forms Module

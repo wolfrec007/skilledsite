@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!-- Created: 2026-04-04 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailer Portal | SkilledCA</title>
+    <meta name="description"
+        content="SkilledCA Mailer portal for balance confirmation and circularization workflows with cloud and offline modes.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .portal-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .action-bar {
+            position: sticky;
+            top: 92px;
+            z-index: 50;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 24px;
+            padding: 14px;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            background: rgba(10, 10, 15, 0.72);
+            backdrop-filter: blur(16px);
+        }
+
+        .portal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid var(--glass-border);
+            transition: all 0.25s ease;
+        }
+
+        .portal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .portal-btn.secondary {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .portal-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .portal-btn.primary {
+            border-color: transparent;
+            color: white;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.6);
+        }
+
+        .portal-btn.primary:hover {
+            box-shadow: 0 16px 38px -12px rgba(245, 158, 11, 0.7);
+        }
+
+        .embed-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 24px;
+        }
+
+        .embed-frame {
+            width: 100%;
+            height: 760px;
+            border: none;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .docs-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .docs-head {
+            margin-bottom: 20px;
+        }
+
+        .docs-head h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .docs-head p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .doc-tile {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 16px;
+        }
+
+        .doc-tile h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--accent-orange);
+        }
+
+        .doc-tile p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .helper-line {
+            margin: 20px 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .docs-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        .note {
+            margin-top: 14px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .portal-footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            padding: 4px 0 0;
+        }
+
+        .intro-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.55);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .intro-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .intro-card {
+            width: 100%;
+            max-width: 460px;
+            background: #11131c;
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .intro-card h2 {
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .intro-card p {
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .intro-close {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 8px;
+        }
+
+        .intro-close button {
+            border: 0;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .action-bar {
+                top: 86px;
+            }
+
+            .embed-frame {
+                height: 620px;
+            }
+
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="/ca/" class="logo">⚡ CA Hub</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tech/">Tech Hub</a>
+            <a href="/about">About</a>
+            <a href="/forms/">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="portal-container">
+            <div class="page-header">
+                <div class="page-icon" style="background: linear-gradient(135deg, #f59e0b, rgba(245, 158, 11, 0.3));">📮</div>
+                <h1>SkilledCA Mailer</h1>
+                <p class="page-subtitle">Advanced balance confirmation and circularization suite for audit workflows.</p>
+            </div>
+
+            <nav class="action-bar">
+                <a href="#docs" class="portal-btn secondary">📖 Readme</a>
+                <a href="Template.xlsx" class="portal-btn secondary" download>📊 Template</a>
+                <a href="run_mailer.bat" class="portal-btn primary" download>⬇ Download Offline App</a>
+            </nav>
+
+            <section class="embed-card">
+                <iframe src="https://your-app-name.streamlit.app/?embed=true" class="embed-frame"
+                    title="SkilledCA Mailer App"></iframe>
+            </section>
+
+            <section class="docs-card" id="docs">
+                <div class="docs-head">
+                    <h2>User Documentation</h2>
+                    <p>Follow this checklist before sending balance confirmations in bulk.</p>
+                </div>
+
+                <div class="docs-grid">
+                    <article class="doc-tile">
+                        <h3>1. Preparation</h3>
+                        <p>Download the Excel template and fill the Party List sheet from row 3. Ensure Email ID and
+                            Outstanding Balance are complete before upload.</p>
+                    </article>
+
+                    <article class="doc-tile">
+                        <h3>2. Email Engines</h3>
+                        <p>Cloud mode works with Gmail or Outlook 365 using app passwords. Local mode connects with
+                            desktop Outlook through the offline launcher.</p>
+                    </article>
+
+                    <article class="doc-tile">
+                        <h3>3. Templates</h3>
+                        <p>Use placeholders like {{party_name}} and {{amount}} in subject and body for personalized
+                            messages at scale.</p>
+                    </article>
+
+                    <article class="doc-tile">
+                        <h3>4. Privacy and Safety</h3>
+                        <p>Data is intended for in-session processing. For sensitive audits, use the offline launcher
+                            to keep processing on your local environment.</p>
+                    </article>
+                </div>
+
+                <div class="helper-line"></div>
+
+                <div class="docs-actions">
+                    <a href="run_mailer.bat" class="btn-primary" download>Download Local Launcher (.bat)</a>
+                </div>
+
+                <p class="note">If download files are not uploaded yet, these buttons will stay as placeholders.</p>
+            </section>
+
+            <div class="portal-footer">&copy; 2026 skilledca.in | Built for the Modern Auditor</div>
+        </div>
+    </div>
+
+    <div class="intro-modal" id="introModal">
+        <div class="intro-card">
+            <div class="intro-close">
+                <button type="button" aria-label="Close" onclick="closeIntroModal()">&times;</button>
+            </div>
+            <h2>Welcome</h2>
+            <p>The SkilledCA Mailer is ready. For local Outlook sync, use the Offline App launcher from the top action
+                bar.</p>
+            <button class="btn-primary" style="width: 100%;" onclick="closeIntroModal()">Start Now</button>
+        </div>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const modal = document.getElementById('introModal');
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }, 550);
+        });
+
+        function closeIntroModal() {
+            const modal = document.getElementById('introModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
