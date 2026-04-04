@@ -16,8 +16,92 @@
     <style>
         .portal-container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1160px;
             margin: 0 auto;
+        }
+
+        .hero-shell {
+            position: relative;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(251, 191, 36, 0.06) 45%, rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+
+        .hero-shell::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.3), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 16px 36px -18px rgba(245, 158, 11, 0.9);
+        }
+
+        .hero-copy h1 {
+            margin-bottom: 6px;
+            font-size: clamp(30px, 4vw, 46px);
+        }
+
+        .hero-copy p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 15px;
+            max-width: 760px;
+        }
+
+        .hero-meta {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-chip {
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 14px;
+        }
+
+        .meta-chip .label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.62);
+            margin-bottom: 4px;
+        }
+
+        .meta-chip .value {
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         .action-bar {
@@ -26,13 +110,13 @@
             z-index: 50;
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
-            margin-bottom: 24px;
-            padding: 14px;
+            margin-bottom: 22px;
+            padding: 12px;
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            background: rgba(10, 10, 15, 0.72);
+            border-radius: 14px;
+            background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(16px);
         }
 
@@ -41,16 +125,16 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
-            padding: 12px 18px;
-            border-radius: 12px;
-            font-size: 14px;
+            padding: 11px 16px;
+            border-radius: 11px;
+            font-size: 13px;
             font-weight: 600;
             border: 1px solid var(--glass-border);
-            transition: all 0.25s ease;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
         }
 
         .portal-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .portal-btn.secondary {
@@ -66,78 +150,149 @@
             border-color: transparent;
             color: white;
             background: linear-gradient(135deg, #f59e0b, #d97706);
-            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.6);
+            box-shadow: 0 10px 28px -12px rgba(245, 158, 11, 0.75);
         }
 
         .portal-btn.primary:hover {
-            box-shadow: 0 16px 38px -12px rgba(245, 158, 11, 0.7);
+            box-shadow: 0 14px 34px -12px rgba(245, 158, 11, 0.82);
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+            gap: 18px;
+            margin-bottom: 20px;
         }
 
         .embed-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 18px;
-            margin-bottom: 24px;
+            padding: 16px;
+        }
+
+        .embed-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding: 0 4px;
+        }
+
+        .embed-head h2 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .embed-tag {
+            font-size: 12px;
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            border-radius: 999px;
+            padding: 4px 10px;
+            background: rgba(245, 158, 11, 0.15);
         }
 
         .embed-frame {
             width: 100%;
-            height: 760px;
+            height: 720px;
             border: none;
             border-radius: 14px;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .side-panel {
+            display: grid;
+            gap: 14px;
+            align-content: start;
+        }
+
+        .panel-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .panel-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .panel-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .bullet-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
             background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 9px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bullet-list strong {
+            color: var(--text-primary);
         }
 
         .docs-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 28px;
-            margin-bottom: 24px;
+            padding: 24px;
+            margin-bottom: 18px;
         }
 
         .docs-head {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .docs-head h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 6px;
         }
 
         .docs-head p {
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .docs-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
+            gap: 12px;
         }
 
         .doc-tile {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            border-radius: 14px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 14px;
         }
 
         .doc-tile h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 15px;
+            margin-bottom: 7px;
             color: var(--accent-orange);
         }
 
         .doc-tile p {
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
             line-height: 1.6;
         }
 
         .helper-line {
-            margin: 20px 0;
+            margin: 16px 0;
             border-top: 1px solid var(--glass-border);
         }
 
@@ -147,76 +302,34 @@
         }
 
         .note {
-            margin-top: 14px;
+            margin-top: 12px;
             text-align: center;
             color: var(--text-secondary);
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .portal-footer {
             text-align: center;
             color: var(--text-secondary);
             font-size: 13px;
-            padding: 4px 0 0;
+            padding: 2px 0 0;
         }
 
-        .intro-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.55);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
+        @media (max-width: 980px) {
+            .hero-shell {
+                padding: 24px 18px;
+            }
 
-        .intro-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
+            .hero-meta {
+                grid-template-columns: 1fr;
+            }
 
-        .intro-card {
-            width: 100%;
-            max-width: 460px;
-            background: #11131c;
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 24px;
-        }
-
-        .intro-card h2 {
-            margin-bottom: 8px;
-            font-size: 24px;
-        }
-
-        .intro-card p {
-            color: var(--text-secondary);
-            margin-bottom: 18px;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .intro-close {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 8px;
-        }
-
-        .intro-close button {
-            border: 0;
-            background: transparent;
-            color: var(--text-secondary);
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 900px) {
             .action-bar {
                 top: 86px;
+            }
+
+            .portal-grid {
+                grid-template-columns: 1fr;
             }
 
             .embed-frame {
@@ -250,11 +363,30 @@
 
     <div class="main-container">
         <div class="portal-container">
-            <div class="page-header">
-                <div class="page-icon" style="background: linear-gradient(135deg, #f59e0b, rgba(245, 158, 11, 0.3));">📮</div>
-                <h1>SkilledCA Mailer</h1>
-                <p class="page-subtitle">Advanced balance confirmation and circularization suite for audit workflows.</p>
-            </div>
+            <section class="hero-shell">
+                <div class="hero-head">
+                    <div class="hero-badge">📮</div>
+                    <div class="hero-copy">
+                        <h1>SkilledCA Mailer</h1>
+                        <p>Advanced balance confirmation and circularization suite for audit workflows.</p>
+                    </div>
+                </div>
+
+                <div class="hero-meta">
+                    <div class="meta-chip">
+                        <span class="label">Mode</span>
+                        <span class="value">Cloud + Offline</span>
+                    </div>
+                    <div class="meta-chip">
+                        <span class="label">Best For</span>
+                        <span class="value">Balance Confirmations</span>
+                    </div>
+                    <div class="meta-chip">
+                        <span class="label">Workflow</span>
+                        <span class="value">Template -> Compose -> Send</span>
+                    </div>
+                </div>
+            </section>
 
             <nav class="action-bar">
                 <a href="#docs" class="portal-btn secondary">📖 Readme</a>
@@ -262,9 +394,39 @@
                 <a href="run_mailer.bat" class="portal-btn primary" download>⬇ Download Offline App</a>
             </nav>
 
-            <section class="embed-card">
-                <iframe src="https://your-app-name.streamlit.app/?embed=true" class="embed-frame"
-                    title="SkilledCA Mailer App"></iframe>
+            <section class="portal-grid">
+                <article class="embed-card">
+                    <div class="embed-head">
+                        <h2>Mailer Workspace</h2>
+                        <span class="embed-tag">Live App</span>
+                    </div>
+                    <iframe src="https://your-app-name.streamlit.app/?embed=true" class="embed-frame"
+                        title="SkilledCA Mailer App"></iframe>
+                </article>
+
+                <aside class="side-panel">
+                    <div class="panel-card">
+                        <h3>Quick Start</h3>
+                        <ul class="bullet-list">
+                            <li><strong>1.</strong> Download and fill the template.</li>
+                            <li><strong>2.</strong> Choose Cloud or Offline mode.</li>
+                            <li><strong>3.</strong> Personalize subject and body.</li>
+                            <li><strong>4.</strong> Preview and send in controlled batches.</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-card">
+                        <h3>Safety Tips</h3>
+                        <p>Use a pilot batch before full dispatch. For sensitive engagements, use the offline launcher
+                            to keep the entire run on your local machine.</p>
+                    </div>
+
+                    <div class="panel-card">
+                        <h3>Need Help?</h3>
+                        <p>Use the Say Hi option in the navbar if you want setup help for app passwords, Outlook sync,
+                            or template troubleshooting.</p>
+                    </div>
+                </aside>
             </section>
 
             <section class="docs-card" id="docs">
@@ -312,38 +474,7 @@
         </div>
     </div>
 
-    <div class="intro-modal" id="introModal">
-        <div class="intro-card">
-            <div class="intro-close">
-                <button type="button" aria-label="Close" onclick="closeIntroModal()">&times;</button>
-            </div>
-            <h2>Welcome</h2>
-            <p>The SkilledCA Mailer is ready. For local Outlook sync, use the Offline App launcher from the top action
-                bar.</p>
-            <button class="btn-primary" style="width: 100%;" onclick="closeIntroModal()">Start Now</button>
-        </div>
-    </div>
-
     <script src="/scripts/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const modal = document.getElementById('introModal');
-                if (modal) {
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            }, 550);
-        });
-
-        function closeIntroModal() {
-            const modal = document.getElementById('introModal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-    </script>
 
     <div id="contactModal" class="contact-modal">
         <div class="contact-content">
