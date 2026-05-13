@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactModal();
     initAccordion();
     initAnalytics();
+    initShareToast();
 });
 
 /**
@@ -204,4 +205,74 @@ function showEmailFallback() {
         `;
         successContainer.classList.add('active');
     }
+}
+
+/* ================= SHARE BUTTON ================= */
+
+/**
+ * Share the current page using Web Share API or clipboard fallback
+ */
+function shareCurrentPage() {
+    const shareData = {
+        title: document.title,
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch((err) => {
+            // AbortError means the user cancelled – ignore silently.
+            // For other errors fall back to clipboard copy.
+            if (err && err.name !== 'AbortError') {
+                copyToClipboardFallback();
+            }
+        });
+    } else {
+        copyToClipboardFallback();
+    }
+}
+
+/**
+ * Copy the current URL to clipboard, with a prompt fallback when the
+ * Clipboard API is unavailable (non-HTTPS or permission denied).
+ */
+function copyToClipboardFallback() {
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showShareToastMessage('🔗 Link copied to clipboard!');
+        }).catch(() => {
+            // Clipboard write was blocked – let the user copy manually
+            window.prompt('Copy this link:', window.location.href);
+        });
+    } else {
+        window.prompt('Copy this link:', window.location.href);
+    }
+}
+
+let shareToastTimer = null;
+
+/**
+ * Show a toast notification with the given message
+ */
+function showShareToastMessage(message) {
+    const toast = document.getElementById('shareToast');
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add('visible');
+
+    if (shareToastTimer) clearTimeout(shareToastTimer);
+    shareToastTimer = setTimeout(() => {
+        toast.classList.remove('visible');
+    }, 3000);
+}
+
+/**
+ * Create share toast element in the DOM
+ */
+function initShareToast() {
+    if (document.getElementById('shareToast')) return;
+    const toast = document.createElement('div');
+    toast.id = 'shareToast';
+    toast.className = 'share-toast';
+    document.body.appendChild(toast);
 }
