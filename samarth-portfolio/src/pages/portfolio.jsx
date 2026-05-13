@@ -65,30 +65,32 @@ const skills = [
 
 export function Portfolio() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      {/* Background gradient */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10" />
+    <main className="min-h-screen text-white relative">
+      {/* Subtle accent overlay */}
+      <div className="pointer-events-none fixed inset-0 -z-10 opacity-40">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-cyan-500/5" />
       </div>
 
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-4 py-20 md:py-32">
         <div className="space-y-6">
           <div className="space-y-3">
-            <Badge variant="default">CA Final × Tech Builder</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold">I bridge finance and tech</h1>
+            <Badge variant="default" className="bg-purple-500/50 text-white border-purple-400/30">CA Final × Tech Builder</Badge>
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-300 via-blue-200 to-cyan-300 bg-clip-text text-transparent">
+              I bridge finance and tech
+            </h1>
             <p className="text-lg text-slate-300 max-w-2xl">
               Chartered Accountant by training, technologist by passion. I create tools that make our respective domains smarter.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button asChild>
+            <Button asChild className="bg-purple-600 hover:bg-purple-700 text-white">
               <a href="#work" className="gap-2 flex items-center">
                 View My Work
                 <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="glass border-purple-400/30 text-white hover:bg-purple-500/10">
               <a href="mailto:samarth@skilledca.in">Get In Touch</a>
             </Button>
           </div>
@@ -99,22 +101,22 @@ export function Portfolio() {
       <section id="work" className="max-w-5xl mx-auto px-4 py-20">
         <div className="space-y-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Featured Work</h2>
+            <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">Featured Work</h2>
             <p className="text-slate-300">Projects that showcase the intersection of finance and tech.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="group">
-                <Card className="h-full border-white/10 bg-slate-900/50 hover:bg-slate-900/80 transition-colors">
+                <Card className="h-full glass border-cyan-400/20 hover:border-cyan-400/40 transition-all hover:bg-cyan-500/5">
                   <CardHeader>
                     <span className="text-3xl mb-2 block">{project.icon}</span>
                     <CardTitle className="text-white">{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
+                    <CardDescription className="text-slate-400">{project.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
+                        <Badge key={tag} variant="secondary" className="bg-purple-500/30 border-purple-400/30 text-cyan-200">
                           {tag}
                         </Badge>
                       ))}
@@ -131,19 +133,19 @@ export function Portfolio() {
       <section id="skills" className="max-w-5xl mx-auto px-4 py-20">
         <div className="space-y-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Toolkit</h2>
+            <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">Toolkit</h2>
             <p className="text-slate-300">Skills spanning finance, technology, and their intersection.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {skills.map((skill) => (
-              <Card key={skill.category} className="border-white/10 bg-slate-900/50">
+              <Card key={skill.category} className="glass border-purple-400/20 hover:border-purple-400/40 transition-all hover:bg-purple-500/5">
                 <CardHeader>
                   <CardTitle className="text-white text-xl">{skill.category}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {skill.items.map((item) => (
-                      <Badge key={item} variant="outline">
+                      <Badge key={item} variant="outline" className="border-cyan-400/30 text-cyan-200 bg-cyan-500/10">
                         {item}
                       </Badge>
                     ))}
@@ -159,21 +161,21 @@ export function Portfolio() {
       <section id="timeline" className="max-w-5xl mx-auto px-4 py-20">
         <div className="space-y-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Journey</h2>
+            <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">Journey</h2>
             <p className="text-slate-300">Key milestones in my professional evolution.</p>
           </div>
           <div className="space-y-6">
             {timeline.map((event, idx) => (
               <div key={idx} className="flex gap-4">
                 <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 rounded-full bg-cyan-500" />
-                  {idx < timeline.length - 1 && <div className="w-0.5 h-12 bg-slate-700 mt-4" />}
+                  <div className="w-4 h-4 rounded-full bg-gradient-to-br from-purple-400 to-cyan-400" />
+                  {idx < timeline.length - 1 && <div className="w-0.5 h-12 bg-purple-500/30" />}
                 </div>
-                <div className="pb-6">
-                  <p className="text-sm font-semibold text-cyan-400">{event.year}</p>
+                <div className="pb-6 p-4 glass border-l border-purple-400/20 rounded-lg">
+                  <p className="text-sm font-semibold text-cyan-300">{event.year}</p>
                   <h3 className="text-lg font-bold text-white">{event.role}</h3>
-                  <p className="text-slate-400">{event.company}</p>
-                  <p className="text-sm text-slate-500 mt-1">{event.description}</p>
+                  <p className="text-purple-200">{event.company}</p>
+                  <p className="text-sm text-slate-400 mt-1">{event.description}</p>
                 </div>
               </div>
             ))}
@@ -182,22 +184,22 @@ export function Portfolio() {
       </section>
 
       {/* CTA */}
-      <section id="contact" className="max-w-5xl mx-auto px-4 py-20">
-        <Card className="border-white/10 bg-slate-900/50">
+      <section id="contact" className="max-w-5xl mx-auto px-4 py-20 pb-32">
+        <Card className="glass border-purple-400/20 hover:border-purple-400/40 transition-all">
           <CardHeader className="text-center">
-            <CardTitle className="text-white mb-2">Let's create something together</CardTitle>
-            <CardDescription>I love collaborating on projects at the intersection of finance and tech.</CardDescription>
+            <CardTitle className="text-white mb-2 text-3xl bg-gradient-to-r from-purple-300 to-cyan-300 bg-clip-text text-transparent">Let's create something together</CardTitle>
+            <CardDescription className="text-slate-300">I love collaborating on projects at the intersection of finance and tech.</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap justify-center gap-3">
-            <Button asChild>
+            <Button asChild className="bg-purple-600 hover:bg-purple-700 text-white">
               <a href="mailto:samarth@skilledca.in">Get In Touch</a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="glass border-cyan-400/30 text-cyan-200 hover:bg-cyan-500/10">
               <a href="https://linkedin.com/in/samarth-hs" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="glass border-blue-400/30 text-blue-200 hover:bg-blue-500/10">
               <a href="https://github.com/wolfrec007" target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>

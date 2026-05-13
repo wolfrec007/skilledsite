@@ -37,11 +37,20 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'space-dark': '#0a0a1a',
+        'space-blue': '#1a1a4a',
+        'space-purple': '#3d1a5c',
       },
       borderRadius: {
         xl: 'var(--radius)',
         lg: 'calc(var(--radius) - 2px)',
         md: 'calc(var(--radius) - 4px)',
+      },
+      backgroundColor: {
+        glass: 'rgba(255, 255, 255, 0.05)',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },
