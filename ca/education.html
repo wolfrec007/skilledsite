@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!-- Updated: 2026-01-22 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Education | SkilledCA</title>
+    <meta name="description" content="Exam prep and learning resources for CA students.">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .coming-soon {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .coming-soon-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .coming-soon h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            margin-bottom: 16px;
+        }
+
+        .coming-soon p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .preview-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .preview-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .preview-card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .preview-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .preview-card-status {
+            font-size: 11px;
+            color: var(--accent-purple);
+            margin-top: 8px;
+        }
+
+        /* GSTR Utilities Section */
+        .gstr-section {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+
+        .gstr-section h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .gstr-section .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .gstr-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .gstr-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .embed-frame {
+            width: 100%;
+            height: 800px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .gstr-card {
+                padding: 20px;
+            }
+
+            .embed-frame {
+                height: 680px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="nav" id="navbar">
+        <a href="/ca/" class="logo">⚡ CA Hub</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/ca/education">Education <span style="background:var(--accent-pink,#ec4899);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;margin-left:6px;letter-spacing:.04em;">NEW</span></a>
+            <a href="/tech/">Tech Hub</a>
+            <a href="/about">About</a>
+            <a href="/forms/">Feedback</a>
+            <a href="#" onclick="openContactModal(); return false;">Say Hi 👋</a>
+        </div>
+    </nav>
+
+    <section class="coming-soon">
+        <div class="coming-soon-icon">🎓</div>
+        <h1>Education <span style="background:var(--accent-pink,#ec4899);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;margin-left:6px;letter-spacing:.04em;">NEW</span></h1>
+        <p>Exam prep and learning resources for CA students.</p>
+
+        <div class="preview-grid">
+            <a href="/ca/spomB" class="preview-card" style="text-decoration: none;">
+                <div class="preview-card-icon">🧭</div>
+                <div class="preview-card-title">SPOM B Compass <span style="background:var(--accent-pink,#ec4899);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;margin-left:6px;letter-spacing:.04em;">NEW</span></div>
+                <div class="preview-card-status" style="color: var(--accent-green);">Available Now →</div>
+            </a>
+        </div>
+
+        <a href="/ca/" class="btn-secondary">← Back to CA Hub</a>
+    </section>
+
+    <script src="/scripts/main.js"></script>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-content">
+            <button class="contact-close" onclick="closeContactModal()">×</button>
+            <div class="contact-form-container">
+                <div class="contact-header">
+                    <h2>Say Hi! 👋</h2>
+                    <p>Have a question or just want to connect? Drop me a message!</p>
+                </div>
+                <div class="contact-recipient">
+                    <span>📧 Sending to:</span>
+                    <span>samarth@skilledca.in</span>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="hidden" name="access_key" value="4193e2f3-3ebb-4373-9229-6d38d8535147">
+                    <input type="hidden" name="subject" value="New message from SkilledCA">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message ✨</button>
+                </form>
+            </div>
+            <div class="contact-success">
+                <div class="contact-success-icon">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out! I'll get back to you soon.</p>
+                <button class="btn-primary" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
